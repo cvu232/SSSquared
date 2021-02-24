@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class Geyser : MonoBehaviour
 {
-    public float GeyserForce = 100;
+    public float GeyserForce = 10;
 
     // animation vars
     public AnimationCurve geyserAnim;
@@ -30,6 +30,7 @@ public class Geyser : MonoBehaviour
     // players in geyser are pushed up
     private void OnTriggerStay2D(Collider2D other)
     {
+
         if (other && other.CompareTag("Player"))
         {
             other.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * GeyserForce, ForceMode2D.Force);
