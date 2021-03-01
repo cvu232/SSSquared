@@ -19,7 +19,6 @@ public class Geyser : MonoBehaviour
 
     private void Update()
     {
-
         // geyser "animation"
         geyserAnimT += Time.deltaTime * geyserAnimSpeed;
 
@@ -30,10 +29,9 @@ public class Geyser : MonoBehaviour
     // players in geyser are pushed up
     private void OnTriggerStay2D(Collider2D other)
     {
-
         if (other && other.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * GeyserForce, ForceMode2D.Force);
+            other.attachedRigidbody.AddForce(Vector3.up * GeyserForce, ForceMode2D.Force);
         }
     }
 }

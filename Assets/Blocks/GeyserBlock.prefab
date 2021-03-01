@@ -180,6 +180,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2874049511343417825, guid: 3da9283d2f9837e4b9937885b4c575b6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5051333797162937025, guid: 3da9283d2f9837e4b9937885b4c575b6,
         type: 3}
       propertyPath: m_RootOrder
@@ -240,7 +245,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GeyserBlock
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3981611501654625584, guid: 3da9283d2f9837e4b9937885b4c575b6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3da9283d2f9837e4b9937885b4c575b6, type: 3}
 --- !u!4 &8855007614664599537 stripped
 Transform:

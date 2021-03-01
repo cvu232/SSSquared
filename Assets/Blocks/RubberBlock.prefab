@@ -1,12 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &5584190016867665226
+--- !u!1001 &1161057124888923299
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -277934337408077907, guid: 3da9283d2f9837e4b9937885b4c575b6,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: fc782e6fd9a66af4faedd8dc9f42cc50, type: 2}
     - target: {fileID: 5051333797162937025, guid: 3da9283d2f9837e4b9937885b4c575b6,
         type: 3}
       propertyPath: m_RootOrder
@@ -66,16 +71,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 516dbd5892a77b54dad895376191a361, type: 2}
+      objectReference: {fileID: 2100000, guid: 823d7b04b1331d342bca3d5d189bc364, type: 2}
     - target: {fileID: 5051333797162937053, guid: 3da9283d2f9837e4b9937885b4c575b6,
         type: 3}
       propertyPath: m_Name
-      value: RedBlock
-      objectReference: {fileID: 0}
-    - target: {fileID: 5051333797162937053, guid: 3da9283d2f9837e4b9937885b4c575b6,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
+      value: RubberBlock
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3da9283d2f9837e4b9937885b4c575b6, type: 3}

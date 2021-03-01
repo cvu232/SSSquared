@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 5051333797162937025}
   - component: {fileID: 5051333797162937026}
   - component: {fileID: 5051333797162937027}
-  - component: {fileID: 907780806597128185}
   - component: {fileID: 168726296515822653}
   - component: {fileID: 1960036327827386218}
   - component: {fileID: -277934337408077907}
+  - component: {fileID: 907780806597128185}
   m_Layer: 9
   m_Name: BlockBase
   m_TagString: block
@@ -83,25 +83,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &907780806597128185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5051333797162937053}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a890cb037c9eb484a92b97d9946b315c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isBuildHolo: 0
-  inBadSpace: 0
-  isPlaced: 0
-  meshRenderer: {fileID: 0}
-  material: {fileID: 0}
-  holo: {fileID: 2100000, guid: 8e42f88b9b95e45428aa9f6618b79685, type: 2}
-  triggered: 0
 --- !u!61 &168726296515822653
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -175,3 +156,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &907780806597128185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5051333797162937053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a890cb037c9eb484a92b97d9946b315c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildReady: 0
+  inBadSpace: 0
+  isPlaced: 0
+  meshRenderer: {fileID: 0}
+  material: {fileID: 0}
+  holo: {fileID: 2100000, guid: 8e42f88b9b95e45428aa9f6618b79685, type: 2}
+  triggered: 0

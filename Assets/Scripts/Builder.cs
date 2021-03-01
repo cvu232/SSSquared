@@ -9,22 +9,22 @@ public class Builder : MonoBehaviour
 {
     private Button BuildButton;
     private TextMeshProUGUI buttonText;
-    private string buttonDefaultText = null;
     public BlockBase block;
-
-    public BuilderController builder;
+    private BuilderController builder;
 
     private void Start()
     {
         BuildButton = GetComponent<Button>();
         buttonText = GetComponentInChildren<TextMeshProUGUI>();
-        buttonDefaultText = buttonText.text;
+        buttonText.text = gameObject.name;
         builder = gameObject.GetComponentInParent<BuilderController>();
         BuildButton.onClick.AddListener(Build);
     }
 
     private void Update()
     {
+        if (builder.isBuilding && block == builder.workingBlock)
+            buttonText.text = "Cancel";
         // if building and selected block and it also is ready
         if (builder.isBuilding && builder.workingBlock && builder.workingBlock.buildReady)
         {
@@ -48,7 +48,7 @@ public class Builder : MonoBehaviour
         }
         else if (builder.isBuilding && block != builder.workingBlock)// if is still building but workingBlock is not this builder's block
         {
-            buttonText.text = buttonDefaultText;
+            buttonText.text = gameObject.name;
         }
     }
 
@@ -84,7 +84,6 @@ public class Builder : MonoBehaviour
             Destroy(builder.workingBlock);
             builder.workingBlock = null;
         }
-        //buttonText.text = "Cancel";
     }
 
     private void BuildingModeOff()

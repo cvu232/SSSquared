@@ -22,6 +22,7 @@ public class BlockGrid : MonoBehaviour
         return point;
     }
 
+    /*
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
@@ -32,10 +33,9 @@ public class BlockGrid : MonoBehaviour
             for (float y = -YGridMeshSize; y < YGridMeshSize; y += pointDist/2.0f)
             {
                 var point = GetNearestPointOnGrid(new Vector3(x, y, 0f));
-                Gizmos.DrawSphere(point, 1f);
+                Gizmos.DrawSphere(point, pointSize);
             }
         }
     }
-
-
+    */
 }
