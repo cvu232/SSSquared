@@ -16,7 +16,7 @@ public class ReadyCheck : MonoBehaviour
 
     public void ready()
     {
-        Loop.readyCheck = true;
+        GamePhaseManager.instance.readyCheck = true;
         gameObject.SetActive(false);
     }
 }
