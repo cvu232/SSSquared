@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5051333797162937026}
   - component: {fileID: 5051333797162937027}
   - component: {fileID: 168726296515822653}
-  - component: {fileID: 1960036327827386218}
+  - component: {fileID: 8183647714311941267}
   - component: {fileID: -277934337408077907}
   - component: {fileID: 907780806597128185}
   m_Layer: 9
@@ -109,7 +109,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!61 &1960036327827386218
+--- !u!61 &8183647714311941267
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -155,7 +155,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!114 &907780806597128185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,10 +168,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a890cb037c9eb484a92b97d9946b315c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blockEffect: {fileID: 0}
   buildReady: 0
   inBadSpace: 0
   isPlaced: 0
   meshRenderer: {fileID: 0}
   material: {fileID: 0}
   holo: {fileID: 2100000, guid: 8e42f88b9b95e45428aa9f6618b79685, type: 2}
-  triggered: 0

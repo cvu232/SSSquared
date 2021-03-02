@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Global : MonoBehaviour
 {
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -12,7 +11,6 @@ public class Global : MonoBehaviour
     }
 
     // calculate "mouse" in world space //
-
     public static Vector3 getScreenToWorldMouse()
     {
         Vector3 worldMouse = new Vector3();

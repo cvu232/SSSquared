@@ -8,7 +8,9 @@ public class Spring : MonoBehaviour
     {
         if (other && other.CompareTag("Player"))
         {
-            other.attachedRigidbody.AddRelativeForce(Vector3.up * 100, ForceMode2D.Impulse);
+            Rigidbody2D rb = other.attachedRigidbody;
+            rb.velocity = new Vector2(rb.velocity.x, 0); // reset y velo
+            rb.AddForce(Vector2.up * 75, ForceMode2D.Impulse);
         }
     }
 }

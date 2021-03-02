@@ -23,12 +23,9 @@ public class Builder : MonoBehaviour
 
     private void Update()
     {
-        if (builder.isBuilding && block == builder.workingBlock)
-            buttonText.text = "Cancel";
         // if building and selected block and it also is ready
         if (builder.isBuilding && builder.workingBlock && builder.workingBlock.buildReady)
         {
-
             // snap block to grid //
             builder.workingBlock.transform.position = builder.grid.GetNearestPointOnGrid(Global.getScreenToWorldMouse());
 
@@ -61,11 +58,10 @@ public class Builder : MonoBehaviour
             // create a new block at mouse pos //
             InstantiateBlock();
         }
-        else if (builder.isBuilding && builder.workingBlock) // if you select another block while still building
+        else if (builder.isBuilding)
         {
-            // delete the current block
-            builder.workingBlock.delete();
-            // create a new block at mouse pos
+            BuildingModeOff();
+            BuildingModeOn();
             InstantiateBlock();
         }
     }
@@ -82,8 +78,8 @@ public class Builder : MonoBehaviour
         if (builder.workingBlock)
         {
             Destroy(builder.workingBlock);
-            builder.workingBlock = null;
         }
+        builder.workingBlock = null;
     }
 
     private void BuildingModeOff()

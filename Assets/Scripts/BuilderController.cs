@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class BuilderController : MonoBehaviour
 {
-    public bool isBuilding = false;
-    public BlockBase workingBlock = null;
-    public BlockGrid grid = null;
+    public bool isBuilding;
+    //public Builder workingBuilder;
+    public BlockBase workingBlock;
+    public BlockGrid grid;
 
     private void Start()
     {

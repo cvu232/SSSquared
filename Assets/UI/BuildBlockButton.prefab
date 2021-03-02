@@ -277,4 +277,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   block: {fileID: 907780806597128185, guid: 3da9283d2f9837e4b9937885b4c575b6, type: 3}
-  isBuiding: 0

@@ -10,17 +10,17 @@ public class Demolisher : MonoBehaviour
     private TextMeshProUGUI buttonText;
     public Material highlightBoom;
 
-
-    public bool isDemolishing = false;
+    public bool isDemolishing;
     private BlockBase workingBlock = null;
     public GameObject clickedObj = null;
 
     private void Start()
     {
+        isDemolishing = false;
         Button = GetComponent<Button>();
         Button.onClick.AddListener(demoModeOn);
         buttonText = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-        buttonText.text = "Destroy";
+        buttonText.text = "Demolisher";
     }
 
     private void demoModeOn()

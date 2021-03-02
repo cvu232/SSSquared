@@ -3,22 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
- * Rudimentary Block functions. Attach this script to a Block.
+ * Basic Block functions. Attach this script to a Block.
  */
 
 public class BlockBase : MonoBehaviour
 {
-    private GameObject blockEffect;
+    public GameObject blockEffect;
     public bool buildReady; // is build state
     public bool inBadSpace; // is in invalid build space
     public bool isPlaced;
 
     public MeshRenderer meshRenderer;
-
     public Material material;
     public Material holo;
-
-    public bool triggered;
 
     private void Start()
     {
@@ -26,39 +23,24 @@ public class BlockBase : MonoBehaviour
         material = meshRenderer.material;
         inBadSpace = false;
         buildReady = true;
-        isPlaced = false;
-        try
-        {
-            GetBlockEffect();
-        }
-        catch { }
-        if (blockEffect)
-            blockEffect.SetActive(false);
+        isPlaced = false; // additional checks
+        GetSetupBlockEffect();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        // destroy when falling through
-        if (other.CompareTag("doom"))
-            Destroy(gameObject);
-    }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        triggered = true;
         // check if too close to ground/other blocks
-        if (other.CompareTag("block") || other.CompareTag("bounds") && !isPlaced)
+        if (collision.CompareTag("block") || collision.CompareTag("bounds") && !isPlaced)
         {
             inBadSpace = true;
             meshRenderer.material = holo;
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        triggered = false;
         // check if not intruding ground/other blocks
-        if (other.CompareTag("block") || other.CompareTag("bounds") && !isPlaced)
+        if (collision.CompareTag("block") || collision.CompareTag("bounds") && !isPlaced)
         {
             inBadSpace = false;
             meshRenderer.material = material;
@@ -69,15 +51,28 @@ public class BlockBase : MonoBehaviour
     {
         buildReady = false;
         isPlaced = true;
-        if (blockEffect)
-            blockEffect.SetActive(true);
+        ActivateBlockEffect();
     }
 
-    public void GetBlockEffect()
+    public void GetSetupBlockEffect()
     {
-        if (transform.GetChild(0).gameObject)
-            blockEffect = transform.GetChild(0).gameObject;
-        else blockEffect = null;
+        try
+        {
+            if (transform.GetChild(0))
+                if (transform.GetChild(0).gameObject)
+                    blockEffect = transform.GetChild(0).gameObject;
+                else
+                    blockEffect = null;
+        }
+        catch { }
+        if (blockEffect)
+            blockEffect.SetActive(false);
+    }
+    
+    public void ActivateBlockEffect()
+    {
+        if (blockEffect)
+            blockEffect.SetActive(true);
     }
 
     // delete the game object
