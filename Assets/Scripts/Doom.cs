@@ -6,7 +6,7 @@ public class Doom : MonoBehaviour
 {
     public Transform spawnpoint;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -16,7 +16,7 @@ public class Doom : MonoBehaviour
 
         if (collision.gameObject.CompareTag("projectile"))
         {
-            Destroy(gameObject);
+            Destroy(collision.gameObject);
         }
     }
 }

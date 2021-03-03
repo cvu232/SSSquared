@@ -20,7 +20,7 @@ public class Demolisher : MonoBehaviour
         Button = GetComponent<Button>();
         Button.onClick.AddListener(demoModeOn);
         buttonText = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-        buttonText.text = "Demolisher";
+        buttonText.text = "Delete Mode";
     }
 
     private void demoModeOn()

@@ -88,5 +88,4 @@ public class Builder : MonoBehaviour
             builder.workingBlock = null;
         builder.isBuilding = false;
     }
-
 }

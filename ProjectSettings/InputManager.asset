@@ -374,11 +374,27 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: onReadyUpButtonName
+    m_Name: playerReadyButton
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: space
+    altNegativeButton: 
+    altPositiveButton: joystick button 1
+    gravity: 0
+    dead: 0.001
+    sensitivity: 0
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: CheatCharChange
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: '`'
     altNegativeButton: 
     altPositiveButton: joystick button 1
     gravity: 0

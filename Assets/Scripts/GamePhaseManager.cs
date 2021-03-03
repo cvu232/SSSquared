@@ -89,7 +89,6 @@ public class GamePhaseManager : MonoBehaviour
         for (int i = 0; i < maxLevelCount; i++)
         {
             Level newLevel = Instantiate(emptyLevelPrefab).GetComponent<Level>();
-            newLevel.gameObject.SetActive(true);
             newLevel.transform.parent = levelsContainer.transform;
             newLevel.transform.localPosition = Vector3.up * (i * emptyLevelSpacing);
             levels.Add(newLevel);
@@ -110,14 +109,15 @@ public class GamePhaseManager : MonoBehaviour
         //Setup for Build Phase
         currentGamePhase = Phases.buildPhase; // Set current phase
         bannerCanvas.SetActive(true); // Enable top canvas
-        buildersCanvas.SetActive(true); // Enable builder's canvas
 
-        for (currentLevel = 0, currentBuilder = 0; currentLevel < levels.Count; currentLevel++)
+        for (currentLevel = 0, currentBuilder = 0; currentLevel < levels.Count; currentLevel++, currentBuilder++)
         {
             //Initialize current player's build phase
-            //Set UI to indicate curent builder player
+            Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, currentLevel * emptyLevelSpacing, Camera.main.transform.position.z);
+            buildersCanvas.SetActive(true); // Enable builder's canvas
+            //Set UI to indicate current builder player
             bannerCanvas.transform.GetComponentInChildren<TextMeshProUGUI>().text =
-                "Player " + currentBuilder + " is building Level " + currentLevel;
+                "Player " + (currentBuilder + 1) + " is building Level " + (currentLevel + 1);
 
             currentPhaseTimer = buildPhaseDuration; // Set build timer
 
@@ -125,21 +125,25 @@ public class GamePhaseManager : MonoBehaviour
             yield return new WaitUntil(() => currentPhaseTimer <= 0); // Wait until building finishes
 
             //Increase the current player index, loop to start if index gets out of bounds
-            currentBuilder++;
             if (currentBuilder >= players.Count)
-                currentBuilder -= players.Count;
+                currentBuilder = 0;
             levels[currentBuilder].builderIndex = currentBuilder;
 
             //End current player's build phase
+            buildersCanvas.GetComponentInChildren<BuilderController>().DeactivateBuilderCanvas();
             //Display "Waiting for next player" UI dialog
-            bannerCanvas.transform.GetComponentInChildren<TextMeshProUGUI>().text =
-                "Player " + currentBuilder +" press " + onReadyUpButtonName + " to begin building your level";
-            yield return new WaitUntil(() => Input.GetButtonDown(onReadyUpButtonName)); // Wait until next player presses 'ready' button
+            if (currentLevel < levels.Count - 1)
+                bannerCanvas.transform.GetComponentInChildren<TextMeshProUGUI>().text =
+                    "Player " + (currentBuilder + 2) + " press " + onReadyUpButtonName + " to begin building your level";
+            else
+                bannerCanvas.transform.GetComponentInChildren<TextMeshProUGUI>().text =
+                    "Press " + onReadyUpButtonName + " to begin racing";
 
+            yield return new WaitUntil(() => Input.GetButtonDown(onReadyUpButtonName)); // Wait until next player presses 'ready' button
         }
 
         //End Build Phase
-        MakeArrayOfBlocks(); // catalog the blocks in the scene
+        //MakeArrayOfBlocks(); // catalog the blocks in the scene
         buildersCanvas.SetActive(false); // Disable builder canvas
 
         //Start Next Phase
@@ -156,6 +160,7 @@ public class GamePhaseManager : MonoBehaviour
         for (currentLevel = 0; currentLevel < levels.Count; currentLevel++)
         {
             //Move all players to current level's start area
+            Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, currentLevel * emptyLevelSpacing, Camera.main.transform.position.z);
             MovePlayersTo(levels[currentLevel].spawnPoint);
             ActivatePlayers();
 
@@ -163,7 +168,7 @@ public class GamePhaseManager : MonoBehaviour
             bannerCanvas.transform.GetComponentInChildren<TextMeshProUGUI>().text =
                 "Level: " + currentLevel + ". Built by Player " +  levels[currentLevel].builderIndex;
             scoreCanvas.transform.GetComponentInChildren<TextMeshProUGUI>().text =
-                "Score: " + players[0].score + "-" + players[2].score;
+                "Score: " + players[0].score + ":" + players[1].score;
 
             currentPhaseTimer = racePhaseDuration; // Set build timer
 
@@ -217,7 +222,7 @@ public class GamePhaseManager : MonoBehaviour
     private void MovePlayersTo(Transform pos)
     {
         for (int i = 0; i < players.Count; i++)
-            players[i].transform = pos;
+            players[i].transform.position = pos.position;
     }
 
     private void DeactivatePlayers()

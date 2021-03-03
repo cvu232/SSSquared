@@ -17,4 +17,11 @@ public class BuilderController : MonoBehaviour
         workingBlock = null;
         grid = FindObjectOfType<BlockGrid>();
     }
+
+    public void DeactivateBuilderCanvas()
+    {
+        if (workingBlock)
+            workingBlock = null;
+        GetComponentInParent<Canvas>().gameObject.SetActive(false);
+    }
 }

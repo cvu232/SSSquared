@@ -13,10 +13,9 @@ GameObject:
   - component: {fileID: 5930298943577578226}
   - component: {fileID: 9190806825569104498}
   - component: {fileID: 5911043523592743229}
-  - component: {fileID: 4818826177542251087}
   m_Layer: 0
   m_Name: Projectile
-  m_TagString: Untagged
+  m_TagString: projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,15 +118,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &4818826177542251087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2759209347996444358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 309fe573a9b890e46922a1171349ebfa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
