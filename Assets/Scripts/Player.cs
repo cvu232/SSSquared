@@ -14,6 +14,12 @@ public class Player : MonoBehaviour
         isReady = false;
     }
 
+    public Transform transform
+    {
+        get { return transform; }
+        set { transform = value;  }
+    }
+
     public void Ready()
     {
         isReady = true;
