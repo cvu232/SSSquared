@@ -8,6 +8,7 @@ public class BuilderController : MonoBehaviour
 {
     public bool isBuilding;
     public Builder workingBuilder;
+    public Demolisher demolisher;
     public BlockBase workingBlock;
     public BlockGrid grid;
 
@@ -15,18 +16,16 @@ public class BuilderController : MonoBehaviour
     {
         isBuilding = false;
         workingBuilder = null;
+        demolisher = FindObjectOfType<Demolisher>();
         workingBlock = null;
         grid = FindObjectOfType<BlockGrid>();
     }
 
     public void DeactivateBuilderCanvas()
     {
-        if (workingBlock)
-        {
-            workingBlock.delete(); // delete block if instantiated
-        }
-        workingBlock = null;
-        workingBuilder = null;
+        if (workingBuilder)
+            workingBuilder.BuildingModeOff();
+        demolisher.demoModeOff();
 
         gameObject.SetActive(false); // disable itself
     }

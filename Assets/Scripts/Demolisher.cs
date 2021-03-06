@@ -8,7 +8,12 @@ public class Demolisher : MonoBehaviour
 {
     private Button Button;
     private TextMeshProUGUI buttonText;
+    private string defaultTxt = "Destroy Mode";
+    private string cancelTxt = "Cancel";
+
     public Material highlightBoom;
+
+    public BuilderController builder;
 
     public bool isDemolishing;
     private BlockBase workingBlock = null;
@@ -17,10 +22,13 @@ public class Demolisher : MonoBehaviour
     private void Start()
     {
         isDemolishing = false;
+
         Button = GetComponent<Button>();
         Button.onClick.AddListener(demoModeOn);
         buttonText = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-        buttonText.text = "Delete Mode";
+        buttonText.text = defaultTxt;
+
+        builder = transform.root.GetComponent<BuilderController>();
     }
 
     private void Update()
@@ -73,21 +81,25 @@ public class Demolisher : MonoBehaviour
             // right click deselect
             else if (Input.GetMouseButtonDown(1))
             {
-                clickedObj = null;
-                // set back og material if changed
-                if (workingBlock)
-                    workingBlock.meshRenderer.material = workingBlock.material;
-                workingBlock = null;
+                demoModeOff();
             }
         }
     }
 
-    private void demoModeOn()
+    public void demoModeOn()
     {
-        StartCoroutine(Demolishing());
+        if (builder.isBuilding) // if user is building and cancels mid-building, turn off BuildingMode
+        {
+            builder.workingBuilder.BuildingModeOff();
+        }
+
+        Button.onClick.RemoveAllListeners(); // remove listeners
+        isDemolishing = true;
+        buttonText.text = cancelTxt; // Change Button text and Listener to indicate next press is Cancel
+        Button.onClick.AddListener(demoModeOff);
     }
 
-    private void demoModeOff()
+    public void demoModeOff()
     {
         isDemolishing = false;
         // deselect all
@@ -96,17 +108,10 @@ public class Demolisher : MonoBehaviour
         if (workingBlock)
             workingBlock.meshRenderer.material = workingBlock.material;
         workingBlock = null;
-    }
 
-    IEnumerator Demolishing()
-    {
-        Button.onClick.RemoveAllListeners(); // remove listeners
-        isDemolishing = true;
-        buttonText.text = "Cancel";
-        Button.onClick.AddListener(demoModeOff);
-        yield return new WaitUntil(()=> isDemolishing == false);
+
         Button.onClick.RemoveAllListeners(); // remove listeners 
-        buttonText.text = "Destroy";
+        buttonText.text = defaultTxt;
         Button.onClick.AddListener(demoModeOn);
     }
 }

@@ -38,7 +38,7 @@ public class Builder : MonoBehaviour
                 builder.workingBlock.transform.position = builder.grid.GetNearestPointOnGrid(Global.getScreenToWorldMouse());
                 builder.workingBlock.place();
                 //builder.workingBlock = null; // insurance
-                builder.workingBlock = Instantiate(builder.workingBuilder.block, Vector3.zero, Quaternion.identity); // instantiate new block from builder
+                InstantiateBlock(builder.workingBuilder.block); // instantiate new block from builder
             }
             // right-click cancel
             else if (Input.GetMouseButtonDown(1))
@@ -50,6 +50,11 @@ public class Builder : MonoBehaviour
 
     private void Build()
     {
+        // is demolisher is working then turn off demolisher
+        if (builder.demolisher.isDemolishing)
+        {
+            builder.demolisher.demoModeOff();
+        }
         // if not already building
         if (!builder.isBuilding)
         {
@@ -68,10 +73,9 @@ public class Builder : MonoBehaviour
     private void InstantiateBlock(BlockBase b)
     {
         builder.workingBlock = Instantiate(b, Vector3.zero, Quaternion.identity); // instantiate new block from builder
-        builder.workingBlock.buildReady = true; // block is build ready
     }
 
-    private void BuildingModeOn(Builder b)
+    public void BuildingModeOn(Builder b)
     {
         if (builder.workingBlock) // delete instantiated block
         {
@@ -83,7 +87,7 @@ public class Builder : MonoBehaviour
         builder.isBuilding = true; // is building
     }
 
-    private void BuildingModeOff()
+    public void BuildingModeOff()
     {
         if (builder.workingBlock) // delete instantiated block
         {
