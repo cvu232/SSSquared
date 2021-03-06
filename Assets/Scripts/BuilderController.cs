@@ -7,13 +7,14 @@ using TMPro;
 public class BuilderController : MonoBehaviour
 {
     public bool isBuilding;
-    //public Builder workingBuilder;
+    public Builder workingBuilder;
     public BlockBase workingBlock;
     public BlockGrid grid;
 
     private void Start()
     {
         isBuilding = false;
+        workingBuilder = null;
         workingBlock = null;
         grid = FindObjectOfType<BlockGrid>();
     }
@@ -21,7 +22,12 @@ public class BuilderController : MonoBehaviour
     public void DeactivateBuilderCanvas()
     {
         if (workingBlock)
-            workingBlock = null;
-        GetComponentInParent<Canvas>().gameObject.SetActive(false);
+        {
+            workingBlock.delete(); // delete block if instantiated
+        }
+        workingBlock = null;
+        workingBuilder = null;
+
+        gameObject.SetActive(false); // disable itself
     }
 }

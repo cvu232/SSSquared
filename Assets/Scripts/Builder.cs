@@ -7,17 +7,20 @@ using UnityEngine.EventSystems;
 
 public class Builder : MonoBehaviour
 {
+    // button objects
     private Button BuildButton;
     private TextMeshProUGUI buttonText;
-    public BlockBase block;
+
     private BuilderController builder;
+    public BlockBase block;
 
     private void Start()
     {
+        builder = transform.root.GetComponent<BuilderController>();
+
         BuildButton = GetComponent<Button>();
         buttonText = GetComponentInChildren<TextMeshProUGUI>();
         buttonText.text = gameObject.name;
-        builder = gameObject.GetComponentInParent<BuilderController>();
         BuildButton.onClick.AddListener(Build);
     }
 
@@ -34,18 +37,14 @@ public class Builder : MonoBehaviour
             {
                 builder.workingBlock.transform.position = builder.grid.GetNearestPointOnGrid(Global.getScreenToWorldMouse());
                 builder.workingBlock.place();
-                BuildingModeOff();
+                //builder.workingBlock = null; // insurance
+                builder.workingBlock = Instantiate(builder.workingBuilder.block, Vector3.zero, Quaternion.identity); // instantiate new block from builder
             }
             // right-click cancel
             else if (Input.GetMouseButtonDown(1))
             {
-                builder.workingBlock.delete();
                 BuildingModeOff();
             }
-        }
-        else if (builder.isBuilding && block != builder.workingBlock)// if is still building but workingBlock is not this builder's block
-        {
-            buttonText.text = gameObject.name;
         }
     }
 
@@ -54,38 +53,45 @@ public class Builder : MonoBehaviour
         // if not already building
         if (!builder.isBuilding)
         {
-            BuildingModeOn();
+            BuildingModeOn(this);
             // create a new block at mouse pos //
-            InstantiateBlock();
+            InstantiateBlock(builder.workingBuilder.block);
         }
-        else if (builder.isBuilding)
+        else
         {
             BuildingModeOff();
-            BuildingModeOn();
-            InstantiateBlock();
+            BuildingModeOn(this);
+            InstantiateBlock(builder.workingBuilder.block);
         }
     }
 
-    private void InstantiateBlock()
+    private void InstantiateBlock(BlockBase b)
     {
-        builder.workingBlock = Instantiate(block, Vector3.zero, Quaternion.identity);
-        builder.workingBlock.buildReady = true; // set block to holo
+        builder.workingBlock = Instantiate(b, Vector3.zero, Quaternion.identity); // instantiate new block from builder
+        builder.workingBlock.buildReady = true; // block is build ready
     }
 
-    private void BuildingModeOn()
+    private void BuildingModeOn(Builder b)
     {
-        builder.isBuilding = true;
-        if (builder.workingBlock)
+        if (builder.workingBlock) // delete instantiated block
         {
-            Destroy(builder.workingBlock);
+            builder.workingBlock.delete();
         }
-        builder.workingBlock = null;
+        builder.workingBlock = null; // no working block
+
+        builder.workingBuilder = b; // set working builder to this
+        builder.isBuilding = true; // is building
     }
 
     private void BuildingModeOff()
     {
-        if (builder.workingBlock) // detach if not cancelled //
-            builder.workingBlock = null;
-        builder.isBuilding = false;
+        if (builder.workingBlock) // delete instantiated block
+        {
+            builder.workingBlock.delete();
+        }
+        builder.workingBlock = null; // no working block
+
+        builder.workingBuilder = null; // no working builder
+        builder.isBuilding = false; // is not building
     }
 }

@@ -23,22 +23,6 @@ public class Demolisher : MonoBehaviour
         buttonText.text = "Delete Mode";
     }
 
-    private void demoModeOn()
-    {
-        StartCoroutine(Demolishing());
-    }
-
-    private void demoModeOff()
-    {
-        isDemolishing = false;
-        // deselect all
-        clickedObj = null;
-        // set back og material if changed
-        if (workingBlock)
-            workingBlock.meshRenderer.material = workingBlock.material;
-        workingBlock = null;
-    }
-
     private void Update()
     {
         if (isDemolishing)
@@ -96,6 +80,22 @@ public class Demolisher : MonoBehaviour
                 workingBlock = null;
             }
         }
+    }
+
+    private void demoModeOn()
+    {
+        StartCoroutine(Demolishing());
+    }
+
+    private void demoModeOff()
+    {
+        isDemolishing = false;
+        // deselect all
+        clickedObj = null;
+        // set back og material if changed
+        if (workingBlock)
+            workingBlock.meshRenderer.material = workingBlock.material;
+        workingBlock = null;
     }
 
     IEnumerator Demolishing()

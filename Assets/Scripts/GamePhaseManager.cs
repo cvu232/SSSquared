@@ -15,9 +15,10 @@ public class GamePhaseManager : MonoBehaviour
 
     public static Phases currentGamePhase { get; private set; }
 
-    //Public Variables
+    [Header("Container Objects")]
     public GameObject levelsContainer; // object that holds all levels
     public GameObject playersContainer; // object that holds all players
+    [Header("Canvas Objects")]
     public GameObject bannerCanvas;
     public GameObject scoreCanvas;
     public GameObject timerCanvas;
@@ -113,6 +114,7 @@ public class GamePhaseManager : MonoBehaviour
         for (currentLevel = 0, currentBuilder = 0; currentLevel < levels.Count; currentLevel++, currentBuilder++)
         {
             //Initialize current player's build phase
+            //Move Camera
             Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, currentLevel * emptyLevelSpacing, Camera.main.transform.position.z);
             buildersCanvas.SetActive(true); // Enable builder's canvas
             //Set UI to indicate current builder player
@@ -159,14 +161,14 @@ public class GamePhaseManager : MonoBehaviour
 
         for (currentLevel = 0; currentLevel < levels.Count; currentLevel++)
         {
-            //Move all players to current level's start area
+            //Move camera and all players to current level's start area
             Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, currentLevel * emptyLevelSpacing, Camera.main.transform.position.z);
             MovePlayersTo(levels[currentLevel].spawnPoint);
             ActivatePlayers();
 
             //Set UI to indicate current level and its builder
             bannerCanvas.transform.GetComponentInChildren<TextMeshProUGUI>().text =
-                "Level: " + currentLevel + ". Built by Player " +  levels[currentLevel].builderIndex;
+                "Level: " + (currentLevel + 1) + ". Built by Player " +  levels[currentLevel].builderIndex;
             scoreCanvas.transform.GetComponentInChildren<TextMeshProUGUI>().text =
                 "Score: " + players[0].score + ":" + players[1].score;
 
