@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: iceShaderPBRGraph
+  m_Shader: {fileID: -6465566751694194690, guid: 4eddc617b1261114eb4d7987fe872638,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_FBF4AD65:
+        m_Texture: {fileID: 2800000, guid: 65e55686e9a3fd04080c3bcb86e315a6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_1655ED37: 0.2
+    - Vector1_206DD5DB: 0.8
+    - Vector1_83F72501: 0.2
+    - Vector1_8DFFE3D3: 0.2
+    - Vector1_E85CCC4C: 3
+    m_Colors:
+    - Color_8E157D83: {r: 0.79108477, g: 1.2703658, b: 2.297397, a: 0}
+    - Color_D543CF0B: {r: 1, g: 1, b: 1, a: 0}
+    - Vector2_1CF98190: {r: 0.4, g: 0.4, b: 0, a: 0}
