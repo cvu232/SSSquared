@@ -476,8 +476,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   XGridMeshSize: 100
   YGridMeshSize: 50
-  pointDist: 1
-  pointSize: 0.5
+  pointDist: 5
+  pointSize: 5
 --- !u!224 &376157259
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1537,6 +1537,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4330009762739668204, guid: f7679e6fff53ddf45ba062d23502dbd8,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.5948411
+      objectReference: {fileID: 0}
+    - target: {fileID: 4330009762739668204, guid: f7679e6fff53ddf45ba062d23502dbd8,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.504717
+      objectReference: {fileID: 0}
+    - target: {fileID: 4330009762739668204, guid: f7679e6fff53ddf45ba062d23502dbd8,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8132865967746954890, guid: f7679e6fff53ddf45ba062d23502dbd8,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1645,6 +1660,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4330009762739668204, guid: f7679e6fff53ddf45ba062d23502dbd8,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4330009762739668204, guid: f7679e6fff53ddf45ba062d23502dbd8,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.7862123
+      objectReference: {fileID: 0}
+    - target: {fileID: 4330009762739668204, guid: f7679e6fff53ddf45ba062d23502dbd8,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.504717
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1296184501, guid: f7679e6fff53ddf45ba062d23502dbd8, type: 3}

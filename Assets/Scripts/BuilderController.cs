@@ -6,14 +6,18 @@ using TMPro;
 
 public class BuilderController : MonoBehaviour
 {
+
+    public static BuilderController instance;
+
     public bool isBuilding;
     public Builder workingBuilder;
     public Demolisher demolisher;
     public BlockBase workingBlock;
     public BlockGrid grid;
 
-    private void Start()
+    private void Awake()
     {
+        instance = this;
         isBuilding = false;
         workingBuilder = null;
         demolisher = FindObjectOfType<Demolisher>();

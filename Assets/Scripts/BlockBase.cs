@@ -16,6 +16,9 @@ public class BlockBase : MonoBehaviour
     public MeshRenderer meshRenderer;
     public Material material;
     public Material holo;
+    public Vector3 pos;
+
+    private int inColl;
 
     private void Start()
     {
@@ -27,12 +30,17 @@ public class BlockBase : MonoBehaviour
         GetSetupBlockEffect();
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    public void Update() {
+        transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime * 10);
+        inBadSpace = inColl != 0;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         // check if too close to ground/other blocks
         if (collision.CompareTag("block") || collision.CompareTag("bounds") && !isPlaced)
         {
-            inBadSpace = true;
+            inColl++;
             meshRenderer.material = holo;
         }
     }
@@ -42,7 +50,7 @@ public class BlockBase : MonoBehaviour
         // check if not intruding ground/other blocks
         if (collision.CompareTag("block") || collision.CompareTag("bounds") && !isPlaced)
         {
-            inBadSpace = false;
+            inColl--;
             meshRenderer.material = material;
         }
     }

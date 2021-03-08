@@ -23,7 +23,7 @@ public class Geyser : MonoBehaviour
         geyserAnimT += Time.deltaTime * geyserAnimSpeed;
 
         transform.localPosition = Vector3.up * geyserAnim.Evaluate(geyserAnimT) * geyserAnimScale;
-        transform.localScale = Vector3.one + (Vector3.up * geyserAnim.Evaluate(geyserAnimT) * geyserAnimScale * 2);
+        transform.localScale = (Vector3.one * 0.9f) + (Vector3.up * geyserAnim.Evaluate(geyserAnimT) * geyserAnimScale * 2);
     }
 
     // players in geyser are pushed up
@@ -31,7 +31,7 @@ public class Geyser : MonoBehaviour
     {
         if (other && other.CompareTag("Player"))
         {
-            other.attachedRigidbody.AddForce(Vector3.up * GeyserForce, ForceMode2D.Force);
+            other.attachedRigidbody.AddForce(Vector3.up * GeyserForce * geyserAnim.Evaluate(geyserAnimT), ForceMode2D.Force);
         }
     }
 }

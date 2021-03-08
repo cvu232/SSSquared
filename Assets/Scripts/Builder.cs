@@ -30,15 +30,19 @@ public class Builder : MonoBehaviour
         if (builder.isBuilding && builder.workingBlock && builder.workingBlock.buildReady)
         {
             // snap block to grid //
-            builder.workingBlock.transform.position = builder.grid.GetNearestPointOnGrid(Global.getScreenToWorldMouse());
+            builder.workingBlock.pos = builder.grid.GetNearestPointOnGrid(Global.getScreenToWorldMouse());
 
             // left-click build in valid space and not on UI //
-            if (Input.GetMouseButtonDown(0) && !builder.workingBlock.inBadSpace && !EventSystem.current.IsPointerOverGameObject())
+            if (Input.GetMouseButton(0) &&
+                !builder.workingBlock.inBadSpace &&
+                !EventSystem.current.IsPointerOverGameObject() &&
+                Vector3.Distance(builder.workingBlock.transform.position, builder.grid.GetNearestPointOnGrid(Global.getScreenToWorldMouse())) < 0.5f
+                    )
             {
-                builder.workingBlock.transform.position = builder.grid.GetNearestPointOnGrid(Global.getScreenToWorldMouse());
                 builder.workingBlock.place();
                 //builder.workingBlock = null; // insurance
                 InstantiateBlock(builder.workingBuilder.block); // instantiate new block from builder
+                builder.workingBlock.transform.position = Vector3.down * 100; //builder.grid.GetNearestPointOnGrid(Global.getScreenToWorldMouse());
             }
             // right-click cancel
             else if (Input.GetMouseButtonDown(1))
