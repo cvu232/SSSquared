@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour {
 	[HideInInspector]
 	public PhysicsMaterial2D steppingOn;
 	new private PlayerAudio audio;
-	private Animator anim;
+	public Animator anim;
 	private List<Undoable> undosUntilLastCheckpoint = new List<Undoable>();
 	private List<Undoable> undosGLOBAL = new List<Undoable>();
 	private ContactPoint2D[] contacts = new ContactPoint2D[0];
@@ -412,6 +412,9 @@ public class PlayerMovement : MonoBehaviour {
 
 		RaycastHit2D castA = Physics2D.Raycast((Vector2)transform.position + raycastStartPos, Vector2.down, raycastCheckDist, groundLayers);
 		RaycastHit2D castB = Physics2D.Raycast((Vector2)transform.position + raycastStartPos * (Vector3.up + Vector3.left), Vector2.down, raycastCheckDist, groundLayers);
+
+		Debug.DrawRay((Vector2)transform.position + raycastStartPos, Vector2.down * raycastCheckDist, Color.red);
+		Debug.DrawRay((Vector2)transform.position + raycastStartPos * (Vector3.up + Vector3.left), Vector2.down * raycastCheckDist, Color.red);
 
 		if (castA || castB) {
 			if (!isGrounded)

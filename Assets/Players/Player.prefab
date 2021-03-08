@@ -245,6 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   steppingOn: {fileID: 0}
+  anim: {fileID: 0}
   charType: 0
   rigidbodyVelOrientation: 1
   groundLayers:
@@ -256,8 +257,8 @@ MonoBehaviour:
   inputDashButtonName: Dash
   horizontalInput: 0
   verticalInput: 0
-  raycastStartPos: {x: 0.36, y: -0.46}
-  raycastCheckDist: 0.15
+  raycastStartPos: {x: 0.75, y: -2}
+  raycastCheckDist: 1
   maxVelHori: 12
   addVelHori: 3
   addVelHoriAerial: 3
@@ -265,7 +266,7 @@ MonoBehaviour:
   dampVelHoriAerial: 1.01
   coyoteTime: 0.1
   jumpFrameDuration: 0.1
-  jumpForce: 30
+  jumpForce: 40
   jumpHoldGravMulti: 3
   jumpReleaseGravMulti: 9
   isGrounded: 0
@@ -286,10 +287,10 @@ MonoBehaviour:
   minCollisionXDistance: 0.4
   wallJumpHoriVel: 10
   wallJumpCoyoteTime: 0.2
-  offCenterAngle: 115
+  offCenterAngle: 180
   offCenterSpinSpeed: 2
   PlayerSprite: {fileID: 1729149644549014963}
-  vertSquishFac: 0.025
+  vertSquishFac: 0.001
   vertSquishMin: 1
   vertSquishMax: 1.5
   currentSquishFactor: 0
