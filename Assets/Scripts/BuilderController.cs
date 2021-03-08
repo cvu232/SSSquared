@@ -27,6 +27,6 @@ public class BuilderController : MonoBehaviour
             workingBuilder.BuildingModeOff();
         demolisher.demoModeOff();
 
-        gameObject.SetActive(false); // disable itself
+        transform.GetChild(0).gameObject.SetActive(false); // disable itself
     }
 }
