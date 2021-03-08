@@ -119,17 +119,17 @@ public class GamePhaseManager : MonoBehaviour {
             //Initialize current player's build phase
             //Move Camera
             Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, currentLevel * emptyLevelSpacing, Camera.main.transform.position.z);
-            //Set UI to indicate current builder player
-            uiBanner.text =
-                "Player " + (currentBuilder + 1) + " is building Level " + (currentLevel + 1);
 
             //UI to indicate which button to start
             uiBanner.text =
                     "Player " + (currentBuilder + 1) + " press " + onReadyUpButtonName + " to begin building your level";
             // Wait for Player to be ready to build
             yield return new WaitUntil(() => Input.GetButtonDown(onReadyUpButtonName));
+            //Set UI to indicate current builder player
+            uiBanner.text =
+                "Player " + (currentBuilder + 1) + " is building Level " + (currentLevel + 1);
             uiBuildButtons.transform.GetChild(0).gameObject.SetActive(true); // Enable builder's canvas
-            uiTimer.gameObject.SetActive(true);
+            uiTimer.transform.parent.gameObject.SetActive(true);
             currentPhaseTimer = buildPhaseDuration; // Start build timer
 
             //Wait for Build Phase
@@ -168,9 +168,7 @@ public class GamePhaseManager : MonoBehaviour {
             MovePlayersTo(levels[currentLevel].spawnPoint);
             uiScore.transform.parent.gameObject.SetActive(true);
 
-            //Set UI to indicate current level and its builder
-            uiBanner.text =
-                "Level: " + (currentLevel + 1) + ". Built by Player " + levels[currentLevel].builderIndex;
+            
             uiScore.text =
                 "Score: " + players[0].score + ":" + players[1].score;
 
@@ -178,6 +176,9 @@ public class GamePhaseManager : MonoBehaviour {
             uiBanner.text =
                     "Press " + onReadyUpButtonName + " begin racing";
             yield return new WaitUntil(() => Input.GetButtonDown(onReadyUpButtonName)); // Wait until next player presses 'ready' button
+            //Set UI to indicate current level and its builder
+            uiBanner.text =
+                "Level: " + (currentLevel + 1) + ". Built by Player " + levels[currentLevel].builderIndex;
             ActivatePlayers();
             currentPhaseTimer = racePhaseDuration; // Set build timer
 
