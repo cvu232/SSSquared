@@ -27,7 +27,7 @@ public class Global : MonoBehaviour
     public static GameObject getMouseClickObject()
     {
         Vector3 worldMouse = getScreenToWorldMouse();
-        RaycastHit2D hit = Physics2D.Raycast(new Vector2(worldMouse.x , worldMouse.y), Vector2.zero);
+        RaycastHit2D hit = Physics2D.Raycast(worldMouse, Vector2.zero);
         if (hit)
             return hit.transform.gameObject;
         return null;

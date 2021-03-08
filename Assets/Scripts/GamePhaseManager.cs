@@ -68,6 +68,8 @@ public class GamePhaseManager : MonoBehaviour {
 
     private void Start() {
         // Initialize some variables //
+        Physics2D.queriesStartInColliders = true;
+
         blockEffectsEnabled = false;
 
         currentLevel = 0;
@@ -158,6 +160,8 @@ public class GamePhaseManager : MonoBehaviour {
 
     IEnumerator RacePhase() {
         //Setup for Race Phase
+        Physics2D.queriesStartInColliders = false;
+
         currentGamePhase = Phases.racePhase; // Set current phase
         ActivateBlockEffects(); // Enable block effects
         //TODO: Generate array of ready status booleans
