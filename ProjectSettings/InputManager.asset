@@ -374,7 +374,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: playerReadyButton
+    m_Name: space
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 

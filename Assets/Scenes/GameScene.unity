@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.45085436, g: 0.4991156, b: 0.56575626, a: 1}
+  m_IndirectSpecularColor: {r: 0.4508546, g: 0.49911588, b: 0.56575686, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -277,15 +277,15 @@ MonoBehaviour:
   scoreCanvas: {fileID: 1612197244}
   timerCanvas: {fileID: 2093111768}
   buildersCanvas: {fileID: 63068014}
-  buildPhaseDuration: 15
-  onReadyUpButtonName: playerReadyButton
+  buildPhaseDuration: 10
+  onReadyUpButtonName: space
   maxLevelCount: 0
   useFixedLevelsPerPlayer: 1
   fixedLevelsPerPlayer: 1
   emptyLevelPrefab: {fileID: 6946042444330766521, guid: a018e50b588580741bace42a7b8d28ff,
     type: 3}
   emptyLevelSpacing: 500
-  racePhaseDuration: 20
+  racePhaseDuration: 30
   readyCheck: 
   player1: {fileID: 1985308837}
   player2: {fileID: 1577749884}
@@ -1835,7 +1835,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1250086514}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.4, y: 0.1, z: 79.62479}
+  m_LocalPosition: {x: 0, y: 0, z: 80}
   m_LocalScale: {x: 13.846232, y: 13.846232, z: 13.846232}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2887,50 +2887,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2027447447}
     m_Modifications:
-    - target: {fileID: 1729149644015942232, guid: f7679e6fff53ddf45ba062d23502dbd8,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1729149644015942232, guid: f7679e6fff53ddf45ba062d23502dbd8,
-        type: 3}
-      propertyPath: maxVelHori
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 1729149644015942232, guid: f7679e6fff53ddf45ba062d23502dbd8,
-        type: 3}
-      propertyPath: addVelHoriAerial
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1729149644015942232, guid: f7679e6fff53ddf45ba062d23502dbd8,
-        type: 3}
-      propertyPath: jumpHoldGravMulti
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1729149644015942232, guid: f7679e6fff53ddf45ba062d23502dbd8,
-        type: 3}
-      propertyPath: jumpReleaseGravMulti
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1729149644015942233, guid: f7679e6fff53ddf45ba062d23502dbd8,
-        type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1729149644015942233, guid: f7679e6fff53ddf45ba062d23502dbd8,
-        type: 3}
-      propertyPath: m_LinearDrag
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1729149644015942235, guid: f7679e6fff53ddf45ba062d23502dbd8,
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1729149644015942235, guid: f7679e6fff53ddf45ba062d23502dbd8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1729149644015942237, guid: f7679e6fff53ddf45ba062d23502dbd8,
         type: 3}
@@ -2985,41 +2945,6 @@ PrefabInstance:
     - target: {fileID: 1729149644015942237, guid: f7679e6fff53ddf45ba062d23502dbd8,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8132865967746954890, guid: f7679e6fff53ddf45ba062d23502dbd8,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8132865967746954890, guid: f7679e6fff53ddf45ba062d23502dbd8,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8132865967746954890, guid: f7679e6fff53ddf45ba062d23502dbd8,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8132865969153386807, guid: f7679e6fff53ddf45ba062d23502dbd8,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8132865969153386807, guid: f7679e6fff53ddf45ba062d23502dbd8,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8132865969153386807, guid: f7679e6fff53ddf45ba062d23502dbd8,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8132865969404224828, guid: f7679e6fff53ddf45ba062d23502dbd8,
-        type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
