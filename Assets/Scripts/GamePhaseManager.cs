@@ -74,6 +74,8 @@ public class GamePhaseManager : MonoBehaviour
         currentLevel = 0;
 
         buildersCanvas.SetActive(false);
+        scoreCanvas.SetActive(false);
+        timerCanvas.SetActive(false);
 
         //Placeholder players
         players.Add(player1);
@@ -121,32 +123,36 @@ public class GamePhaseManager : MonoBehaviour
             bannerCanvas.transform.GetComponentInChildren<TextMeshProUGUI>().text =
                 "Player " + (currentBuilder + 1) + " is building Level " + (currentLevel + 1);
 
-            currentPhaseTimer = buildPhaseDuration; // Set build timer
+            //UI to indicate which button to start
+            bannerCanvas.transform.GetComponentInChildren<TextMeshProUGUI>().text =
+                    "Player " + (currentBuilder + 1) + " press " + onReadyUpButtonName + " to begin building your level";
+            // Wait for Player to be ready to build
+             yield return new WaitUntil(() => Input.GetButtonDown(onReadyUpButtonName)); // Wait until next player presses 'ready' button
+            timerCanvas.SetActive(true);
+
+            currentPhaseTimer = buildPhaseDuration; // Start build timer
 
             //Wait for Build Phase
             yield return new WaitUntil(() => currentPhaseTimer <= 0); // Wait until building finishes
+            currentPhaseTimer = 0;
+            //End current player's build phase
+            buildersCanvas.GetComponentInChildren<BuilderController>().DeactivateBuilderCanvas();
 
             //Increase the current player index, loop to start if index gets out of bounds
             if (currentBuilder >= players.Count)
                 currentBuilder = 0;
             levels[currentBuilder].builderIndex = currentBuilder;
-
-            //End current player's build phase
-            buildersCanvas.GetComponentInChildren<BuilderController>().DeactivateBuilderCanvas();
-            //Display "Waiting for next player" UI dialog
+            
+            //Acknowledge next player to build or build phase is complete
             if (currentLevel < levels.Count - 1)
                 bannerCanvas.transform.GetComponentInChildren<TextMeshProUGUI>().text =
-                    "Player " + (currentBuilder + 2) + " press " + onReadyUpButtonName + " to begin building your level";
+                    "Press " + onReadyUpButtonName + " proceed to building the next level";
             else
                 bannerCanvas.transform.GetComponentInChildren<TextMeshProUGUI>().text =
-                    "Press " + onReadyUpButtonName + " to begin racing";
+                    "Press " + onReadyUpButtonName + " to proceed to the Racing Phase";
 
             yield return new WaitUntil(() => Input.GetButtonDown(onReadyUpButtonName)); // Wait until next player presses 'ready' button
         }
-
-        //End Build Phase
-        //MakeArrayOfBlocks(); // catalog the blocks in the scene
-        buildersCanvas.SetActive(false); // Disable builder canvas
 
         //Start Next Phase
         StartCoroutine(RacePhase()); // Start race mode
@@ -164,43 +170,58 @@ public class GamePhaseManager : MonoBehaviour
             //Move camera and all players to current level's start area
             Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, currentLevel * emptyLevelSpacing, Camera.main.transform.position.z);
             MovePlayersTo(levels[currentLevel].spawnPoint);
-            ActivatePlayers();
 
             //Set UI to indicate current level and its builder
             bannerCanvas.transform.GetComponentInChildren<TextMeshProUGUI>().text =
-                "Level: " + (currentLevel + 1) + ". Built by Player " +  levels[currentLevel].builderIndex;
+                "Level: " + (currentLevel + 1) + ". Built by Player " + levels[currentLevel].builderIndex;
+            scoreCanvas.SetActive(true);
             scoreCanvas.transform.GetComponentInChildren<TextMeshProUGUI>().text =
                 "Score: " + players[0].score + ":" + players[1].score;
 
+            //Wait for all players to be ready
+            bannerCanvas.transform.GetComponentInChildren<TextMeshProUGUI>().text =
+                    "Press " + onReadyUpButtonName + " begin racing";
+            yield return new WaitUntil(() => Input.GetButtonDown(onReadyUpButtonName)); // Wait until next player presses 'ready' button
+            ActivatePlayers();
             currentPhaseTimer = racePhaseDuration; // Set build timer
 
             //Wait for Level Timeout
             //TODO end current level loop if a player beats the level
             yield return new WaitUntil(() => currentPhaseTimer <= 0); // Wait until race finishes
+            currentPhaseTimer = 0;
             DeactivatePlayers();
-            //TODO add code to add score penalty if level timeout is reached
+
+
             if (!levels[currentLevel].winner)
+            {
                 players[levels[currentLevel].builderIndex].score -= 3;
+                bannerCanvas.transform.GetComponentInChildren<TextMeshProUGUI>().text =
+                "There was no winner for this level... Player " + (levels[currentLevel].builderIndex + 1) + " suffers a score penalty.";
+            }
             else if (levels[currentLevel].winner)
+            {
                 levels[currentLevel].winner.score += 3;
+                bannerCanvas.transform.GetComponentInChildren<TextMeshProUGUI>().text =
+                "Player " + (players.IndexOf(levels[currentLevel].winner) + 1) + " is the winner of this level!";
+                
+            }
 
             //End current level
             //Display "Level done, ready up for next" UI dialog
-            bannerCanvas.transform.GetComponentInChildren<TextMeshProUGUI>().text =
+            if (currentLevel < levels.Count - 1)
+                bannerCanvas.transform.GetComponentInChildren<TextMeshProUGUI>().text =
                 "Press " + onReadyUpButtonName + " to continue to the next level";
+            else
+                bannerCanvas.transform.GetComponentInChildren<TextMeshProUGUI>().text =
+                "Press " + onReadyUpButtonName + " to finish";
             yield return new WaitUntil(() => Input.GetButtonDown(onReadyUpButtonName));
 
         }
 
         //Display "Game Finish!" UI Dialog
         bannerCanvas.transform.GetComponentInChildren<TextMeshProUGUI>().text =
-                "Game Over";
+                "Player "+ SettledWinner() + " wins the game!";
 
-    }
-
-    private void MakeArrayOfBlocks()
-    {
-        blocks = FindObjectsOfType<BlockBase>();
     }
 
     private void ActivateBlockEffects()
@@ -233,20 +254,19 @@ public class GamePhaseManager : MonoBehaviour
             players[i].gameObject.SetActive(false);
     }
 
-    /*
-    private void ClearArrayOfBlocks()
+    private int SettledWinner()
     {
-        blockEffectsEnabled = false;
-        foreach (BlockBase block in blocks)
+        int index = -1;
+        for (int i = 0; i < players.Count - 1; i++)
         {
-            block.delete();
+            if (players[i].score >= players[i + 1].score)
+                index = i;
         }
+        return index + 1;
     }
 
-    
     private void SettleScore()
     {
 
     }
-    */
 }
