@@ -156,16 +156,16 @@ MonoBehaviour:
   verticalInput: 0
   raycastStartPos: {x: 0.36, y: -0.46}
   raycastCheckDist: 0.15
-  maxVelHori: 12
+  maxVelHori: 10
   addVelHori: 3
-  addVelHoriAerial: 3
+  addVelHoriAerial: 1
   dampVelHori: 1.2
   dampVelHoriAerial: 1.01
   coyoteTime: 0.1
   jumpFrameDuration: 0.1
-  jumpForce: 30
-  jumpHoldGravMulti: 3
-  jumpReleaseGravMulti: 9
+  jumpForce: 20
+  jumpHoldGravMulti: 1.8
+  jumpReleaseGravMulti: 4.5
   isGrounded: 0
   isInNoDashZone: 0
   dashAvailable: 0
@@ -203,8 +203,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 1
+  m_Mass: 10
+  m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -225,7 +225,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.04491043}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -236,7 +236,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1, y: 2.0646515}
   m_EdgeRadius: 0
 --- !u!114 &1729149644015942234
 MonoBehaviour:

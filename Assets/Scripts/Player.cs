@@ -6,7 +6,6 @@ public class Player : MonoBehaviour
 {
     public int score;
     public int HP;
-    public int num;
     public bool isReady;
 
     private void Start()
