@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1550669326}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.1, z: 0}
   m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_Children: []
   m_Father: {fileID: 1729149644549014967}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!95 &8574950104332799846
 Animator:
   serializedVersion: 3
@@ -208,7 +208,6 @@ GameObject:
   - component: {fileID: 1729149644015942239}
   - component: {fileID: 1729149644015942234}
   - component: {fileID: -7874288892736512678}
-  - component: {fileID: 1296184501}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -225,7 +224,7 @@ Transform:
   m_GameObject: {fileID: 1729149644015942235}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children:
   - {fileID: 1729149644549014967}
   - {fileID: 1729149644659849833}
@@ -245,9 +244,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   steppingOn: {fileID: 0}
-  anim: {fileID: 0}
+  anim: {fileID: 8574950104332799846}
   charType: 0
-  rigidbodyVelOrientation: 1
+  rigidbodyVelOrientation: -1
   groundLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -257,21 +256,21 @@ MonoBehaviour:
   inputDashButtonName: Dash
   horizontalInput: 0
   verticalInput: 0
-  raycastStartPos: {x: 0.75, y: -2}
+  raycastStartPos: {x: 0.9, y: -2}
   raycastCheckDist: 1
-  maxVelHori: 12
-  addVelHori: 3
-  addVelHoriAerial: 3
-  dampVelHori: 1.2
-  dampVelHoriAerial: 1.01
-  coyoteTime: 0.1
+  maxVelHori: 14
+  addVelHori: 1
+  addVelHoriAerial: 0.5
+  dampVelHori: 3
+  dampVelHoriAerial: 1.5
+  coyoteTime: 0.2
   jumpFrameDuration: 0.1
   jumpForce: 40
-  jumpHoldGravMulti: 3
-  jumpReleaseGravMulti: 9
-  isGrounded: 0
+  jumpHoldGravMulti: 2.5
+  jumpReleaseGravMulti: 10
+  isGrounded: 1
   isInNoDashZone: 0
-  dashAvailable: 0
+  dashAvailable: 1
   dashingToward: {x: 0, y: 0}
   dashInputDeadzone: 0.5
   dashBraceFreeze: 0.15
@@ -287,13 +286,14 @@ MonoBehaviour:
   minCollisionXDistance: 0.4
   wallJumpHoriVel: 10
   wallJumpCoyoteTime: 0.2
-  offCenterAngle: 180
+  offCenterAngle: 90
   offCenterSpinSpeed: 2
   PlayerSprite: {fileID: 1729149644549014963}
   vertSquishFac: 0.001
   vertSquishMin: 1
   vertSquishMax: 1.5
-  currentSquishFactor: 0
+  currentSquishFactor: 1
+  currentXVel: 0
 --- !u!50 &1729149644015942233
 Rigidbody2D:
   serializedVersion: 4
@@ -310,7 +310,7 @@ Rigidbody2D:
   m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 16e6b6e1aaec5784da8629b4de0d4955, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -324,7 +324,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1729149644015942235}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 16e6b6e1aaec5784da8629b4de0d4955, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -386,25 +386,6 @@ MonoBehaviour:
   score: 0
   HP: 0
   isReady: 0
---- !u!95 &1296184501
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1729149644015942235}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d6788f9e844484b02b997682cf591cbd, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1729149644549014963
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,7 +409,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1729149644549014963}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -436,7 +417,7 @@ Transform:
   - {fileID: 1550669327}
   m_Father: {fileID: 1729149644015942237}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1729149644659849834
 GameObject:
   m_ObjectHideFlags: 0

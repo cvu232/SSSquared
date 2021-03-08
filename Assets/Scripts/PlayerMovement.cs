@@ -130,6 +130,8 @@ public class PlayerMovement : MonoBehaviour {
 	public float vertSquishMax = 1.5f;
 	[Range(0.5f, 1.5f)]
 	public float currentSquishFactor;
+	[Range(-10, 10)]
+	public float currentXVel;
 
 	/*
 	//Respawn behaviour no longer necessary
@@ -164,11 +166,11 @@ public class PlayerMovement : MonoBehaviour {
 
 		verticalInput = Input.GetAxis(inputVerticalAxisName);
 		horizontalInput = Input.GetAxis(inputHorizontalAxisName);
-		Debug.Log(Input.GetButton(inputJumpButtonName));
 
 		UpdateGrounded();
 
 		vel = rigidbody.velocity;
+		currentXVel = vel.x;
 
 		//Update the orientation only if x-vel is far enough from 0
 		if (vel.x > 0.1f)
@@ -204,7 +206,7 @@ public class PlayerMovement : MonoBehaviour {
 				vel.x += Mathf.Clamp(velToAdd, Mathf.Min(-maxVelHori - vel.x, 0), 0);
 		} else {
 			//If idle, dampen the player's velocity (again, different values if grounded)
-			vel.x /= isGrounded ? dampVelHori : dampVelHoriAerial;
+			vel.x /= 1 + ((isGrounded ? dampVelHori : dampVelHoriAerial) * Time.fixedDeltaTime);
 		}
 
 		//Coyote time implementation // detect jump input
@@ -212,6 +214,7 @@ public class PlayerMovement : MonoBehaviour {
 			vel.y = jumpForce;
 			lastJumpTime = -jumpFrameDuration;//Reset the last jump time so the player may not register a jump multiple times a frame (you can't be too careful)
 			isGrounded = false;
+			anim.SetTrigger("jump");
 		}
 
 		//Jump higher if holding jump, smol jump if jump is only tapped
@@ -265,8 +268,8 @@ public class PlayerMovement : MonoBehaviour {
 			rigidbody.velocity = vel;
 		}
 
-		QualitySettings.vSyncCount = 0;
-		Application.targetFrameRate = 144;
+		//QualitySettings.vSyncCount = 0;
+		//Application.targetFrameRate = 144;
 
 	}
 
@@ -295,9 +298,9 @@ public class PlayerMovement : MonoBehaviour {
 		Debug.DrawRay(transform.position + Vector3.up + Vector3.left, Vector3.right * 2, isGrounded ? Color.green : Color.red);
 
 		// ========== Animation behaviours ========== //
-		//anim.SetBool("grounded", isGrounded);
-		//anim.SetFloat("velocityVert", vel.y * 0.1f);
-		//anim.SetFloat("velocityHori", Mathf.Abs(vel.x));
+		anim.SetBool("isRunning", Mathf.Abs(vel.x) > 2f);
+		anim.SetBool("isFalling", vel.y < 0.5f);
+		anim.SetBool("isGrounded", isGrounded);
 
 		//Store the value of OnButtonDown jump during Update()
 		if (Input.GetButtonDown(inputJumpButtonName))
@@ -354,12 +357,14 @@ public class PlayerMovement : MonoBehaviour {
 
 		// ========== Walljump behaviours ========== //
 		//On jump, wall-hop on direction opposite of the wall being grabbed
+		/*
 		if (!isGrounded && Time.time - lastJumpTime < jumpFrameDuration && Time.time - lastWallgrabTime < wallJumpCoyoteTime) {
 			lastWallgrabTime = -wallJumpCoyoteTime;
 			rigidbody.velocity =
 				(Vector3.up * jumpForce) +
 				(Vector3.right * wallJumpHoriVel * ((lastWallgrabContactXPos - transform.position.x) > 0 ? -1 : 1));
 		}
+		*/
 
 #if UNITY_EDITOR
 
@@ -532,8 +537,8 @@ public class PlayerMovement : MonoBehaviour {
 				//Behaviour during wall-grabbing
 
 				//Stop player from falling
-				if (rigidbody.velocity.y <= 0)
-					rigidbody.velocity = Vector3.zero;
+				//if (rigidbody.velocity.y <= 0)
+					//rigidbody.velocity = Vector3.zero;
 
 				lastWallgrabTime = Time.time;
 				lastWallgrabContactXPos = contact.point.x;
