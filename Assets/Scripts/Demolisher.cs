@@ -8,8 +8,8 @@ public class Demolisher : MonoBehaviour
 {
     private Button Button;
     private TextMeshProUGUI buttonText;
-    private string defaultTxt = "Destroy Mode";
-    private string cancelTxt = "Cancel";
+    private string defaultTxt = "Eraser";
+    private string cancelTxt = "Done";
 
     public Material highlightBoom;
 

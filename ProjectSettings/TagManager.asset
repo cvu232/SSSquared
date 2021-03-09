@@ -8,6 +8,7 @@ TagManager:
   - bounds
   - doom
   - projectile
+  - Hazard
   layers:
   - Default
   - TransparentFX
@@ -20,8 +21,8 @@ TagManager:
   - Blocks
   - Environment
   - Players
-  - 
-  - 
+  - Water
+  - Hazards
   - 
   - 
   - 

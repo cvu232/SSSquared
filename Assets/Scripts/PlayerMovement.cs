@@ -41,6 +41,9 @@ public class PlayerMovement : MonoBehaviour {
 	private float lastWallgrabContactXPos;
 	private float lastYVel;
 	private float charZRot;
+	private float prevVerticalAxisValue;
+	private bool onJump;
+	private int slipNSliding;
 	private int lastRigidbodyVelOrientation;
 
 
@@ -55,12 +58,13 @@ public class PlayerMovement : MonoBehaviour {
 	[Range(-1, 1)]
 	public int rigidbodyVelOrientation = 1;
 	public LayerMask groundLayers;
+	public PhysicsMaterial2D icePhysMat;
 
 	[Header("Keybinds")]
 	public string inputHorizontalAxisName = "Horizontal";
 	public string inputVerticalAxisName = "Vertical";
-	public string inputJumpButtonName = "Jump";
-	public string inputDashButtonName = "Dash";
+	//public string inputJumpButtonName = "Jump";
+	//public string inputDashButtonName = "Dash";
 
 	[Header("Movement Parameters")]
 	[Range(-1, 1)]
@@ -204,7 +208,7 @@ public class PlayerMovement : MonoBehaviour {
 				vel.x += Mathf.Clamp(velToAdd, 0, Mathf.Max(maxVelHori - vel.x, 0));
 			else
 				vel.x += Mathf.Clamp(velToAdd, Mathf.Min(-maxVelHori - vel.x, 0), 0);
-		} else {
+		} else if (slipNSliding <= 0) {
 			//If idle, dampen the player's velocity (again, different values if grounded)
 			vel.x /= 1 + ((isGrounded ? dampVelHori : dampVelHoriAerial) * Time.fixedDeltaTime);
 		}
@@ -218,7 +222,8 @@ public class PlayerMovement : MonoBehaviour {
 		}
 
 		//Jump higher if holding jump, smol jump if jump is only tapped
-		if ((Input.GetButton(inputJumpButtonName) || Input.GetButton(inputDashButtonName)) && rigidbody.velocity.y > 0) {
+		bool jump = Input.GetAxisRaw(inputVerticalAxisName) > 0.5f;
+		if (jump && rigidbody.velocity.y > 0) {
 			rigidbody.gravityScale = jumpHoldGravMulti;
 		} else {
 			rigidbody.gravityScale = jumpReleaseGravMulti;
@@ -303,10 +308,20 @@ public class PlayerMovement : MonoBehaviour {
 		anim.SetBool("isGrounded", isGrounded);
 
 		//Store the value of OnButtonDown jump during Update()
-		if (Input.GetButtonDown(inputJumpButtonName))
+		onJump = (Input.GetAxisRaw(inputVerticalAxisName) > prevVerticalAxisValue) && Input.GetAxisRaw(inputVerticalAxisName) > 0.5f;
+		prevVerticalAxisValue = Input.GetAxisRaw(inputVerticalAxisName);
+		if (onJump) {
 			lastJumpTime = Time.time;
+			Debug.Log("onJump!");
+		}
+
+		//Check if fell down
+		Level currentLevel = GamePhaseManager.instance.levels[GamePhaseManager.instance.currentLevel];
+		if (transform.position.y < currentLevel.transform.position.y + currentLevel.killHeight)
+			Die();
 
 		// ========== Dashing behaviours ========== //
+		/*
 		if (dashAvailable && Input.GetButtonDown(inputDashButtonName) && !isInNoDashZone) {
 
 			Vector2Int dir = Vector2Int.zero;
@@ -333,6 +348,7 @@ public class PlayerMovement : MonoBehaviour {
 			BeginDash(dir);
 			dashAvailable = false;
 		}
+		*/
 
 		// ========== Squish and Stretch behaviours ========== //
 		currentSquishFactor = Mathf.Lerp(currentSquishFactor, Mathf.Min(Mathf.Pow(rigidbody.velocity.y / 2, 2f) * vertSquishFac + vertSquishMin, vertSquishMax), Time.deltaTime * 10);
@@ -461,6 +477,12 @@ public class PlayerMovement : MonoBehaviour {
 
 	}
 
+	public void Die () {
+		if (GamePhaseManager.instance && GamePhaseManager.instance.levels != null && GamePhaseManager.instance.levels.Count > 0)
+			transform.position = GamePhaseManager.instance.levels[GamePhaseManager.instance.currentLevel].spawnPoint.position;
+		slipNSliding = 0;
+	}
+
 	/*
 	//Respawn behaviour no longer necessary
 	public void StartRespawn() {
@@ -507,11 +529,21 @@ public class PlayerMovement : MonoBehaviour {
 		ClearGLOBALUndos();
 	}
 
+    private void OnCollisionEnter2D(Collision2D collision) {
+		if (collision.gameObject.GetComponent<Rigidbody2D>() && collision.gameObject.GetComponent<Rigidbody2D>().sharedMaterial == icePhysMat)
+			slipNSliding++;
+	}
+
+	private void OnCollisionExit2D(Collision2D collision) {
+		if (collision.gameObject.GetComponent<Rigidbody2D>() && collision.gameObject.GetComponent<Rigidbody2D>().sharedMaterial == icePhysMat)
+			slipNSliding--;
+	}
+
 	public void OnCollisionStay2D(Collision2D collision) {
 
 		//If this is a hazard, respawn the player and cancel method call
 		if (collision.gameObject.tag == "Hazard") {
-			Debug.LogError("Implement Death Behaviour!");
+			Die();
 			return;
 		}
 

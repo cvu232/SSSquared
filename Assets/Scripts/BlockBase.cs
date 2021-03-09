@@ -19,6 +19,7 @@ public class BlockBase : MonoBehaviour
     public Vector3 pos;
 
     private int inColl;
+    public Level level { get; private set; }
 
     private void Start()
     {
@@ -38,7 +39,7 @@ public class BlockBase : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // check if too close to ground/other blocks
-        if (collision.CompareTag("block") || collision.CompareTag("bounds") && !isPlaced)
+        if (collision.CompareTag("Hazard") || collision.CompareTag("block") || collision.CompareTag("bounds") && !isPlaced)
         {
             inColl++;
             meshRenderer.material = holo;
@@ -48,17 +49,18 @@ public class BlockBase : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         // check if not intruding ground/other blocks
-        if (collision.CompareTag("block") || collision.CompareTag("bounds") && !isPlaced)
+        if (collision.CompareTag("Hazard") || collision.CompareTag("block") || collision.CompareTag("bounds") && !isPlaced)
         {
             inColl--;
             meshRenderer.material = material;
         }
     }
 
-    public void place()
+    public void place(Level level)
     {
         buildReady = false;
         isPlaced = true;
+        this.level = level;
         ActivateBlockEffect();
     }
 

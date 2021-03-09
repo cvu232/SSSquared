@@ -7,11 +7,13 @@ public class Player : MonoBehaviour
     public int score;
     public int HP;
     public bool isReady;
+    public PlayerMovement movement { get; private set; }
 
-    private void Start()
+    private void Awake()
     {
         score = 0;
         isReady = false;
+        movement = GetComponent<PlayerMovement>();
     }
 
     public void Ready()

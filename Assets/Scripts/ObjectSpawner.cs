@@ -11,10 +11,14 @@ public class ObjectSpawner : MonoBehaviour
     public int spawnInterval = 5;
     public GameObject spawnedObj;
     private GameObject workingObj;
+    private Collider2D[] coll;
+    private BlockBase block;
 
     private void Start()
     {
         spawning = false;
+        coll = GetComponentsInParent<Collider2D>();
+        block = GetComponentInParent<BlockBase>();
     }
 
     private void Update()
@@ -29,6 +33,9 @@ public class ObjectSpawner : MonoBehaviour
     {
         spawning = true;
         workingObj = Instantiate(spawnedObj, transform.position, Quaternion.identity);
+        workingObj.GetComponent<Projectile>().level = block.level;
+        foreach (Collider2D coll in coll)
+            Physics2D.IgnoreCollision(coll, workingObj.GetComponent<Collider2D>());
         //Rigidbody2D rb = workingObj.GetComponent<Rigidbody2D>();
         yield return new WaitForSeconds(spawnInterval);
         spawning = false;

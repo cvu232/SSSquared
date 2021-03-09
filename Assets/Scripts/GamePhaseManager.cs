@@ -22,6 +22,7 @@ public class GamePhaseManager : MonoBehaviour {
     public float buildPhaseDuration = 60; // initial build mode time in seconds
     [Tooltip("What key should be pressed to start the next player's build turn")]
     public string onReadyUpButtonName;
+    public string onEndTurnButtonName;
     public int maxLevelCount = 4;
     public bool useFixedLevelsPerPlayer;
     public int fixedLevelsPerPlayer;
@@ -100,6 +101,8 @@ public class GamePhaseManager : MonoBehaviour {
             Level newLevel = Instantiate(emptyLevelPrefab).GetComponent<Level>();
             newLevel.transform.parent = levelsContainer.transform;
             newLevel.transform.localPosition = Vector3.up * (i * emptyLevelSpacing);
+            if (i % 2 == 0)
+                newLevel.transform.localScale = new Vector3(-1, 1, 1);
             levels.Add(newLevel);
         }
 
@@ -110,6 +113,11 @@ public class GamePhaseManager : MonoBehaviour {
         currentPhaseTimer -= Time.deltaTime;
         if (uiTimer && currentPhaseTimer >= 0)
             uiTimer.text = string.Format("Remaining Time : {0:F2}", currentPhaseTimer);
+
+        //SkipBehaviour
+        if (Input.GetButtonDown(onEndTurnButtonName) && currentGamePhase == Phases.buildPhase)
+            currentPhaseTimer = 0;
+
     }
 
     IEnumerator BuildPhase() {
@@ -120,13 +128,17 @@ public class GamePhaseManager : MonoBehaviour {
         for (currentLevel = 0, currentBuilder = 0; currentLevel < levels.Count; currentLevel++, currentBuilder++) {
             //Initialize current player's build phase
             //Move Camera
-            Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, currentLevel * emptyLevelSpacing, Camera.main.transform.position.z);
+            //Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, currentLevel * emptyLevelSpacing, Camera.main.transform.position.z);
 
             //UI to indicate which button to start
             uiBanner.text =
                     "Player " + (currentBuilder + 1) + " press " + onReadyUpButtonName + " to begin building your level";
             // Wait for Player to be ready to build
             yield return new WaitUntil(() => Input.GetButtonDown(onReadyUpButtonName));
+            //Show end turn instruction
+            uiScore.transform.parent.gameObject.SetActive(true);
+            uiScore.text =
+                "Press " + onEndTurnButtonName + " to end turn";
             //Set UI to indicate current builder player
             uiBanner.text =
                 "Player " + (currentBuilder + 1) + " is building Level " + (currentLevel + 1);
@@ -161,6 +173,7 @@ public class GamePhaseManager : MonoBehaviour {
     IEnumerator RacePhase() {
         //Setup for Race Phase
         Physics2D.queriesStartInColliders = false;
+        GameObject.Find("GridMesh").SetActive(false);
 
         currentGamePhase = Phases.racePhase; // Set current phase
         ActivateBlockEffects(); // Enable block effects
@@ -168,7 +181,7 @@ public class GamePhaseManager : MonoBehaviour {
 
         for (currentLevel = 0; currentLevel < levels.Count; currentLevel++) {
             //Move camera and all players to current level's start area
-            Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, currentLevel * emptyLevelSpacing, Camera.main.transform.position.z);
+            //Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, currentLevel * emptyLevelSpacing, Camera.main.transform.position.z);
             MovePlayersTo(levels[currentLevel].spawnPoint);
             uiScore.transform.parent.gameObject.SetActive(true);
 
@@ -187,7 +200,6 @@ public class GamePhaseManager : MonoBehaviour {
             currentPhaseTimer = racePhaseDuration; // Set build timer
 
             //Wait for Level Timeout
-            //TODO end current level loop if a player beats the level
             yield return new WaitUntil(() => currentPhaseTimer <= 0); // Wait until race finishes
             currentPhaseTimer = 0;
             DeactivatePlayers();
@@ -234,16 +246,19 @@ public class GamePhaseManager : MonoBehaviour {
     private void ActivatePlayers() {
         for (int i = 0; i < players.Count; i++)
             players[i].gameObject.SetActive(true);
+        ResetPlayers();
     }
 
     private void MovePlayersTo(Transform pos) {
         for (int i = 0; i < players.Count; i++)
             players[i].transform.position = pos.position;
+        ResetPlayers();
     }
 
     private void DeactivatePlayers() {
         for (int i = 0; i < players.Count; i++)
             players[i].gameObject.SetActive(false);
+        ResetPlayers();
     }
 
     private int SettledWinner() {
@@ -253,6 +268,11 @@ public class GamePhaseManager : MonoBehaviour {
                 index = i;
         }
         return index + 1;
+    }
+
+    private void ResetPlayers () {
+        for (int i = 0; i < players.Count; i++)
+            players[i].movement.Die();
     }
 
     private void SettleScore() {

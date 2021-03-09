@@ -9,6 +9,7 @@ using UnityEngine;
 public class Geyser : MonoBehaviour
 {
     public float GeyserForce = 10;
+    public float speedCap;
 
     // animation vars
     public AnimationCurve geyserAnim;
@@ -31,7 +32,8 @@ public class Geyser : MonoBehaviour
     {
         if (other && other.CompareTag("Player"))
         {
-            other.attachedRigidbody.AddForce(Vector3.up * GeyserForce * geyserAnim.Evaluate(geyserAnimT), ForceMode2D.Force);
+            if (other.attachedRigidbody.velocity.y < speedCap)
+                other.attachedRigidbody.AddForce(Vector3.up * GeyserForce * geyserAnim.Evaluate(geyserAnimT), ForceMode2D.Force);
         }
     }
 }

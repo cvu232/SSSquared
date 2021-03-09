@@ -2,10 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Level : MonoBehaviour
-{
+[ExecuteInEditMode]
+public class Level : MonoBehaviour {
+
     public Transform spawnPoint;
     public Transform endPoint;
     public int builderIndex;
+    public float killHeight;
     public Player winner;
+
+    private void Update() {
+        Debug.DrawLine(Vector3.up * killHeight + Vector3.left * 50, Vector3.up * killHeight + Vector3.right * 50, Color.red);
+    }
+
 }

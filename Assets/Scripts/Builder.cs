@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 
+[ExecuteInEditMode]
 public class Builder : MonoBehaviour
 {
     // button objects
@@ -16,6 +17,10 @@ public class Builder : MonoBehaviour
 
     private void Start()
     {
+
+        if (!Application.isPlaying)
+            return;
+
         builder = transform.root.GetComponent<BuilderController>();
 
         BuildButton = GetComponent<Button>();
@@ -26,6 +31,14 @@ public class Builder : MonoBehaviour
 
     private void Update()
     {
+
+        if (!Application.isPlaying) {
+            if (!buttonText)
+                buttonText = GetComponentInChildren<TextMeshProUGUI>();
+            buttonText.text = gameObject.name;
+            return;
+        }
+
         // if building and selected block and it also is ready
         if (builder.isBuilding && builder.workingBlock && builder.workingBlock.buildReady)
         {
@@ -39,7 +52,7 @@ public class Builder : MonoBehaviour
                 Vector3.Distance(builder.workingBlock.transform.position, builder.grid.GetNearestPointOnGrid(Global.getScreenToWorldMouse())) < 0.5f
                     )
             {
-                builder.workingBlock.place();
+                builder.workingBlock.place(GamePhaseManager.instance.levels[GamePhaseManager.instance.currentLevel]);
                 //builder.workingBlock = null; // insurance
                 InstantiateBlock(builder.workingBuilder.block); // instantiate new block from builder
                 builder.workingBlock.transform.position = Vector3.down * 100; //builder.grid.GetNearestPointOnGrid(Global.getScreenToWorldMouse());

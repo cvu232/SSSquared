@@ -1,5 +1,62 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5261013135388918157
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7540998656647748624}
+  - component: {fileID: 2171324719868818116}
+  m_Layer: 11
+  m_Name: GeyserColl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7540998656647748624
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5261013135388918157}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4738436367239560223}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &2171324719868818116
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5261013135388918157}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &7762926997508156569
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,7 +87,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
-  m_Children: []
+  m_Children:
+  - {fileID: 7540998656647748624}
   m_Father: {fileID: 8855007614664599537}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -94,6 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GeyserForce: 500
+  speedCap: 50
   geyserAnim:
     serializedVersion: 2
     m_Curve:
@@ -107,7 +166,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.67437744
+      time: 2.501831
       value: 0
       inSlope: -0.00068611006
       outSlope: -0.00068611006
@@ -116,17 +175,17 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.63997954
     - serializedVersion: 3
-      time: 1.4602612
-      value: 0.31802893
-      inSlope: 0.74495727
-      outSlope: 0.74495727
+      time: 2.790125
+      value: 0.52714014
+      inSlope: 4.533554
+      outSlope: 4.533554
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.50553334
-      outWeight: 0.09131532
+      inWeight: 0.152176
+      outWeight: 0.29082146
     - serializedVersion: 3
-      time: 2.4624946
-      value: 0.9709809
+      time: 2.9953554
+      value: 0.90273225
       inSlope: 0.041136477
       outSlope: 0.041136477
       tangentMode: 0
@@ -134,8 +193,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 2.7795117
-      value: 0.8296928
+      time: 3.1013408
+      value: 0.7001885
       inSlope: 0.023545813
       outSlope: 0.023545813
       tangentMode: 0
@@ -143,8 +202,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 3.4389863
-      value: 0.9769818
+      time: 3.4875305
+      value: 0.90314925
       inSlope: 0.032254133
       outSlope: 0.032254133
       tangentMode: 0
@@ -152,8 +211,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 3.693446
-      value: 0.8330431
+      time: 3.603013
+      value: 0.70219606
       inSlope: -0.0040222574
       outSlope: -0.0040222574
       tangentMode: 0
@@ -161,8 +220,26 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 4.28183
-      value: 0.9789846
+      time: 3.9984639
+      value: 0.90340674
+      inSlope: 0.074303575
+      outSlope: 0.074303575
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 1
+    - serializedVersion: 3
+      time: 4.1022186
+      value: 0.6978657
+      inSlope: 0.025401525
+      outSlope: 0.025401525
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0.3913715
+    - serializedVersion: 3
+      time: 4.664277
+      value: 1.2503577
       inSlope: -0.114921
       outSlope: -0.114921
       tangentMode: 0
@@ -170,19 +247,19 @@ MonoBehaviour:
       inWeight: 0.18728662
       outWeight: 0.52123076
     - serializedVersion: 3
-      time: 4.509597
-      value: -0.009103668
-      inSlope: -0.008051446
-      outSlope: -0.008051446
+      time: 5
+      value: 0
+      inSlope: -8.40331
+      outSlope: -8.40331
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.7616323
+      inWeight: 0.073628455
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 1
     m_RotationOrder: 4
-  geyserAnimScale: 1
-  geyserAnimSpeed: 1
+  geyserAnimScale: 1.5
+  geyserAnimSpeed: 0.7
 --- !u!61 &7561990877023871250
 BoxCollider2D:
   m_ObjectHideFlags: 0

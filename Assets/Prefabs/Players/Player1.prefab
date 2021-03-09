@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1550669327}
   - component: {fileID: 8574950104332799846}
   - component: {fileID: 4330009762739668204}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1550669326}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.1, z: 0}
+  m_LocalPosition: {x: 0, y: 0.2, z: -0.15}
   m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_Children: []
   m_Father: {fileID: 1729149644549014967}
@@ -91,7 +91,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 777487086c876476994772c1d5e4113e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5058824, g: 0.8188236, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 1729149643902829878}
   - component: {fileID: 1729149643902829879}
   - component: {fileID: 1729149643902829872}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,8 +208,8 @@ GameObject:
   - component: {fileID: 1729149644015942239}
   - component: {fileID: 1729149644015942234}
   - component: {fileID: -7874288892736512678}
-  m_Layer: 0
-  m_Name: Player
+  m_Layer: 10
+  m_Name: Player1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -224,7 +224,7 @@ Transform:
   m_GameObject: {fileID: 1729149644015942235}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children:
   - {fileID: 1729149644549014967}
   - {fileID: 1729149644659849833}
@@ -249,24 +249,23 @@ MonoBehaviour:
   rigidbodyVelOrientation: -1
   groundLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 3895
+  icePhysMat: {fileID: 6200000, guid: 16e6b6e1aaec5784da8629b4de0d4955, type: 2}
   inputHorizontalAxisName: Horizontal
   inputVerticalAxisName: Vertical
-  inputJumpButtonName: Jump
-  inputDashButtonName: Dash
   horizontalInput: 0
   verticalInput: 0
-  raycastStartPos: {x: 0.9, y: -2}
+  raycastStartPos: {x: 1.2, y: -3}
   raycastCheckDist: 1
-  maxVelHori: 14
+  maxVelHori: 18
   addVelHori: 1
   addVelHoriAerial: 0.5
-  dampVelHori: 3
+  dampVelHori: 5
   dampVelHoriAerial: 1.5
   coyoteTime: 0.2
   jumpFrameDuration: 0.1
   jumpForce: 40
-  jumpHoldGravMulti: 2.5
+  jumpHoldGravMulti: 6
   jumpReleaseGravMulti: 10
   isGrounded: 1
   isInNoDashZone: 0
@@ -287,7 +286,7 @@ MonoBehaviour:
   wallJumpHoriVel: 10
   wallJumpCoyoteTime: 0.2
   offCenterAngle: 90
-  offCenterSpinSpeed: 2
+  offCenterSpinSpeed: 1
   PlayerSprite: {fileID: 1729149644549014963}
   vertSquishFac: 0.001
   vertSquishMin: 1
@@ -307,7 +306,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1
+  m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 16e6b6e1aaec5784da8629b4de0d4955, type: 2}
@@ -328,7 +327,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.04491043}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -339,8 +338,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2.0646515}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.5, y: 1.5}
+  m_EdgeRadius: 0.5
 --- !u!114 &1729149644015942234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -395,7 +394,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1729149644549014967}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player_sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +426,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1729149644659849833}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SoundThing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
