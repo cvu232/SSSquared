@@ -122,7 +122,7 @@ public class GamePhaseManager : MonoBehaviour {
 
             //UI to indicate which button to start
             UIManager.instance.BannerUIText(
-                    string.Format("Player {0} press {1} to begin building your level" , (currentBuilder + 1), onReadyUpButtonName));
+                    string.Format("Player {0} press {1} to start building" , (currentBuilder + 1), onReadyUpButtonName));
             // Wait for Player to be ready to build
             yield return new WaitUntil(() => Input.GetButtonDown(onReadyUpButtonName));
             //Show end turn instruction
