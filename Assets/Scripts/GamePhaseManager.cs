@@ -53,8 +53,8 @@ public class GamePhaseManager : MonoBehaviour {
 
     private void Awake() // Singleton
     {
-        if (instance != null)
-            Destroy(instance);
+        if (instance != null && instance != this)
+            Destroy(this);
         else
             instance = this;
 

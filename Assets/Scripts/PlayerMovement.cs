@@ -177,9 +177,9 @@ public class PlayerMovement : MonoBehaviour {
 		currentXVel = vel.x;
 
 		//Update the orientation only if x-vel is far enough from 0
-		if (vel.x > 0.1f)
+		if (Input.GetAxisRaw(inputHorizontalAxisName) > 0.1f)
 			rigidbodyVelOrientation = 1;
-		else if (vel.x < -0.1f)
+		else if (Input.GetAxisRaw(inputHorizontalAxisName) < -0.1f)
 			rigidbodyVelOrientation = -1;
 
 		
@@ -303,7 +303,7 @@ public class PlayerMovement : MonoBehaviour {
 		Debug.DrawRay(transform.position + Vector3.up + Vector3.left, Vector3.right * 2, isGrounded ? Color.green : Color.red);
 
 		// ========== Animation behaviours ========== //
-		anim.SetBool("isRunning", Mathf.Abs(vel.x) > 2f);
+		anim.SetBool("isRunning", Mathf.Abs(Input.GetAxisRaw(inputHorizontalAxisName)) > 0.5f);
 		anim.SetBool("isFalling", vel.y < 0.5f);
 		anim.SetBool("isGrounded", isGrounded);
 

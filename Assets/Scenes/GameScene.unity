@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4508546, g: 0.49911588, b: 0.56575686, a: 1}
+  m_IndirectSpecularColor: {r: 0.45085448, g: 0.49911594, b: 0.56575674, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -179,6 +179,7 @@ GameObject:
   - component: {fileID: 188105760}
   - component: {fileID: 188105759}
   - component: {fileID: 188105762}
+  - component: {fileID: 188105758}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -186,6 +187,40 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &188105758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188105757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b504eb51c2618b499ffb0e9a4c35c01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelsContainer: {fileID: 230376821}
+  playersContainer: {fileID: 2027447446}
+  buildPhaseDuration: 240
+  onReadyUpButtonName: space
+  onEndTurnButtonName: enter
+  maxLevelCount: 0
+  useFixedLevelsPerPlayer: 1
+  fixedLevelsPerPlayer: 1
+  emptyLevelPrefab: {fileID: 6946042444330766521, guid: a018e50b588580741bace42a7b8d28ff,
+    type: 3}
+  emptyLevelSpacing: 100
+  racePhaseDuration: 120
+  readyCheck: 
+  player1: {fileID: 1985308837}
+  player2: {fileID: 1577749884}
+  currentPhaseTimer: 0
+  blockEffectsEnabled: 0
+  levels: []
+  players: []
+  blocks: []
+  currentLevel: 0
+  currentBuilder: 0
 --- !u!114 &188105759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -458,7 +493,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 723933189}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6650ca04fa69c21408752d5ac8a805e3, type: 3}
+  m_Script: {fileID: 11500000, guid: 463f12017889248c5be4f32188c142ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   runningTimeScale: 0
@@ -1180,6 +1215,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 50960252, guid: 92a932987825548f78346cc6d208c70d, type: 3}
+      propertyPath: appearSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 72702255, guid: 92a932987825548f78346cc6d208c70d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1565,6 +1604,52 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297955479294977706, guid: 92a932987825548f78346cc6d208c70d,
+        type: 3}
+      propertyPath: tooltipInfo
+      value: 'Saw Blade: Touching one of these lethal sawblades will send you back
+        to the start!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297955479294977707, guid: 92a932987825548f78346cc6d208c70d,
+        type: 3}
+      propertyPath: tooltipInfo
+      value: 'Spring: Falling on one of these will shoot you back up with immense
+        force!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297955479294977708, guid: 92a932987825548f78346cc6d208c70d,
+        type: 3}
+      propertyPath: tooltipInfo
+      value: '[REMOVED]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297955479294977709, guid: 92a932987825548f78346cc6d208c70d,
+        type: 3}
+      propertyPath: tooltipInfo
+      value: 'Dropper: This block will periodically spawn rusty sawblades that then
+        fall down.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297955479294977710, guid: 92a932987825548f78346cc6d208c70d,
+        type: 3}
+      propertyPath: tooltipInfo
+      value: 'Geyser: This block periodically emmits a burst of water that players
+        can use to boost themselves up!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297955479294977711, guid: 92a932987825548f78346cc6d208c70d,
+        type: 3}
+      propertyPath: tooltipInfo
+      value: 'Ice Block: A slippery solid block that players can safely step on,
+        at the risk of slipping'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297955479294977712, guid: 92a932987825548f78346cc6d208c70d,
+        type: 3}
+      propertyPath: tooltipInfo
+      value: 'Platform: One-directional blocks that players can pass through from
+        the bottom, but are solid from the top'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6297955479294977713, guid: 92a932987825548f78346cc6d208c70d,
+        type: 3}
+      propertyPath: tooltipInfo
+      value: 'Block: Regular solid blocks that characters can safely step on.'
       objectReference: {fileID: 0}
     - target: {fileID: 6297955479501943029, guid: 92a932987825548f78346cc6d208c70d,
         type: 3}

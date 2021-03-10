@@ -23,7 +23,7 @@ public class BlockBase : MonoBehaviour
 
     private void Start()
     {
-        meshRenderer = GetComponent<MeshRenderer>();
+        meshRenderer = GetComponentInChildren<MeshRenderer>();
         material = meshRenderer.material;
         inBadSpace = false;
         buildReady = true;
@@ -32,7 +32,7 @@ public class BlockBase : MonoBehaviour
     }
 
     public void Update() {
-        transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime * 10);
+        transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime * 20);
         inBadSpace = inColl != 0;
     }
 

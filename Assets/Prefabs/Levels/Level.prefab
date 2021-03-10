@@ -105,7 +105,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.95, y: 1}
   m_EdgeRadius: 0
 --- !u!61 &6246083537531168675
 BoxCollider2D:
@@ -131,7 +131,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 3}
+  m_Size: {x: 0.95, y: 2.8}
   m_EdgeRadius: 0
 --- !u!1 &1239479218599507408
 GameObject:
@@ -320,7 +320,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.95, y: 1}
   m_EdgeRadius: 0
 --- !u!61 &2668132728459904326
 BoxCollider2D:
@@ -346,7 +346,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 3}
+  m_Size: {x: 0.95, y: 2.8}
   m_EdgeRadius: 0
 --- !u!1 &3306738343441499868
 GameObject:
@@ -683,7 +683,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 6946042444376522455}
   endPoint: {fileID: 249329307732795312}
   builderIndex: 0
-  killHeight: -40
+  killHeight: -65
   winner: {fileID: 0}
 --- !u!1 &6946042444376522451
 GameObject:
