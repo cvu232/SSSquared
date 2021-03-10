@@ -24,6 +24,7 @@ public class TooltipUI : MonoBehaviour {
     void Start() {
 
         group = GetComponent<CanvasGroup>();
+        group.alpha = 0;
 
     }
 

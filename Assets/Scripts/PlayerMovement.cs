@@ -351,7 +351,7 @@ public class PlayerMovement : MonoBehaviour {
 		*/
 
 		// ========== Squish and Stretch behaviours ========== //
-		currentSquishFactor = Mathf.Lerp(currentSquishFactor, Mathf.Min(Mathf.Pow(rigidbody.velocity.y / 2, 2f) * vertSquishFac + vertSquishMin, vertSquishMax), Time.deltaTime * 10);
+		currentSquishFactor = Mathf.Lerp(currentSquishFactor, Mathf.Min(Mathf.Pow(rigidbody.velocity.y / 2, 2f) * vertSquishFac + vertSquishMin, vertSquishMax), Time.deltaTime * 5f);
 
 		PlayerSprite.transform.localScale = new Vector3(
 			1 / currentSquishFactor,
