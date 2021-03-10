@@ -6,7 +6,7 @@ public class Global : MonoBehaviour
 {
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Q))
             Application.Quit();
     }
 

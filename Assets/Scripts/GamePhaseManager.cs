@@ -50,12 +50,6 @@ public class GamePhaseManager : MonoBehaviour {
     public int currentLevel;
     public int currentBuilder;
 
-    //Panels
-    private BuilderController uiBuildButtons;
-    private TextMeshProUGUI uiScore;
-    private TextMeshProUGUI uiBanner;
-    private TextMeshProUGUI uiTimer;
-
 
     private void Awake() // Singleton
     {
@@ -73,17 +67,9 @@ public class GamePhaseManager : MonoBehaviour {
 
         blockEffectsEnabled = false;
 
+        UIManager.instance.uiBuildBar.Initial();
+
         currentLevel = 0;
-
-        uiBuildButtons = GameObject.Find("UIBuildButtons").GetComponentInParent<BuilderController>();
-        uiScore = GameObject.Find("UIScore").GetComponentInChildren<TextMeshProUGUI>();
-        uiBanner = GameObject.Find("UIBanner").GetComponentInChildren<TextMeshProUGUI>();
-        uiTimer = GameObject.Find("UITimer").GetComponentInChildren<TextMeshProUGUI>();
-
-        uiBuildButtons.transform.GetChild(0).gameObject.SetActive(false);
-        uiScore.transform.parent.gameObject.SetActive(false);
-        uiBanner.transform.parent.gameObject.SetActive(false);
-        uiTimer.transform.parent.gameObject.SetActive(false);
 
         //Placeholder players
         players.Add(player1);
@@ -111,19 +97,23 @@ public class GamePhaseManager : MonoBehaviour {
 
     private void Update() {
         currentPhaseTimer -= Time.deltaTime;
-        if (uiTimer && currentPhaseTimer >= 0)
-            uiTimer.text = string.Format("Remaining Time : {0:F2}", currentPhaseTimer);
+        if (UIManager.instance.uiTimer && currentPhaseTimer >= 0)
+            UIManager.instance.TimerUIText(string.Format("Remaining Time : {0:F2}", currentPhaseTimer));
 
         //SkipBehaviour
         if (Input.GetButtonDown(onEndTurnButtonName) && currentGamePhase == Phases.buildPhase)
             currentPhaseTimer = 0;
+
+        // Active Score UI output
+        if (UIManager.instance.uiScore.activeSelf)
+            UIManager.instance.ScoreUIText(string.Format("Score: {0}:{1}", players[0].score, players[1].score));
 
     }
 
     IEnumerator BuildPhase() {
         //Setup for Build Phase
         currentGamePhase = Phases.buildPhase; // Set current phase
-        uiBanner.transform.parent.gameObject.SetActive(true); // Enable top canvas
+        UIManager.instance.EnableBannerUI(true); // Enable top canvas
 
         for (currentLevel = 0, currentBuilder = 0; currentLevel < levels.Count; currentLevel++, currentBuilder++) {
             //Initialize current player's build phase
@@ -131,26 +121,23 @@ public class GamePhaseManager : MonoBehaviour {
             //Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, currentLevel * emptyLevelSpacing, Camera.main.transform.position.z);
 
             //UI to indicate which button to start
-            uiBanner.text =
-                    "Player " + (currentBuilder + 1) + " press " + onReadyUpButtonName + " to begin building your level";
+            UIManager.instance.BannerUIText(
+                    string.Format("Player {0} press {1} to begin building your level" , (currentBuilder + 1), onReadyUpButtonName));
             // Wait for Player to be ready to build
             yield return new WaitUntil(() => Input.GetButtonDown(onReadyUpButtonName));
             //Show end turn instruction
-            uiScore.transform.parent.gameObject.SetActive(true);
-            uiScore.text =
-                "Press " + onEndTurnButtonName + " to end turn";
             //Set UI to indicate current builder player
-            uiBanner.text =
-                "Player " + (currentBuilder + 1) + " is building Level " + (currentLevel + 1);
-            uiBuildButtons.transform.GetChild(0).gameObject.SetActive(true); // Enable builder's canvas
-            uiTimer.transform.parent.gameObject.SetActive(true);
+            UIManager.instance.BannerUIText(
+                string.Format("Player {0} is building Level {1}", currentBuilder + 1, currentLevel + 1));
+            UIManager.instance.uiBuildBar.Activate(); // Enable builder's canvas
+            UIManager.instance.EnableTimerUI(true);
             currentPhaseTimer = buildPhaseDuration; // Start build timer
 
             //Wait for Build Phase
             yield return new WaitUntil(() => currentPhaseTimer <= 0); // Wait until building finishes
             currentPhaseTimer = 0;
             //End current player's build phase
-            uiBuildButtons.DeactivateBuilderCanvas();
+            UIManager.instance.uiBuildBar.Deactivate();
 
             //Increase the current player index, loop to start if index gets out of bounds
             if (currentBuilder >= players.Count)
@@ -159,11 +146,11 @@ public class GamePhaseManager : MonoBehaviour {
 
             //Acknowledge next player to build or build phase is complete
             if (currentLevel < levels.Count - 1)
-                uiBanner.text =
-                    "Press " + onReadyUpButtonName + " proceed to building the next level";
+                UIManager.instance.BannerUIText(
+                    string.Format("Press {0} proceed to building the next level", onReadyUpButtonName));
             else
-                uiBanner.text =
-                    "Press " + onReadyUpButtonName + " to proceed to the Racing Phase";
+                UIManager.instance.BannerUIText(
+                    string.Format("Press {0} to proceed to the Racing Phase", onReadyUpButtonName));
         }
 
         //Start Next Phase
@@ -176,6 +163,7 @@ public class GamePhaseManager : MonoBehaviour {
         GameObject.Find("GridMesh").SetActive(false);
 
         currentGamePhase = Phases.racePhase; // Set current phase
+            UIManager.instance.EnableScoreUI(true);
         ActivateBlockEffects(); // Enable block effects
         //TODO: Generate array of ready status booleans
 
@@ -183,19 +171,15 @@ public class GamePhaseManager : MonoBehaviour {
             //Move camera and all players to current level's start area
             //Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, currentLevel * emptyLevelSpacing, Camera.main.transform.position.z);
             MovePlayersTo(levels[currentLevel].spawnPoint);
-            uiScore.transform.parent.gameObject.SetActive(true);
 
-            
-            uiScore.text =
-                "Score: " + players[0].score + ":" + players[1].score;
 
             //Wait for all players to be ready
-            uiBanner.text =
-                    "Press " + onReadyUpButtonName + " begin racing";
+            UIManager.instance.BannerUIText(
+                string.Format("Press {0} begin racing", onReadyUpButtonName));
             yield return new WaitUntil(() => Input.GetButtonDown(onReadyUpButtonName)); // Wait until next player presses 'ready' button
             //Set UI to indicate current level and its builder
-            uiBanner.text =
-                "Level: " + (currentLevel + 1) + ". Built by Player " + levels[currentLevel].builderIndex;
+            UIManager.instance.BannerUIText(
+                string.Format("Level: {0}. Built by Player {1} ", (currentLevel + 1), levels[currentLevel].builderIndex));
             ActivatePlayers();
             currentPhaseTimer = racePhaseDuration; // Set build timer
 
@@ -207,30 +191,30 @@ public class GamePhaseManager : MonoBehaviour {
 
             if (!levels[currentLevel].winner) {
                 players[levels[currentLevel].builderIndex].score -= 3;
-                uiBanner.text =
-                "There was no winner for this level... Player " + (levels[currentLevel].builderIndex + 1) + " suffers a score penalty.";
+                UIManager.instance.BannerUIText(
+                    string.Format("There was no winner for this level... Player {0} suffers a score penalty.", levels[currentLevel].builderIndex + 1));
             } else if (levels[currentLevel].winner) {
                 levels[currentLevel].winner.score += 3;
-                uiBanner.text =
-                "Player " + (players.IndexOf(levels[currentLevel].winner) + 1) + " is the winner of this level!";
+                UIManager.instance.BannerUIText(
+                    string.Format("Player {0} is the winner of this level!", players.IndexOf(levels[currentLevel].winner) + 1));
 
             }
 
             //End current level
             //Display "Level done, ready up for next" UI dialog
             if (currentLevel < levels.Count - 1)
-                uiBanner.text =
-                "Press " + onReadyUpButtonName + " to continue to the next level";
+                UIManager.instance.BannerUIText(
+                    string.Format("Press {0} to continue to the next level", onReadyUpButtonName));
             else
-                uiBanner.text =
-                "Press " + onReadyUpButtonName + " to finish";
+                UIManager.instance.BannerUIText(
+                    string.Format("Press {0} to finish", onReadyUpButtonName));
             yield return new WaitUntil(() => Input.GetButtonDown(onReadyUpButtonName));
 
         }
 
         //Display "Game Finish!" UI Dialog
-        uiBanner.text =
-                "Player " + SettledWinner() + " wins the game!";
+        UIManager.instance.BannerUIText(
+                    string.Format(GameWinner()));
 
     }
 
@@ -261,13 +245,19 @@ public class GamePhaseManager : MonoBehaviour {
         ResetPlayers();
     }
 
-    private int SettledWinner() {
+    private string GameWinner() {
         int index = -1;
         for (int i = 0; i < players.Count - 1; i++) {
-            if (players[i].score >= players[i + 1].score)
+            if (players[i].score > players[i + 1].score)
+            {
                 index = i;
+            }
+            else if (players[i].score == players[i + 1].score)
+            {
+                return string.Format("Both Players Tie");
+            }
         }
-        return index + 1;
+        return string.Format("Player {0} wins the game!", ++index);
     }
 
     private void ResetPlayers () {
