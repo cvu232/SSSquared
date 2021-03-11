@@ -59,8 +59,6 @@ public class GamePhaseManager : MonoBehaviour {
 
             instance = this;
 
-            DontDestroyOnLoad(this);
-
             UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
 
         }
@@ -69,6 +67,10 @@ public class GamePhaseManager : MonoBehaviour {
 
     private void OnSceneLoaded(UnityEngine.SceneManagement.Scene arg0, UnityEngine.SceneManagement.LoadSceneMode arg1) {
         Debug.LogWarning("Scene change detected!");
+    }
+
+    private void Start()
+    {
         InitialSetup();
     }
 
@@ -78,8 +80,7 @@ public class GamePhaseManager : MonoBehaviour {
 
         blockEffectsEnabled = false;
 
-        if (!UIManager.instance)
-            FindObjectOfType<UIManager>().Awake();
+
         UIManager.instance.uiBuildBar.Initial();
 
         levelsContainer = GameObject.Find("LevelsCONTAINER");
@@ -129,7 +130,7 @@ public class GamePhaseManager : MonoBehaviour {
             currentPhaseTimer = 0;
 
         // Active Score UI output
-        if (UIManager.instance.uiScore.activeSelf)
+        if (UIManager.instance.uiScore.activeSelf && currentGamePhase == Phases.racePhase)
             UIManager.instance.ScoreUIText(string.Format("Score: {0}:{1}", players[0].score, players[1].score));
 
     }
