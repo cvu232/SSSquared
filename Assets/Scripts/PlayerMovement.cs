@@ -478,7 +478,7 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	public void Die () {
-		if (GamePhaseManager.instance && GamePhaseManager.instance.levels != null && GamePhaseManager.instance.levels.Count > 0)
+		if (GamePhaseManager.instance && GamePhaseManager.instance.levels != null && GamePhaseManager.instance.levels.Count > 0 && GamePhaseManager.instance.levels[GamePhaseManager.instance.currentLevel])
 			transform.position = GamePhaseManager.instance.levels[GamePhaseManager.instance.currentLevel].spawnPoint.position;
 		slipNSliding = 0;
 	}

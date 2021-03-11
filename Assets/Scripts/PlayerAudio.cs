@@ -50,10 +50,17 @@ public class PlayerAudio : MonoBehaviour {
 		rigidbody = GetComponent<Rigidbody2D>();
 		player = GetComponent<PlayerMovement>();
 
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
+
 	}
 
-	// Update is called once per frame
-	void Update() {
+    private void OnSceneLoaded(UnityEngine.SceneManagement.Scene arg0, UnityEngine.SceneManagement.LoadSceneMode arg1) {
+		audioSourceActive = new List<AudioSource>();
+		audioSourcePool = new List<AudioSource>();
+	}
+
+    // Update is called once per frame
+    void Update() {
 
 		if (!rigidbody.isKinematic && !player.isDashing) {
 

@@ -12,11 +12,11 @@ public enum Phases {
 public class GamePhaseManager : MonoBehaviour {
     public static GamePhaseManager instance;
 
-    public static Phases currentGamePhase { get; private set; }
+    public Phases currentGamePhase;// { get; private set; }
 
     [Header("Container Objects")]
-    public GameObject levelsContainer; // object that holds all levels
-    public GameObject playersContainer; // object that holds all players
+    private GameObject levelsContainer; // object that holds all levels
+    private GameObject playersContainer; // object that holds all players
 
     [Header("Build Phase Parameters")]
     public float buildPhaseDuration = 60; // initial build mode time in seconds
@@ -55,25 +55,44 @@ public class GamePhaseManager : MonoBehaviour {
     {
         if (instance != null && instance != this)
             Destroy(this);
-        else
+        else {
+
             instance = this;
 
-        DontDestroyOnLoad(this);
+            DontDestroyOnLoad(this);
+
+            UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
+
+        }
+
     }
 
-    private void Start() {
+    private void OnSceneLoaded(UnityEngine.SceneManagement.Scene arg0, UnityEngine.SceneManagement.LoadSceneMode arg1) {
+        Debug.LogWarning("Scene change detected!");
+        InitialSetup();
+    }
+
+    private void InitialSetup() {
         // Initialize some variables //
         Physics2D.queriesStartInColliders = true;
 
         blockEffectsEnabled = false;
 
+        if (!UIManager.instance)
+            FindObjectOfType<UIManager>().Awake();
         UIManager.instance.uiBuildBar.Initial();
 
+        levelsContainer = GameObject.Find("LevelsCONTAINER");
+        playersContainer = GameObject.Find("PlayersCONTAINER");
+
+        Time.timeScale = UIManager.runningTimeScale;
+
+        currentGamePhase = Phases.buildPhase;
         currentLevel = 0;
+        currentBuilder = 0;
 
         //Placeholder players
-        players.Add(player1);
-        players.Add(player2);
+        players = new List<Player>(FindObjectsOfType<Player>());
         DeactivatePlayers();
 
         // If players should have a fixed number of levels to build, override the maxLevelCount variable here
@@ -83,6 +102,7 @@ public class GamePhaseManager : MonoBehaviour {
             fixedLevelsPerPlayer = -1;
 
         //Generate levels and add them to 'levels' array
+        levels = new List<Level>();
         for (int i = 0; i < maxLevelCount; i++) {
             Level newLevel = Instantiate(emptyLevelPrefab).GetComponent<Level>();
             newLevel.transform.parent = levelsContainer.transform;
@@ -90,14 +110,18 @@ public class GamePhaseManager : MonoBehaviour {
             if (i % 2 == 0)
                 newLevel.transform.localScale = new Vector3(-1, 1, 1);
             levels.Add(newLevel);
+            Debug.Log("Generating Level #" + i + "...");
         }
+
+        foreach (Level lvl in levels)
+            Debug.Log("Level: " + lvl.name);
 
         StartCoroutine(BuildPhase());
     }
 
     private void Update() {
-        currentPhaseTimer -= Time.deltaTime;
-        if (UIManager.instance.uiTimer && currentPhaseTimer >= 0)
+        currentPhaseTimer = Mathf.Max (currentPhaseTimer - Time.deltaTime, 0);
+        if (UIManager.instance.uiTimer)
             UIManager.instance.TimerUIText(string.Format("Remaining Time : {0:F2}", currentPhaseTimer));
 
         //SkipBehaviour
@@ -122,7 +146,7 @@ public class GamePhaseManager : MonoBehaviour {
 
             //UI to indicate which button to start
             UIManager.instance.BannerUIText(
-                    string.Format("Player {0} press {1} to start building" , (currentBuilder + 1), onReadyUpButtonName));
+                    string.Format("Player {0}: press {1} to start building" , (currentBuilder + 1), onReadyUpButtonName));
             // Wait for Player to be ready to build
             yield return new WaitUntil(() => Input.GetButtonDown(onReadyUpButtonName));
             //Show end turn instruction
@@ -134,7 +158,7 @@ public class GamePhaseManager : MonoBehaviour {
             currentPhaseTimer = buildPhaseDuration; // Start build timer
 
             //Wait for Build Phase
-            yield return new WaitUntil(() => currentPhaseTimer <= 0); // Wait until building finishes
+            yield return new WaitUntil(() => currentPhaseTimer <= 0.001f); // Wait until building finishes
             currentPhaseTimer = 0;
             //End current player's build phase
             UIManager.instance.uiBuildBar.Deactivate();
@@ -147,7 +171,7 @@ public class GamePhaseManager : MonoBehaviour {
             //Acknowledge next player to build or build phase is complete
             if (currentLevel < levels.Count - 1)
                 UIManager.instance.BannerUIText(
-                    string.Format("Press {0} proceed to building the next level", onReadyUpButtonName));
+                    string.Format("Press {0} to begin building the next level", onReadyUpButtonName));
             else
                 UIManager.instance.BannerUIText(
                     string.Format("Press {0} to proceed to the Racing Phase", onReadyUpButtonName));
@@ -160,7 +184,9 @@ public class GamePhaseManager : MonoBehaviour {
     IEnumerator RacePhase() {
         //Setup for Race Phase
         Physics2D.queriesStartInColliders = false;
-        GameObject.Find("GridMesh").SetActive(false);
+        try {
+            GameObject.Find("GridMesh").SetActive(false);
+        } catch { }
 
         currentGamePhase = Phases.racePhase; // Set current phase
             UIManager.instance.EnableScoreUI(true);
@@ -184,7 +210,7 @@ public class GamePhaseManager : MonoBehaviour {
             currentPhaseTimer = racePhaseDuration; // Set build timer
 
             //Wait for Level Timeout
-            yield return new WaitUntil(() => currentPhaseTimer <= 0); // Wait until race finishes
+            yield return new WaitUntil(() => currentPhaseTimer <= 0.001f); // Wait until race finishes
             currentPhaseTimer = 0;
             DeactivatePlayers();
 
