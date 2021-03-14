@@ -29,6 +29,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1729149644015942232, guid: f7679e6fff53ddf45ba062d23502dbd8,
         type: 3}
+      propertyPath: raycastStartPos.y
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1729149644015942232, guid: f7679e6fff53ddf45ba062d23502dbd8,
+        type: 3}
       propertyPath: inputDashButtonName
       value: Dash2
       objectReference: {fileID: 0}
@@ -147,6 +152,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 83400142367d64ff9ac86b15a283c8b8, type: 2}
+      objectReference: {fileID: 9100000, guid: 756363c19ef584666a9a01e29119940c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7679e6fff53ddf45ba062d23502dbd8, type: 3}

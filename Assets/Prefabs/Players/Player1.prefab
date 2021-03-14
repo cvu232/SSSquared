@@ -98,7 +98,7 @@ SpriteRenderer:
   m_Size: {x: 4.99, y: 6.41}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1729149643902829874
@@ -255,7 +255,7 @@ MonoBehaviour:
   inputVerticalAxisName: Vertical
   horizontalInput: 0
   verticalInput: 0
-  raycastStartPos: {x: 1.2, y: -3}
+  raycastStartPos: {x: 1.2, y: -3.25}
   raycastCheckDist: 1
   maxVelHori: 18
   addVelHori: 1
@@ -323,7 +323,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1729149644015942235}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 16e6b6e1aaec5784da8629b4de0d4955, type: 2}
+  m_Material: {fileID: 6200000, guid: 6413dd7f472fb4da7819efc315555c91, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
