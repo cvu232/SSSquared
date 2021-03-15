@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public int score;
+    public float score;
     public int HP;
     public bool isReady;
     public PlayerMovement movement { get; private set; }

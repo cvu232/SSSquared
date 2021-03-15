@@ -206,7 +206,7 @@ public class GamePhaseManager : MonoBehaviour {
             yield return new WaitUntil(() => Input.GetButtonDown(onReadyUpButtonName)); // Wait until next player presses 'ready' button
             //Set UI to indicate current level and its builder
             UIManager.instance.BannerUIText(
-                string.Format("Level: {0}. Built by Player {1} ", (currentLevel + 1), levels[currentLevel].builderIndex));
+                string.Format("Level: {0}. Built by Player {1} ", (currentLevel + 1), levels[currentLevel].builderIndex + 1));
             ActivatePlayers();
             currentPhaseTimer = racePhaseDuration; // Set build timer
 
@@ -215,13 +215,12 @@ public class GamePhaseManager : MonoBehaviour {
             currentPhaseTimer = 0;
             DeactivatePlayers();
 
-
+            // Settle scores for this level
+            ScoreManager.instance.SettleLevelScores(levels[currentLevel]);
             if (!levels[currentLevel].winner) {
-                players[levels[currentLevel].builderIndex].score -= 3;
                 UIManager.instance.BannerUIText(
                     string.Format("There was no winner for this level... Player {0} suffers a score penalty.", levels[currentLevel].builderIndex + 1));
             } else if (levels[currentLevel].winner) {
-                levels[currentLevel].winner.score += 3;
                 UIManager.instance.BannerUIText(
                     string.Format("Player {0} is the winner of this level!", players.IndexOf(levels[currentLevel].winner) + 1));
 
@@ -240,8 +239,7 @@ public class GamePhaseManager : MonoBehaviour {
         }
 
         //Display "Game Finish!" UI Dialog
-        UIManager.instance.BannerUIText(
-                    string.Format(GameWinner()));
+        ScoreManager.instance.SettleGameWinner();
 
     }
 
@@ -270,21 +268,6 @@ public class GamePhaseManager : MonoBehaviour {
         for (int i = 0; i < players.Count; i++)
             players[i].gameObject.SetActive(false);
         ResetPlayers();
-    }
-
-    private string GameWinner() {
-        int index = -1;
-        for (int i = 0; i < players.Count - 1; i++) {
-            if (players[i].score > players[i + 1].score)
-            {
-                index = i;
-            }
-            else if (players[i].score == players[i + 1].score)
-            {
-                return string.Format("Both Players Tie");
-            }
-        }
-        return string.Format("Player {0} wins the game!", ++index);
     }
 
     private void ResetPlayers () {
