@@ -33,10 +33,6 @@ public class GamePhaseManager : MonoBehaviour {
     public float racePhaseDuration = 150; // initial platform mode time in seconds
     public bool[] readyCheck; // ready check before starting game
 
-    [Header("Players")]
-    public Player player1;
-    public Player player2;
-
     [Header("Misc. Parameters")]
     public float currentPhaseTimer; // initial platform mode time in seconds
 
@@ -59,22 +55,25 @@ public class GamePhaseManager : MonoBehaviour {
 
             instance = this;
 
-            UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
-
         }
 
     }
 
-    private void OnSceneLoaded(UnityEngine.SceneManagement.Scene arg0, UnityEngine.SceneManagement.LoadSceneMode arg1) {
-        Debug.LogWarning("Scene change detected!");
-    }
+    private void Start() {
 
-    private void Start()
-    {
         InitialSetup();
+
     }
 
     private void InitialSetup() {
+
+        //Make sure there is a GameOptions instance available
+        if (!GameOptions.instance)
+            Instantiate((GameObject)Resources.Load("Prefabs/GameOptions")).GetComponent<GameOptions>().Awake();
+
+        useFixedLevelsPerPlayer = false;
+        maxLevelCount = GameOptions.instance.levelCount;
+
         // Initialize some variables //
         Physics2D.queriesStartInColliders = true;
 
@@ -93,7 +92,17 @@ public class GamePhaseManager : MonoBehaviour {
         currentBuilder = 0;
 
         //Placeholder players
-        players = new List<Player>(FindObjectsOfType<Player>());
+        players = new List<Player>();
+        foreach (Player p in FindObjectsOfType<Player>()) {
+            Debug.Log("Found " + p.name);
+            if (players.Count < GameOptions.instance.playerCount)
+                players.Add(p);
+            else {
+                Debug.Log("Destroying " + p.name + " as it is over the player cap");
+                Destroy(p.gameObject);
+            }
+        }
+
         DeactivatePlayers();
 
         // If players should have a fixed number of levels to build, override the maxLevelCount variable here
@@ -141,9 +150,13 @@ public class GamePhaseManager : MonoBehaviour {
         UIManager.instance.EnableBannerUI(true); // Enable top canvas
 
         for (currentLevel = 0, currentBuilder = 0; currentLevel < levels.Count; currentLevel++, currentBuilder++) {
+
+            //loop to start if index gets out of bounds
+            if (currentBuilder >= players.Count)
+                currentBuilder = 0;
+            levels[currentBuilder].builderIndex = currentBuilder;
+
             //Initialize current player's build phase
-            //Move Camera
-            //Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, currentLevel * emptyLevelSpacing, Camera.main.transform.position.z);
 
             //UI to indicate which button to start
             UIManager.instance.BannerUIText(
@@ -163,11 +176,6 @@ public class GamePhaseManager : MonoBehaviour {
             currentPhaseTimer = 0;
             //End current player's build phase
             UIManager.instance.uiBuildBar.Deactivate();
-
-            //Increase the current player index, loop to start if index gets out of bounds
-            if (currentBuilder >= players.Count)
-                currentBuilder = 0;
-            levels[currentBuilder].builderIndex = currentBuilder;
 
             //Acknowledge next player to build or build phase is complete
             if (currentLevel < levels.Count - 1)

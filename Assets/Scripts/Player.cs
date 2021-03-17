@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float score;
+
+    public string charName;
+    public int score;
     public int HP;
     public bool isReady;
     public PlayerMovement movement { get; private set; }
@@ -30,4 +32,9 @@ public class Player : MonoBehaviour
     {
         
     }
+
+    public override string ToString() {
+        return charName;
+    }
+
 }

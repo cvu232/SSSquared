@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7874288892736512678, guid: f7679e6fff53ddf45ba062d23502dbd8,
+        type: 3}
+      propertyPath: charName
+      value: Olimar
+      objectReference: {fileID: 0}
     - target: {fileID: 1550669327, guid: f7679e6fff53ddf45ba062d23502dbd8, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.7

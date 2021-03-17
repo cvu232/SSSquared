@@ -3,45 +3,66 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
-{
-    public Canvas mainCanvas;
-    public Canvas optionsCanvas;
+public enum Menus {
+    main,
+    options,
+    rules,
+    charSelect
+}
 
-    public void GameOptions()
-    {
-        mainCanvas.gameObject.SetActive(false);
-        optionsCanvas.gameObject.SetActive(true);
+public class MainMenu : MonoBehaviour {
+
+    public Menus currentMenu;
+
+    public UIPanel mainPanel;
+    public UIPanel optionsPanel;
+    public UIPanel rulesPanel;
+    public UIPanel charSelectPanel;
+
+    private void Start() {
+
     }
 
-    public void ReturnToMenu()
-    {
-        optionsCanvas.gameObject.SetActive(false);
-        mainCanvas.gameObject.SetActive(true);
+    public void GameOptions() {
+        currentMenu = Menus.options;
     }
 
-    public void PlayGame()
-    {
+    public void Rules() {
+        currentMenu = Menus.rules;
+    }
+
+    public void CharSelect() {
+        currentMenu = Menus.charSelect;
+    }
+
+    public void ReturnToMenu() {
+        currentMenu = Menus.main;
+    }
+
+    private void Update() {
+
+        if (mainPanel)
+            mainPanel.show = currentMenu == Menus.main;
+        if (optionsPanel)
+            optionsPanel.show = currentMenu == Menus.options;
+        if (rulesPanel)
+            rulesPanel.show = currentMenu == Menus.rules;
+        if (charSelectPanel)
+            charSelectPanel.show = currentMenu == Menus.charSelect;
+
+    }
+
+    public void PlayGame() {
         SceneManager.LoadScene("GameScene");
     }
 
-    public void Menu()
-    {
+    public void Menu() {
         SceneManager.LoadScene("Menu");
     }
 
-    public void QuitGame()
-    {
+    public void QuitGame() {
         Application.Quit();
 
     }
-
-
-    public void Rules()
-    {
-        SceneManager.LoadScene("Rules");
-    }
-
-  
 
 }

@@ -382,6 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de06bcdc8c0ed3d41a657bd444a8f093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  charName: Robin
   score: 0
   HP: 0
   isReady: 0
