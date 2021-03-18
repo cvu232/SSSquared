@@ -107,7 +107,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7762926997508156569}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc15e42b9d593254cb50abbaecd528fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  geyserParticleSystem: {fileID: 6858332677961555390}
   GeyserForce: 500
   speedCap: 50
   geyserAnim:
@@ -400,6 +401,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3190dd46ca12cc4cb07eeb9786340c8, type: 3}
+--- !u!198 &6858332677961555390 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8761640897202842338, guid: a3190dd46ca12cc4cb07eeb9786340c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 2790587733906913116}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4394035291739131184
 PrefabInstance:
   m_ObjectHideFlags: 0
