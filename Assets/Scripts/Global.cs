@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class Global : MonoBehaviour
 {
+    public static Global instance;
+    public Shader shader;
+
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+            Destroy(this);
+        else
+        {
+            instance = this;
+        }
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q))
