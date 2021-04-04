@@ -8,8 +8,6 @@ public class Teleporter : MonoBehaviour
 
     public Teleporter pair;
     public bool isPaired;
-
-    public bool isPlayerInside; // Debug
     
     private void Start()
     {
@@ -21,11 +19,6 @@ public class Teleporter : MonoBehaviour
         StartCoroutine(SetupOnPlacement());
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-
-    }
-
     private void OnTriggerStay2D(Collider2D other)
     {
         // If player enters the trigger and the Teleporter has a pair
@@ -33,7 +26,6 @@ public class Teleporter : MonoBehaviour
         if (other.GetComponent<Player>() && pair && isPaired)
         {
             Player player = other.GetComponent<Player>(); // Get Player
-            isPlayerInside = true; // Debug
 
             if (Input.GetButtonDown(player.movement.inputVerticalAxisName)) // If Player presses their Jump key while touching Teleporter trigger
             {
@@ -42,15 +34,6 @@ public class Teleporter : MonoBehaviour
                 // Teleport the Player to paired Teleporter
                 other.transform.position = pair.transform.position;
             }
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other) // Debug
-    {
-        if (other.GetComponent<Player>() && pair && isPaired)
-        {
-            Player player = other.GetComponent<Player>(); // Get Player
-            isPlayerInside = false;
         }
     }
 
@@ -74,6 +57,8 @@ public class Teleporter : MonoBehaviour
                     isPaired = true; // Set this to paired
                     other.pair = this;
                     other.isPaired = true;
+                    // If pair is deleted then this is not paired
+                    StartCoroutine(UnpairIfMissing());
 
                     // Create a new colour to distinguish paired Teleporters
                     Material mat = new Material(Shader.Find("Specular"));
@@ -97,5 +82,13 @@ public class Teleporter : MonoBehaviour
         // Wait until placed before setting the teleporter
         yield return new WaitUntil(()=>block.isPlaced);
         searchForTeleporterPair();
+    }
+
+    IEnumerator UnpairIfMissing()
+    {
+        // If pair is deleted then this is not paired
+        yield return new WaitUntil(() => !pair);
+        pair = null;
+        isPaired = false;
     }
 }
