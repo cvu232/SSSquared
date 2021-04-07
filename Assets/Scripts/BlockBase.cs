@@ -28,7 +28,7 @@ public class BlockBase : MonoBehaviour
         inBadSpace = false;
         buildReady = true;
         isPlaced = false; // additional checks
-        GetSetupBlockEffect();
+        InitiatingBlockEffect();
     }
 
     public void Update() {
@@ -64,7 +64,7 @@ public class BlockBase : MonoBehaviour
         ActivateBlockEffect();
     }
 
-    public void GetSetupBlockEffect()
+    private void InitiatingBlockEffect()
     {
         try
         {
