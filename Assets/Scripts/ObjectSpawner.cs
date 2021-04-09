@@ -10,6 +10,9 @@ public class ObjectSpawner : MonoBehaviour
     public bool spawning;
     public int spawnInterval = 5;
     public GameObject spawnedObj;
+    public GameObject spawnedObjAlt;
+    [Range(0, 1)]
+    public float spawnedObjAltLikelyhood;
     private GameObject workingObj;
     private Collider2D[] coll;
     private BlockBase block;
@@ -32,7 +35,7 @@ public class ObjectSpawner : MonoBehaviour
     IEnumerator SpawnObject()
     {
         spawning = true;
-        workingObj = Instantiate(spawnedObj, transform.position, Quaternion.identity);
+        workingObj = Instantiate(Random.Range(0, 1f) < spawnedObjAltLikelyhood ? spawnedObjAlt : spawnedObj, transform.position, Quaternion.identity);
         workingObj.GetComponent<Projectile>().level = block.level;
         foreach (Collider2D coll in coll)
             Physics2D.IgnoreCollision(coll, workingObj.GetComponent<Collider2D>());

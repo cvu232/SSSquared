@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5911043523592743229}
   - component: {fileID: 3983662507531740511}
   m_Layer: 12
-  m_Name: Projectile
+  m_Name: Projectile 1
   m_TagString: Hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -158,7 +158,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6642497738588806780}
-  m_LocalRotation: {x: 0, y: 0, z: -0.7761722, w: 0.63052094}
+  m_LocalRotation: {x: 0, y: 0, z: -0.59573334, w: -0.80318236}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children: []
@@ -204,7 +204,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4fd88b1a581994d6aa7a31fdc6423f15, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f952f1260db284831b9fd8366d440e41, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
