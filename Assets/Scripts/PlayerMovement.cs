@@ -47,6 +47,7 @@ public class PlayerMovement : MonoBehaviour {
 	private int lastRigidbodyVelOrientation;
 
 	public ParticleSystem confettiParticleSystem;
+	public ParticleSystem respawnParticleSystem;
 
 
 
@@ -484,14 +485,22 @@ public class PlayerMovement : MonoBehaviour {
 
 	public void Die () {
 		if (GamePhaseManager.instance && GamePhaseManager.instance.levels != null && GamePhaseManager.instance.levels.Count > 0 && GamePhaseManager.instance.levels[GamePhaseManager.instance.currentLevel])
+		{
 			transform.position = GamePhaseManager.instance.levels[GamePhaseManager.instance.currentLevel].spawnPoint.position;
+		}
 		slipNSliding = 0;
+		SpawnRespawnParticles();
 	}
 
     public void SpawnConfetti()
     {
         ParticleSystem deathConfetti = Instantiate(confettiParticleSystem, transform.position + Vector3.up * 10, confettiParticleSystem.transform.rotation);
         deathConfetti.Play();
+	}
+
+	public void SpawnRespawnParticles()
+	{
+		respawnParticleSystem.Play();
 	}
 
 	/*
