@@ -1,7 +1,70 @@
 fileFormatVersion: 2
 guid: c2e0b17c5eb76cb40b0473518c1a5d76
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 4419697082881426504
+    second: P3_Variant_1_0
+  - first:
+      213: -1015642380709384551
+    second: P3_Variant_1_1
+  - first:
+      213: 5245993864598914451
+    second: P3_Variant_1_2
+  - first:
+      213: -4021453228874157143
+    second: P3_Variant_1_3
+  - first:
+      213: 3147513436025801431
+    second: P3_Variant_1_4
+  - first:
+      213: -4952879322486731102
+    second: P3_Variant_1_5
+  - first:
+      213: -3877453009265449728
+    second: P3_Variant_1_6
+  - first:
+      213: 9135885958389470791
+    second: P3_Variant_1_7
+  - first:
+      213: 1384865290402930813
+    second: P3_Variant_1_8
+  - first:
+      213: -18875775172968504
+    second: P3_Variant_1_9
+  - first:
+      213: 3122438667485253681
+    second: P3_Variant_1_10
+  - first:
+      213: 1580646409646413036
+    second: P3_Variant_1_11
+  - first:
+      213: 450090613519098084
+    second: P3_Variant_1_12
+  - first:
+      213: 7640505107035523337
+    second: P3_Variant_1_13
+  - first:
+      213: 1318731906793147187
+    second: P3_Variant_1_14
+  - first:
+      213: -47892815588999587
+    second: P3_Variant_1_15
+  - first:
+      213: 6820735652671852479
+    second: P3_Variant_1_16
+  - first:
+      213: -2226210060929932957
+    second: P3_Variant_1_17
+  - first:
+      213: -6731071375363512474
+    second: P3_Variant_1_18
+  - first:
+      213: -1981549541010888527
+    second: P3_Variant_1_19
+  - first:
+      213: -5816974143782435100
+    second: P3_Variant_1_20
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,7 +103,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -71,9 +134,462 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: P3_Variant_1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2656
+        width: 1371
+        height: 1328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8444aff841be55d30800000000000000
+      internalID: 4419697082881426504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P3_Variant_1_1
+      rect:
+        serializedVersion: 2
+        x: 1371
+        y: 2656
+        width: 1371
+        height: 1328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99e2cf6c2a6b7e1f0800000000000000
+      internalID: -1015642380709384551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P3_Variant_1_2
+      rect:
+        serializedVersion: 2
+        x: 2742
+        y: 2656
+        width: 1371
+        height: 1328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3950c4910a38dc840800000000000000
+      internalID: 5245993864598914451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P3_Variant_1_3
+      rect:
+        serializedVersion: 2
+        x: 4113
+        y: 2656
+        width: 1371
+        height: 1328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a3bb1c489de038c0800000000000000
+      internalID: -4021453228874157143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P3_Variant_1_4
+      rect:
+        serializedVersion: 2
+        x: 5484
+        y: 2656
+        width: 1371
+        height: 1328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7da46183bc63eab20800000000000000
+      internalID: 3147513436025801431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P3_Variant_1_5
+      rect:
+        serializedVersion: 2
+        x: 6855
+        y: 2656
+        width: 1371
+        height: 1328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ae0dc76f76d34bb0800000000000000
+      internalID: -4952879322486731102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P3_Variant_1_6
+      rect:
+        serializedVersion: 2
+        x: 8226
+        y: 2656
+        width: 1371
+        height: 1328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 005a67d1805803ac0800000000000000
+      internalID: -3877453009265449728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P3_Variant_1_7
+      rect:
+        serializedVersion: 2
+        x: 9597
+        y: 2656
+        width: 1371
+        height: 1328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 746984a00ef29ce70800000000000000
+      internalID: 9135885958389470791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P3_Variant_1_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1328
+        width: 1371
+        height: 1328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d702c30f4a7083310800000000000000
+      internalID: 1384865290402930813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P3_Variant_1_9
+      rect:
+        serializedVersion: 2
+        x: 1371
+        y: 1328
+        width: 1371
+        height: 1328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cf74fd1590fcbff0800000000000000
+      internalID: -18875775172968504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P3_Variant_1_10
+      rect:
+        serializedVersion: 2
+        x: 2742
+        y: 1328
+        width: 1371
+        height: 1328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1301768bc61255b20800000000000000
+      internalID: 3122438667485253681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P3_Variant_1_11
+      rect:
+        serializedVersion: 2
+        x: 4113
+        y: 1328
+        width: 1371
+        height: 1328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce49872f8859fe510800000000000000
+      internalID: 1580646409646413036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P3_Variant_1_12
+      rect:
+        serializedVersion: 2
+        x: 5484
+        y: 1328
+        width: 1371
+        height: 1328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e02b8f370b0f3600800000000000000
+      internalID: 450090613519098084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P3_Variant_1_13
+      rect:
+        serializedVersion: 2
+        x: 6855
+        y: 1328
+        width: 1371
+        height: 1328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9090969e9e6880a60800000000000000
+      internalID: 7640505107035523337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P3_Variant_1_14
+      rect:
+        serializedVersion: 2
+        x: 8226
+        y: 1328
+        width: 1371
+        height: 1328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33b016aaea31d4210800000000000000
+      internalID: 1318731906793147187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P3_Variant_1_15
+      rect:
+        serializedVersion: 2
+        x: 9597
+        y: 1328
+        width: 1371
+        height: 1328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5e368becb9d55ff0800000000000000
+      internalID: -47892815588999587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P3_Variant_1_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1371
+        height: 1328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbf095430fe18ae50800000000000000
+      internalID: 6820735652671852479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P3_Variant_1_17
+      rect:
+        serializedVersion: 2
+        x: 1371
+        y: 0
+        width: 1371
+        height: 1328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 361eeda9eb9ea11e0800000000000000
+      internalID: -2226210060929932957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P3_Variant_1_18
+      rect:
+        serializedVersion: 2
+        x: 2742
+        y: 0
+        width: 1371
+        height: 1328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66768a13f3e6692a0800000000000000
+      internalID: -6731071375363512474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P3_Variant_1_19
+      rect:
+        serializedVersion: 2
+        x: 4113
+        y: 0
+        width: 1371
+        height: 1328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b8253fe03f1084e0800000000000000
+      internalID: -1981549541010888527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P3_Variant_1_20
+      rect:
+        serializedVersion: 2
+        x: 5484
+        y: 0
+        width: 1371
+        height: 1328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e6473cf5d4f54fa0800000000000000
+      internalID: -5816974143782435100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
