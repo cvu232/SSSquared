@@ -48,6 +48,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	public ParticleSystem confettiParticleSystem;
 	public ParticleSystem respawnParticleSystem;
+	public ParticleSystem dustParticleSystem;
 
 
 
@@ -222,6 +223,7 @@ public class PlayerMovement : MonoBehaviour {
 			lastJumpTime = -jumpFrameDuration;//Reset the last jump time so the player may not register a jump multiple times a frame (you can't be too careful)
 			isGrounded = false;
 			anim.SetTrigger("jump");
+			SpawnDustParticles(); //activates dust particles when jumping
 		}
 
 		//Jump higher if holding jump, smol jump if jump is only tapped
@@ -502,6 +504,11 @@ public class PlayerMovement : MonoBehaviour {
 	{
 		respawnParticleSystem.Play();
 	}
+
+	public void SpawnDustParticles()
+    {
+		dustParticleSystem.Play();
+    }
 
 	/*
 	//Respawn behaviour no longer necessary
