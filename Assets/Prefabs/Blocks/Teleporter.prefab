@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2143387898436315191}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0.5}
   m_LocalScale: {x: 0.4, y: 1, z: 0.001}
   m_Children: []
   m_Father: {fileID: 3068653075351977319}
@@ -112,7 +112,11 @@ MonoBehaviour:
   block: {fileID: 0}
   pair: {fileID: 0}
   isPaired: 0
-  isPlayerInside: 0
+  portReady: 0
+  portalMat: {fileID: 2100000, guid: 85371b7b29b42d746b90c94459775039, type: 2}
+  colouredMat: {fileID: 0}
+  voidMat: {fileID: 2100000, guid: 65679b48d5f5b44558df462f3895c807, type: 2}
+  colour: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &7822746943021504422
 PrefabInstance:
   m_ObjectHideFlags: 0
