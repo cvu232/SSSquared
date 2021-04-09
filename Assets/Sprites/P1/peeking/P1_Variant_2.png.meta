@@ -1,7 +1,28 @@
 fileFormatVersion: 2
 guid: 47738d8cdd2e848408eeed9ef2896aef
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -8522864067576368532
+    second: P1_Variant_2_0
+  - first:
+      213: -4113421756161205657
+    second: P1_Variant_2_1
+  - first:
+      213: -4988574840807323283
+    second: P1_Variant_2_2
+  - first:
+      213: -1269842073325283538
+    second: P1_Variant_2_3
+  - first:
+      213: -1647712110667796851
+    second: P1_Variant_2_4
+  - first:
+      213: -2519112877567680894
+    second: P1_Variant_2_5
+  - first:
+      213: -4123312575976749317
+    second: P1_Variant_2_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,7 +61,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -71,9 +92,168 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: P1_Variant_2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1126
+        height: 1414
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c627b2f5944b8b980800000000000000
+      internalID: -8522864067576368532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P1_Variant_2_1
+      rect:
+        serializedVersion: 2
+        x: 1126
+        y: 0
+        width: 1126
+        height: 1414
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76ad5a4e4b03ae6c0800000000000000
+      internalID: -4113421756161205657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P1_Variant_2_2
+      rect:
+        serializedVersion: 2
+        x: 2252
+        y: 0
+        width: 1126
+        height: 1414
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d698a36ec9505cab0800000000000000
+      internalID: -4988574840807323283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P1_Variant_2_3
+      rect:
+        serializedVersion: 2
+        x: 3378
+        y: 0
+        width: 1126
+        height: 1414
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e27d99abc5d906ee0800000000000000
+      internalID: -1269842073325283538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P1_Variant_2_4
+      rect:
+        serializedVersion: 2
+        x: 4504
+        y: 0
+        width: 1126
+        height: 1414
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8e6987b0962229e0800000000000000
+      internalID: -1647712110667796851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P1_Variant_2_5
+      rect:
+        serializedVersion: 2
+        x: 5630
+        y: 0
+        width: 1126
+        height: 1414
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28e57774f205a0dd0800000000000000
+      internalID: -2519112877567680894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P1_Variant_2_6
+      rect:
+        serializedVersion: 2
+        x: 6756
+        y: 0
+        width: 1126
+        height: 1414
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf64103fe0d07c6c0800000000000000
+      internalID: -4123312575976749317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
