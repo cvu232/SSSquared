@@ -46,6 +46,8 @@ public class PlayerMovement : MonoBehaviour {
 	private int slipNSliding;
 	private int lastRigidbodyVelOrientation;
 
+	public ParticleSystem confettiParticleSystem;
+
 
 
 	[Header("General")]
@@ -318,7 +320,10 @@ public class PlayerMovement : MonoBehaviour {
 		//Check if fell down
 		Level currentLevel = GamePhaseManager.instance.levels[GamePhaseManager.instance.currentLevel];
 		if (transform.position.y < currentLevel.transform.position.y + currentLevel.killHeight)
-			Die();
+        {
+			SpawnConfetti();
+			Die();			
+		}
 
 		// ========== Dashing behaviours ========== //
 		/*
@@ -482,6 +487,11 @@ public class PlayerMovement : MonoBehaviour {
 			transform.position = GamePhaseManager.instance.levels[GamePhaseManager.instance.currentLevel].spawnPoint.position;
 		slipNSliding = 0;
 	}
+
+	public void SpawnConfetti ()
+    {
+		confettiParticleSystem.Play();
+    }
 
 	/*
 	//Respawn behaviour no longer necessary
