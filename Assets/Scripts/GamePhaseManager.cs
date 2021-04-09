@@ -96,13 +96,8 @@ public class GamePhaseManager : MonoBehaviour {
         foreach (Player p in FindObjectsOfType<Player>()) {
             Debug.Log("Found " + p.name);
             if (players.Count < GameOptions.instance.playerCount)
-            {
-                p.assignControls(players.Count);
-                Debug.Log("Assigned controller " + players.Count + " to " + p.name);
                 players.Add(p);
-            }
-            else
-            {
+            else {
                 Debug.Log("Destroying " + p.name + " as it is over the player cap");
                 Destroy(p.gameObject);
             }
@@ -287,4 +282,9 @@ public class GamePhaseManager : MonoBehaviour {
         for (int i = 0; i < players.Count; i++)
             players[i].movement.Die();
     }
+
+    private void SettleScore() {
+
+    }
+
 }

@@ -8,14 +8,7 @@ public class Teleporter : MonoBehaviour
 
     public Teleporter pair;
     public bool isPaired;
-
-    public bool portReady;
-
-    public Material portalMat; // Set in inspector
-    public Material colouredMat;
-    public Material voidMat; // Set in inspector
-    public Color colour;
-
+    
     private void Start()
     {
         // Get the Block this Teleporter is attached to
@@ -23,29 +16,33 @@ public class Teleporter : MonoBehaviour
 
         pair = null;
         isPaired = false;
-
-        portReady = true; // can use portal
-
         StartCoroutine(SetupOnPlacement());
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         // If player enters the trigger and the Teleporter has a pair
         // Teleport the player to the paired Teleporter
-        if (other.GetComponent<Player>() && pair && isPaired && portReady)
+        if (other.GetComponent<Player>() && pair && isPaired)
         {
-            other.transform.position = new Vector2(pair.transform.position.x, pair.transform.position.y); // Move player to connected Portal
-            StartCoroutine(DisablePairFor(1.0f)); // Disable portal pair for x time
+            Player player = other.GetComponent<Player>(); // Get Player
 
-            //if (Input.GetButtonDown(player.movement.inputVerticalAxisName)) // If Player presses their Jump key while touching Teleporter trigger
+            if (Input.GetButtonDown(player.movement.inputVerticalAxisName)) // If Player presses their Jump key while touching Teleporter trigger
+            {
+                // Prevent player from jumping or add "interact" button
+
+                // Teleport the Player to paired Teleporter
+                other.transform.position = pair.transform.position;
+            }
         }
     }
 
     private void searchForTeleporterPair()
     {
+        Teleporter[] candidates;
         // Get list of Teleporters in the level
-        Teleporter[] candidates = block.level.gameObject.GetComponentsInChildren<Teleporter>();
+        candidates = block.level.gameObject.GetComponentsInChildren<Teleporter>();
+        //candidates = FindObjectsOfType<Teleporter>();
 
         // If there are Teleporter objects
         if (candidates.Length > 0)
@@ -62,51 +59,22 @@ public class Teleporter : MonoBehaviour
                     other.isPaired = true;
                     // If pair is deleted then this is not paired
                     StartCoroutine(UnpairIfMissing());
-                    other.StartCoroutine(UnpairIfMissing());
 
-                    ColourPortals(); // Give portals colour to indicate which are connected
+                    // Create a new colour to distinguish paired Teleporters
+                    Material mat = new Material(Shader.Find("Specular"));
+                    Color colour = Random.ColorHSV();
+                    mat.color = colour;
+
+                    // Set the new colour
+                    Renderer thisPortal = GetComponent<Renderer>();
+                    Renderer otherPortal = other.GetComponent<Renderer>();
+                    thisPortal.material = mat;
+                    otherPortal.material = mat;
 
                     break;
                 }
             }
         }
-    }
-
-    private void ColourPortals()
-    {
-        // Create a new colour if n/a to distinguish paired Teleporters
-        if (!colouredMat)
-        {
-            // Generate random colour
-            colour = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-            colouredMat = new Material(portalMat); // New Material
-            colouredMat.color = colour; // Set Material Colour
-            pair.colouredMat = colouredMat; // Give this coloured Material to pair too
-
-            // Set the new colour
-            Renderer thisPortal = GetComponent<Renderer>();
-            Renderer otherPortal = pair.GetComponent<Renderer>();
-            thisPortal.material = colouredMat;
-            otherPortal.material = colouredMat;
-        }
-    }
-
-    IEnumerator DisablePairFor(float n)
-    {
-        portReady = false;
-        pair.portReady = false;
-
-        // disabled portal visual
-        GetComponent<Renderer>().material = voidMat;
-        pair.GetComponent<Renderer>().material = voidMat;
-
-        yield return new WaitForSeconds(n);
-
-        portReady = true;
-        pair.portReady = true;
-
-        GetComponent<Renderer>().material = colouredMat;
-        pair.GetComponent<Renderer>().material = colouredMat;
     }
 
     IEnumerator SetupOnPlacement()
@@ -118,12 +86,9 @@ public class Teleporter : MonoBehaviour
 
     IEnumerator UnpairIfMissing()
     {
-        // When pair is disconnected
+        // If pair is deleted then this is not paired
         yield return new WaitUntil(() => !pair);
         pair = null;
         isPaired = false;
-        GetComponent<Renderer>().material = voidMat;
-        // Search for new pair
-        searchForTeleporterPair();
     }
 }

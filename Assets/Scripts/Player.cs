@@ -11,14 +11,11 @@ public class Player : MonoBehaviour
     public bool isReady;
     public PlayerMovement movement { get; private set; }
 
-    public PlayerControlSchemes controls; // Set in inspector
-
     private void Awake()
     {
         score = 0;
         isReady = false;
         movement = GetComponent<PlayerMovement>();
-        controls = Resources.Load<PlayerControlSchemes>("PlayerControlSchemes");
     }
 
     public void Ready()
@@ -38,12 +35,6 @@ public class Player : MonoBehaviour
 
     public override string ToString() {
         return charName;
-    }
-    public void assignControls(int i)
-    {
-        Debug.Log(controls);
-        movement.inputHorizontalAxisName = controls.playerControlAxes[i, 0];
-        movement.inputVerticalAxisName = controls.playerControlAxes[i, 1];
     }
 
 }
