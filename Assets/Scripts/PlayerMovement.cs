@@ -488,10 +488,11 @@ public class PlayerMovement : MonoBehaviour {
 		slipNSliding = 0;
 	}
 
-	public void SpawnConfetti ()
+    public void SpawnConfetti()
     {
-		confettiParticleSystem.Play();
-    }
+        ParticleSystem deathConfetti = Instantiate(confettiParticleSystem, transform.position + Vector3.up * 10, confettiParticleSystem.transform.rotation);
+        deathConfetti.Play();
+	}
 
 	/*
 	//Respawn behaviour no longer necessary
