@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Teleporter : MonoBehaviour
 {
+
+    private static int index;
+
     public BlockBase block;
 
     public Teleporter pair;
@@ -67,6 +70,8 @@ public class Teleporter : MonoBehaviour
                     StartCoroutine(UnpairIfMissing());
                     other.StartCoroutine(UnpairIfMissing());
 
+                    index++;
+
                     ColourPortals(); // Give portals colour to indicate which are connected
 
                     break;
@@ -80,8 +85,9 @@ public class Teleporter : MonoBehaviour
         // Create a new colour if n/a to distinguish paired Teleporters
         if (colour != null)
         {
-            // Generate random colour
-            colour = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+            // Generate non-random colour
+            colour = Color.HSVToRGB(index * 0.2f, 1, 1);
+            Debug.Log (Color.HSVToRGB(index * 0.2f, 1, 1));
 
             ColourPortalParticleSystems();
 
