@@ -105,6 +105,47 @@ public class Teleporter : MonoBehaviour
         portalInwardParticleSystemMain2.startColor = colour;
     }
 
+    private void TogglePortalParticleSystem()
+    {
+        if (portReady == false || pair.portReady == false)
+        {
+            ParticleSystem.MainModule portalParticleSystemMain = portalParticleSystem.main;
+            ParticleSystem.MainModule portalInwardParticleSystemMain = portalInwardParticleSystem.main;
+
+            portalParticleSystemMain.loop = false;
+            portalInwardParticleSystemMain.loop = false;
+
+            ParticleSystem.MainModule portalParticleSystemMain2 = pair.portalParticleSystem.main;
+            ParticleSystem.MainModule portalInwardParticleSystemMain2 = pair.portalInwardParticleSystem.main;
+
+            portalParticleSystemMain2.loop = false;
+            portalInwardParticleSystemMain2.loop = false;
+        }
+
+        Invoke(nameof(TurnPortalParticleSystemBackOn), 0.6f);
+
+    }
+
+    private void TurnPortalParticleSystemBackOn()
+    {
+        ParticleSystem.MainModule portalParticleSystemMain = portalParticleSystem.main;
+        ParticleSystem.MainModule portalInwardParticleSystemMain = portalInwardParticleSystem.main;
+
+        portalParticleSystemMain.loop = true;
+        portalInwardParticleSystemMain.loop = true;
+
+        ParticleSystem.MainModule portalParticleSystemMain2 = pair.portalParticleSystem.main;
+        ParticleSystem.MainModule portalInwardParticleSystemMain2 = pair.portalInwardParticleSystem.main;
+
+        portalParticleSystemMain2.loop = true;
+        portalInwardParticleSystemMain2.loop = true;
+
+        portalParticleSystem.Play();
+        portalInwardParticleSystem.Play();
+        pair.portalParticleSystem.Play();
+        pair.portalInwardParticleSystem.Play();
+    }
+
     public void SyncCoroutine()
     {
         StartCoroutine(DeleteIfLostPair());
@@ -114,6 +155,7 @@ public class Teleporter : MonoBehaviour
     {
         portReady = false;
         pair.portReady = false;
+        TogglePortalParticleSystem();
 
         // disabled portal visual
         GetComponent<Renderer>().material = voidMat;
