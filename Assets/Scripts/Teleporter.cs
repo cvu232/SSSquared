@@ -122,7 +122,7 @@ public class Teleporter : MonoBehaviour
             portalInwardParticleSystemMain2.loop = false;
         }
 
-        Invoke(nameof(TurnPortalParticleSystemBackOn), 0.8f);
+        Invoke(nameof(TurnPortalParticleSystemBackOn), 0.5f);
 
     }
 
