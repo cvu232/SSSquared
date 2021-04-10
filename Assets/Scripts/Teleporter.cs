@@ -16,6 +16,9 @@ public class Teleporter : MonoBehaviour
     public Material voidMat; // Set in inspector
     public Color colour;
 
+    public ParticleSystem portalParticleSystem;
+    public ParticleSystem portalInwardParticleSystem;
+
     private void Start()
     {
         // Get the Block this Teleporter is attached to
@@ -79,6 +82,9 @@ public class Teleporter : MonoBehaviour
         {
             // Generate random colour
             colour = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+
+            ColourPortalParticleSystems();
+
             colouredMat = new Material(portalMat); // New Material
             colouredMat.color = colour; // Set Material Colour
             pair.colouredMat = colouredMat; // Give this coloured Material to pair too
@@ -89,6 +95,23 @@ public class Teleporter : MonoBehaviour
             thisPortal.material = colouredMat;
             otherPortal.material = colouredMat;
         }
+    }
+
+    private void ColourPortalParticleSystems() //method for coloring the portals
+    {
+        ParticleSystem.MainModule portalParticleSystemMain = portalParticleSystem.main;
+        ParticleSystem.MainModule portalInwardParticleSystemMain = portalInwardParticleSystem.main;
+
+        portalParticleSystemMain.startColor = colour;
+        portalInwardParticleSystemMain.startColor = colour;
+
+        ParticleSystem.MainModule portalParticleSystemMain2 = pair.portalParticleSystem.main;
+        ParticleSystem.MainModule portalInwardParticleSystemMain2 = pair.portalInwardParticleSystem.main;
+
+        portalParticleSystemMain2.startColor = colour;
+        portalInwardParticleSystemMain2.startColor = colour;
+
+
     }
 
     IEnumerator DisablePairFor(float n)
