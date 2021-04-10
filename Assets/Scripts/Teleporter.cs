@@ -14,9 +14,6 @@ public class Teleporter : MonoBehaviour
 
     public bool portReady;
 
-    public Material portalMat; // Set in inspector
-    public Material colouredMat;
-    public Material voidMat; // Set in inspector
     public Color colour;
 
     public ParticleSystem portalParticleSystem;
@@ -90,21 +87,6 @@ public class Teleporter : MonoBehaviour
             Debug.Log (Color.HSVToRGB(index * 0.2f, 1, 1));
 
             ColourPortalParticleSystems();
-
-
-            /* Kenny's previous material code
-
-            colouredMat = new Material(portalMat); // New Material
-            colouredMat.color = colour; // Set Material Colour
-            pair.colouredMat = colouredMat; // Give this coloured Material to pair too
-
-            // Set the new colour
-            Renderer thisPortal = GetComponent<Renderer>();
-            Renderer otherPortal = pair.GetComponent<Renderer>();
-            thisPortal.material = colouredMat;
-            otherPortal.material = colouredMat;
-
-            */
         }
     }
 
@@ -130,23 +112,23 @@ public class Teleporter : MonoBehaviour
         portReady = false;
         pair.portReady = false;
 
-        // disabled portal visual
-        GetComponent<Renderer>().material = voidMat;
-        pair.GetComponent<Renderer>().material = voidMat;
-
         yield return new WaitForSeconds(n);
 
         portReady = true;
         pair.portReady = true;
-
-        GetComponent<Renderer>().material = colouredMat;
-        pair.GetComponent<Renderer>().material = colouredMat;
     }
 
     IEnumerator SetupOnPlacement()
     {
         // Wait until placed before setting the teleporter
         yield return new WaitUntil(()=>block.isPlaced);
+
+        // If player is trying to exceed 6 pairs of Teleporters
+        if (index > 5)
+        {
+            block.delete();
+        }
+
         searchForTeleporterPair();
     }
 
@@ -156,7 +138,7 @@ public class Teleporter : MonoBehaviour
         yield return new WaitUntil(() => !pair);
         pair = null;
         isPaired = false;
-        GetComponent<Renderer>().material = voidMat;
+        index--;
         // Search for new pair
         searchForTeleporterPair();
     }

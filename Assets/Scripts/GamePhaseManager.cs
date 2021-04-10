@@ -43,6 +43,8 @@ public class GamePhaseManager : MonoBehaviour {
 
     public BlockBase[] blocks;
 
+    public PlayerProfile playerProfile;
+
     public int currentLevel;
     public int currentBuilder;
 
@@ -90,6 +92,8 @@ public class GamePhaseManager : MonoBehaviour {
         currentGamePhase = Phases.buildPhase;
         currentLevel = 0;
         currentBuilder = 0;
+
+        playerProfile = FindObjectOfType<PlayerProfile>();
 
         //Placeholder players
         players = new List<Player>();
@@ -159,7 +163,8 @@ public class GamePhaseManager : MonoBehaviour {
             //loop to start if index gets out of bounds
             if (currentBuilder >= players.Count)
                 currentBuilder = 0;
-            levels[currentBuilder].builderIndex = currentBuilder;
+            playerProfile.activePlayer = levels[currentBuilder].builderIndex = currentBuilder;
+            
 
             //Initialize current player's build phase
 
@@ -211,7 +216,7 @@ public class GamePhaseManager : MonoBehaviour {
             //Move camera and all players to current level's start area
             //Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, currentLevel * emptyLevelSpacing, Camera.main.transform.position.z);
             MovePlayersTo(levels[currentLevel].spawnPoint);
-
+            playerProfile.activePlayer = levels[currentLevel].builderIndex;
 
             //Wait for all players to be ready
             UIManager.instance.BannerUIText(
