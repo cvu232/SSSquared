@@ -21,6 +21,7 @@ public class Teleporter : MonoBehaviour
 
     public ParticleSystem portalParticleSystem;
     public ParticleSystem portalInwardParticleSystem;
+    public ParticleSystem portalOutwardParticleSystem;
 
     private void Start()
     {
@@ -94,15 +95,19 @@ public class Teleporter : MonoBehaviour
     {
         ParticleSystem.MainModule portalParticleSystemMain = portalParticleSystem.main;
         ParticleSystem.MainModule portalInwardParticleSystemMain = portalInwardParticleSystem.main;
+        ParticleSystem.MainModule portalOutwardParticleSystemMain = portalOutwardParticleSystem.main;
 
         portalParticleSystemMain.startColor = colour;
         portalInwardParticleSystemMain.startColor = colour;
+        portalOutwardParticleSystemMain.startColor = colour;
 
         ParticleSystem.MainModule portalParticleSystemMain2 = pair.portalParticleSystem.main;
         ParticleSystem.MainModule portalInwardParticleSystemMain2 = pair.portalInwardParticleSystem.main;
+        ParticleSystem.MainModule portalOutwardParticleSystemMain2 = pair.portalOutwardParticleSystem.main;
 
         portalParticleSystemMain2.startColor = colour;
         portalInwardParticleSystemMain2.startColor = colour;
+        portalOutwardParticleSystemMain2.startColor = colour;
     }
 
     private void TogglePortalParticleSystem()
@@ -120,6 +125,9 @@ public class Teleporter : MonoBehaviour
 
             portalParticleSystemMain2.loop = false;
             portalInwardParticleSystemMain2.loop = false;
+
+            portalOutwardParticleSystem.Play();
+            pair.portalOutwardParticleSystem.Play();
         }
 
         Invoke(nameof(TurnPortalParticleSystemBackOn), 0.5f);
