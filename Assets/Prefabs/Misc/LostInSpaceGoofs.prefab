@@ -96,7 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalMultiMin: 3
   globalMultiMax: 6
-  orbitRadiusMin: 0.5
+  orbitRadiusMin: 1.5
   orbitRadiusMax: 4
   rotSpeedMin: 2
   rotSpeedMax: 6
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalMultiMin: 3
   globalMultiMax: 6
-  orbitRadiusMin: 0.5
+  orbitRadiusMin: 1.5
   orbitRadiusMax: 4
   rotSpeedMin: 2
   rotSpeedMax: 6
@@ -298,7 +298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalMultiMin: 3
   globalMultiMax: 6
-  orbitRadiusMin: 0.5
+  orbitRadiusMin: 1.5
   orbitRadiusMax: 4
   rotSpeedMin: 2
   rotSpeedMax: 6
@@ -399,7 +399,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalMultiMin: 3
   globalMultiMax: 6
-  orbitRadiusMin: 0.5
+  orbitRadiusMin: 1.5
   orbitRadiusMax: 4
   rotSpeedMin: 2
   rotSpeedMax: 6
@@ -500,7 +500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalMultiMin: 3
   globalMultiMax: 6
-  orbitRadiusMin: 0.5
+  orbitRadiusMin: 1.5
   orbitRadiusMax: 4
   rotSpeedMin: 2
   rotSpeedMax: 6
@@ -601,7 +601,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalMultiMin: 3
   globalMultiMax: 6
-  orbitRadiusMin: 0.5
+  orbitRadiusMin: 1.5
   orbitRadiusMax: 4
   rotSpeedMin: 2
   rotSpeedMax: 6
@@ -702,7 +702,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalMultiMin: 3
   globalMultiMax: 6
-  orbitRadiusMin: 0.5
+  orbitRadiusMin: 1.5
   orbitRadiusMax: 4
   rotSpeedMin: 2
   rotSpeedMax: 6
@@ -848,7 +848,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalMultiMin: 3
   globalMultiMax: 6
-  orbitRadiusMin: 0.5
+  orbitRadiusMin: 1.5
   orbitRadiusMax: 4
   rotSpeedMin: 2
   rotSpeedMax: 6
@@ -949,7 +949,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalMultiMin: 3
   globalMultiMax: 6
-  orbitRadiusMin: 0.5
+  orbitRadiusMin: 1.5
   orbitRadiusMax: 4
   rotSpeedMin: 2
   rotSpeedMax: 6
@@ -1050,7 +1050,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalMultiMin: 3
   globalMultiMax: 6
-  orbitRadiusMin: 0.5
+  orbitRadiusMin: 1.5
   orbitRadiusMax: 4
   rotSpeedMin: 2
   rotSpeedMax: 6
@@ -1151,7 +1151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalMultiMin: 3
   globalMultiMax: 6
-  orbitRadiusMin: 0.5
+  orbitRadiusMin: 1.5
   orbitRadiusMax: 4
   rotSpeedMin: 2
   rotSpeedMax: 6
@@ -1252,7 +1252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalMultiMin: 3
   globalMultiMax: 6
-  orbitRadiusMin: 0.5
+  orbitRadiusMin: 1.5
   orbitRadiusMax: 4
   rotSpeedMin: 2
   rotSpeedMax: 6
@@ -1353,7 +1353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalMultiMin: 3
   globalMultiMax: 6
-  orbitRadiusMin: 0.5
+  orbitRadiusMin: 1.5
   orbitRadiusMax: 4
   rotSpeedMin: 2
   rotSpeedMax: 6
@@ -1454,7 +1454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalMultiMin: 3
   globalMultiMax: 6
-  orbitRadiusMin: 1
+  orbitRadiusMin: 2
   orbitRadiusMax: 2.5
   rotSpeedMin: 2
   rotSpeedMax: 6
@@ -1555,7 +1555,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalMultiMin: 2
   globalMultiMax: 5
-  orbitRadiusMin: 1
+  orbitRadiusMin: 2
   orbitRadiusMax: 2.5
   rotSpeedMin: 2
   rotSpeedMax: 6
@@ -1656,7 +1656,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalMultiMin: 2
   globalMultiMax: 5
-  orbitRadiusMin: 1
+  orbitRadiusMin: 2
   orbitRadiusMax: 2.5
   rotSpeedMin: 2
   rotSpeedMax: 6
@@ -1757,7 +1757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalMultiMin: 2
   globalMultiMax: 5
-  orbitRadiusMin: 1
+  orbitRadiusMin: 2
   orbitRadiusMax: 2.5
   rotSpeedMin: 2
   rotSpeedMax: 6
@@ -1858,7 +1858,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalMultiMin: 3
   globalMultiMax: 6
-  orbitRadiusMin: 0.5
+  orbitRadiusMin: 1.5
   orbitRadiusMax: 4
   rotSpeedMin: 2
   rotSpeedMax: 6
@@ -1959,7 +1959,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   globalMultiMin: 3
   globalMultiMax: 6
-  orbitRadiusMin: 0.5
+  orbitRadiusMin: 1.5
   orbitRadiusMax: 4
   rotSpeedMin: 2
   rotSpeedMax: 6
