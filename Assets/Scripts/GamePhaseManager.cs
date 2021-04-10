@@ -43,6 +43,7 @@ public class GamePhaseManager : MonoBehaviour {
 
     public BlockBase[] blocks;
 
+    public PlayerProfile playerProfile;
     public int currentLevel;
     public int currentBuilder;
 
@@ -92,6 +93,8 @@ public class GamePhaseManager : MonoBehaviour {
         currentBuilder = 0;
 
         //Placeholder players
+        playerProfile = FindObjectOfType<PlayerProfile>();
+
         players = new List<Player>();
         foreach (Player p in FindObjectsOfType<Player>()) {
             Debug.Log("Found " + p.name);
@@ -160,6 +163,7 @@ public class GamePhaseManager : MonoBehaviour {
             if (currentBuilder >= players.Count)
                 currentBuilder = 0;
             levels[currentBuilder].builderIndex = currentBuilder;
+            playerProfile.activePlayer = levels[currentBuilder].builderIndex = currentBuilder;
 
             //Initialize current player's build phase
 
@@ -210,8 +214,9 @@ public class GamePhaseManager : MonoBehaviour {
         for (currentLevel = 0; currentLevel < levels.Count; currentLevel++) {
             //Move camera and all players to current level's start area
             //Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, currentLevel * emptyLevelSpacing, Camera.main.transform.position.z);
-            MovePlayersTo(levels[currentLevel].spawnPoint);
 
+            MovePlayersTo(levels[currentLevel].spawnPoint);
+            playerProfile.activePlayer = levels[currentLevel].builderIndex;
 
             //Wait for all players to be ready
             UIManager.instance.BannerUIText(

@@ -13,11 +13,10 @@ public class Teleporter : MonoBehaviour
     public bool isPaired;
 
     public bool portReady;
-
-    public Material portalMat; // Set in inspector
-    public Material colouredMat;
-    public Material voidMat; // Set in inspector
     public Color colour;
+
+    private AudioSource audioSource;
+    public AudioClip portalSFX;
 
     public ParticleSystem portalParticleSystem;
     public ParticleSystem portalInwardParticleSystem;
@@ -32,6 +31,8 @@ public class Teleporter : MonoBehaviour
         isPaired = false;
 
         portReady = true; // can use portal
+
+        audioSource = GetComponent<AudioSource>();
 
         StartCoroutine(SetupOnPlacement());
     }
@@ -51,7 +52,7 @@ public class Teleporter : MonoBehaviour
 
     private void searchForTeleporterPair()
     {
-        // Get list of Teleporters in the level
+        // Get array of Teleporters in the level
         Teleporter[] candidates = block.level.gameObject.GetComponentsInChildren<Teleporter>();
 
         // If there are Teleporter objects
@@ -161,21 +162,15 @@ public class Teleporter : MonoBehaviour
 
     IEnumerator DisablePairFor(float n)
     {
+        audioSource.PlayOneShot(portalSFX); // play portal sfx
         portReady = false;
         pair.portReady = false;
         TogglePortalParticleSystem();
-
-        // disabled portal visual
-        GetComponent<Renderer>().material = voidMat;
-        pair.GetComponent<Renderer>().material = voidMat;
 
         yield return new WaitForSeconds(n);
 
         portReady = true;
         pair.portReady = true;
-
-        GetComponent<Renderer>().material = colouredMat;
-        pair.GetComponent<Renderer>().material = colouredMat;
     }
 
     IEnumerator SetupOnPlacement()
@@ -191,7 +186,6 @@ public class Teleporter : MonoBehaviour
         yield return new WaitUntil(() => !pair);
         pair = null;
         isPaired = false;
-        GetComponent<Renderer>().material = voidMat;
         // Search for new pair
         searchForTeleporterPair();
     }
