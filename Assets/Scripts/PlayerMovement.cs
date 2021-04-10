@@ -50,6 +50,7 @@ public class PlayerMovement : MonoBehaviour {
 	public ParticleSystem confettiParticleSystem;
 	public ParticleSystem respawnParticleSystem;
 	public ParticleSystem dustParticleSystem;
+	public ParticleSystem impactConfettiParticleSystem;
 
 
 
@@ -497,6 +498,7 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	public void Die () {
+		SpawnImpactConfetti();
 		if (GamePhaseManager.instance && GamePhaseManager.instance.levels != null && GamePhaseManager.instance.levels.Count > 0 && GamePhaseManager.instance.levels[GamePhaseManager.instance.currentLevel])
 		{
 			transform.position = GamePhaseManager.instance.levels[GamePhaseManager.instance.currentLevel].spawnPoint.position;
@@ -509,6 +511,12 @@ public class PlayerMovement : MonoBehaviour {
     {
         ParticleSystem deathConfetti = Instantiate(confettiParticleSystem, transform.position + Vector3.up * 10, confettiParticleSystem.transform.rotation);
         deathConfetti.Play();
+	}
+
+	public void SpawnImpactConfetti()
+	{
+		ParticleSystem impactDeathConfetti = Instantiate(impactConfettiParticleSystem, transform.position, impactConfettiParticleSystem.transform.rotation);
+		impactDeathConfetti.Play();
 	}
 
 	public void SpawnRespawnParticles()
