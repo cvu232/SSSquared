@@ -87,28 +87,7 @@ public class Teleporter : MonoBehaviour
         colour = Color.HSVToRGB(index * 0.2f, 1, 1);
         pair.colour = colour;
         Debug.Log(Color.HSVToRGB(index * 0.2f, 1, 1));
-
-<<<<<<< Updated upstream
-            ColourPortalParticleSystems();
-
-
-            /* Kenny's previous material code
-
-            colouredMat = new Material(portalMat); // New Material
-            colouredMat.color = colour; // Set Material Colour
-            pair.colouredMat = colouredMat; // Give this coloured Material to pair too
-
-            // Set the new colour
-            Renderer thisPortal = GetComponent<Renderer>();
-            Renderer otherPortal = pair.GetComponent<Renderer>();
-            thisPortal.material = colouredMat;
-            otherPortal.material = colouredMat;
-
-            */
-        }
-=======
         ColourPortalParticleSystems();
->>>>>>> Stashed changes
     }
 
     private void ColourPortalParticleSystems() //method for coloring the portals
@@ -124,8 +103,6 @@ public class Teleporter : MonoBehaviour
 
         portalParticleSystemMain2.startColor = colour;
         portalInwardParticleSystemMain2.startColor = colour;
-
-
     }
 
     public void SyncCoroutine()
@@ -164,10 +141,7 @@ public class Teleporter : MonoBehaviour
         yield return new WaitUntil(() => !pair);
         pair = null;
         isPaired = false;
-<<<<<<< Updated upstream
         GetComponent<Renderer>().material = voidMat;
-=======
->>>>>>> Stashed changes
         // Search for new pair
         searchForTeleporterPair();
     }
