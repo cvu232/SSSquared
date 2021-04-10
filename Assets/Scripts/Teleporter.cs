@@ -78,12 +78,15 @@ public class Teleporter : MonoBehaviour
     private void ColourPortals()
     {
         // Create a new colour if n/a to distinguish paired Teleporters
-        if (!colouredMat)
+        if (colour != null)
         {
             // Generate random colour
             colour = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
 
             ColourPortalParticleSystems();
+
+
+            /* Kenny's previous material code
 
             colouredMat = new Material(portalMat); // New Material
             colouredMat.color = colour; // Set Material Colour
@@ -94,6 +97,8 @@ public class Teleporter : MonoBehaviour
             Renderer otherPortal = pair.GetComponent<Renderer>();
             thisPortal.material = colouredMat;
             otherPortal.material = colouredMat;
+
+            */
         }
     }
 
