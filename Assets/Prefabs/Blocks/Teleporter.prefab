@@ -288,8 +288,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 10
-      minScalar: 8
+      scalar: 14
+      minScalar: 10
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -403,9 +403,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     startSize:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0.5
-      minScalar: 1
+      minMaxState: 3
+      scalar: 0.9
+      minScalar: 0.7
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -456,7 +456,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -509,7 +509,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -2318,7 +2318,7 @@ ParticleSystem:
     y:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -5
+      scalar: 0
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -4938,12 +4938,17 @@ PrefabInstance:
     - target: {fileID: 5556289528061135864, guid: 5f65e54d68e3ea845a18980a390e0da9,
         type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.4
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 5556289528061135864, guid: 5f65e54d68e3ea845a18980a390e0da9,
         type: 3}
       propertyPath: InitialModule.startSpeed.scalar
-      value: -5
+      value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556289528061135864, guid: 5f65e54d68e3ea845a18980a390e0da9,
+        type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5556289528061135864, guid: 5f65e54d68e3ea845a18980a390e0da9,
         type: 3}
@@ -4957,8 +4962,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5556289528061135864, guid: 5f65e54d68e3ea845a18980a390e0da9,
         type: 3}
+      propertyPath: InitialModule.startRotation.scalar
+      value: 6.283185
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556289528061135864, guid: 5f65e54d68e3ea845a18980a390e0da9,
+        type: 3}
       propertyPath: InitialModule.startSpeed.minScalar
-      value: -6
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 5556289528061135864, guid: 5f65e54d68e3ea845a18980a390e0da9,
         type: 3}
@@ -4974,6 +4984,36 @@ PrefabInstance:
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556289528061135864, guid: 5f65e54d68e3ea845a18980a390e0da9,
+        type: 3}
+      propertyPath: InitialModule.startSize.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556289528061135864, guid: 5f65e54d68e3ea845a18980a390e0da9,
+        type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556289528061135864, guid: 5f65e54d68e3ea845a18980a390e0da9,
+        type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556289528061135864, guid: 5f65e54d68e3ea845a18980a390e0da9,
+        type: 3}
+      propertyPath: InitialModule.startRotation.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556289528061135864, guid: 5f65e54d68e3ea845a18980a390e0da9,
+        type: 3}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556289528061135864, guid: 5f65e54d68e3ea845a18980a390e0da9,
+        type: 3}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5556289528061135864, guid: 5f65e54d68e3ea845a18980a390e0da9,
         type: 3}
