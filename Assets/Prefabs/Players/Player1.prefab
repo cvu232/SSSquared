@@ -495,7 +495,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8777360032620493131}
   serializedVersion: 6
-  lengthInSec: 0.35
+  lengthInSec: 0.3
   simulationSpeed: 2
   stopAction: 0
   cullingMode: 0
@@ -1122,7 +1122,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 0.25, y: 0, z: 0}
+    m_Scale: {x: 0.3, y: 0, z: 0}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -1320,7 +1320,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 15
+      scalar: 20
       minScalar: 10
       maxCurve:
         serializedVersion: 2

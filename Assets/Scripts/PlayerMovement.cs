@@ -43,6 +43,7 @@ public class PlayerMovement : MonoBehaviour {
 	private float charZRot;
 	private float prevVerticalAxisValue;
 	private bool onJump;
+	private bool _isGrounded;
 	private int slipNSliding;
 	private int lastRigidbodyVelOrientation;
 
@@ -200,8 +201,10 @@ public class PlayerMovement : MonoBehaviour {
 			);
 
 		//If the player changes the direction they're facing, play a footstep sound effect
-		if (lastRigidbodyVelOrientation != rigidbodyVelOrientation && isGrounded && !isDashing && !isBracing)
+		if (lastRigidbodyVelOrientation != rigidbodyVelOrientation && isGrounded && !isDashing && !isBracing) {
 			audio.playRandomStep(steppingOn);
+			SpawnDustParticles();
+		}
 		lastRigidbodyVelOrientation = rigidbodyVelOrientation;
 
 		//Handle horizontal movement (but not if the player is a scout and they are underwater), including
@@ -277,6 +280,14 @@ public class PlayerMovement : MonoBehaviour {
 			lastYVel = rigidbody.velocity.y;
 			rigidbody.velocity = vel;
 		}
+
+		if (isGrounded && !_isGrounded)
+        {
+			SpawnDustParticles();
+		}
+
+
+		_isGrounded = isGrounded;
 
 		//QualitySettings.vSyncCount = 0;
 		//Application.targetFrameRate = 144;
