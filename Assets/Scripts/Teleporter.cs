@@ -67,8 +67,8 @@ public class Teleporter : MonoBehaviour
                     other.pair = this;
                     other.isPaired = true;
                     // If pair is deleted then this is not paired
-                    StartCoroutine(UnpairIfMissing());
-                    other.StartCoroutine(UnpairIfMissing());
+                    StartCoroutine(DeleteIfLostPair());
+                    other.SyncCoroutine();
 
                     index++;
 
@@ -83,12 +83,12 @@ public class Teleporter : MonoBehaviour
     private void ColourPortals()
     {
         // Create a new colour if n/a to distinguish paired Teleporters
-        if (colour != null)
-        {
-            // Generate non-random colour
-            colour = Color.HSVToRGB(index * 0.2f, 1, 1);
-            Debug.Log (Color.HSVToRGB(index * 0.2f, 1, 1));
+        // Generate non-random colour
+        colour = Color.HSVToRGB(index * 0.2f, 1, 1);
+        pair.colour = colour;
+        Debug.Log(Color.HSVToRGB(index * 0.2f, 1, 1));
 
+<<<<<<< Updated upstream
             ColourPortalParticleSystems();
 
 
@@ -106,6 +106,9 @@ public class Teleporter : MonoBehaviour
 
             */
         }
+=======
+        ColourPortalParticleSystems();
+>>>>>>> Stashed changes
     }
 
     private void ColourPortalParticleSystems() //method for coloring the portals
@@ -123,6 +126,11 @@ public class Teleporter : MonoBehaviour
         portalInwardParticleSystemMain2.startColor = colour;
 
 
+    }
+
+    public void SyncCoroutine()
+    {
+        StartCoroutine(DeleteIfLostPair());
     }
 
     IEnumerator DisablePairFor(float n)
@@ -150,14 +158,26 @@ public class Teleporter : MonoBehaviour
         searchForTeleporterPair();
     }
 
-    IEnumerator UnpairIfMissing()
+    IEnumerator UnpairIfLostPair()
     {
         // When pair is disconnected
         yield return new WaitUntil(() => !pair);
         pair = null;
         isPaired = false;
+<<<<<<< Updated upstream
         GetComponent<Renderer>().material = voidMat;
+=======
+>>>>>>> Stashed changes
         // Search for new pair
         searchForTeleporterPair();
+    }
+
+    IEnumerator DeleteIfLostPair()
+    {
+        yield return new WaitUntil(() => !pair);
+        pair = null;
+        isPaired = false;
+        index--;
+        block.delete();
     }
 }
