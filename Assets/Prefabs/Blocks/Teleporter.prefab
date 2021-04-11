@@ -115,7 +115,7 @@ MonoBehaviour:
   isPaired: 0
   portReady: 0
   colour: {r: 0, g: 0, b: 0, a: 0}
-  portalSFX: {fileID: 8300000, guid: 4e9d3577882ccf74aad161180c17668f, type: 3}
+  portalSFX: {fileID: 8300000, guid: 6304a080da742924cb9584a7bd8a2cc3, type: 3}
   portalParticleSystem: {fileID: 5416953669100651012}
   portalInwardParticleSystem: {fileID: 8368494678481443516}
   portalOutwardParticleSystem: {fileID: 938540954118758282}

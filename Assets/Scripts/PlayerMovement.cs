@@ -59,6 +59,7 @@ public class PlayerMovement : MonoBehaviour {
 	public AudioClip fallDeathSFX;
 	public AudioClip shreddedSFX;
 	public AudioClip jumpSFX;
+	public AudioClip landingSFX;
 
 	[Header("General")]
 	[Tooltip(
@@ -304,8 +305,9 @@ public class PlayerMovement : MonoBehaviour {
 			rigidbody.velocity = vel;
 		}
 
-		if (isGrounded && !_isGrounded)
+		if (isGrounded && !_isGrounded) // player landing event
         {
+			// AudioManager.instance.PlayClipAt(landingSFX, transform.position); sounds wonky, not needed
 			SpawnDustParticles();
 		}
 
@@ -359,7 +361,7 @@ public class PlayerMovement : MonoBehaviour {
 		if (transform.position.y < currentLevel.transform.position.y + currentLevel.killHeight)
         {
 			SpawnConfetti();
-			AudioManager.instance.PlayClipAt(fallDeathSFX, transform.position);
+			// AudioManager.instance.PlayClipAt(fallDeathSFX, transform.position); moved death sound to die
 			Die();			
 		}
 
@@ -522,6 +524,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	public void Die () {
 		restartHoldTimer = 0;
+		AudioManager.instance.PlayClipAt(shreddedSFX, transform.position);
 		SpawnImpactConfetti();
 		if (GamePhaseManager.instance && GamePhaseManager.instance.levels != null && GamePhaseManager.instance.levels.Count > 0 && GamePhaseManager.instance.levels[GamePhaseManager.instance.currentLevel])
 		{
@@ -618,7 +621,7 @@ public class PlayerMovement : MonoBehaviour {
 
 		//If this is a hazard, respawn the player and cancel method call
 		if (collision.gameObject.tag == "Hazard") {
-			AudioManager.instance.PlayClipAt(shreddedSFX, transform.position);
+			// AudioManager.instance.PlayClipAt(shreddedSFX, transform.position); moved shredded sound to die
 			Die();
 			return;
 		}
