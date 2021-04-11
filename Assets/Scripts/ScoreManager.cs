@@ -76,7 +76,7 @@ public class ScoreManager : MonoBehaviour {
             UIManager.instance.BannerUIText(
                     string.Format("{0}-way tie!", winners.Count));
         } else if (winners.Count == 1)
-            UIManager.instance.BannerUIText(string.Format("{0} wins!", winners[0].charName));
+            UIManager.instance.BannerUIText(string.Format("{0} wins!", winners[0]));
 
     }
 

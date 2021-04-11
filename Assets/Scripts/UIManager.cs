@@ -10,11 +10,11 @@ public class UIManager : MonoBehaviour {
     [Header("Pause Menu Parameters")]
     public static readonly float runningTimeScale = 1.5f;
     public GameObject PauseScreen;
-    public AudioClip pauseSFX; // Set in Inspector
     public bool isPaused;
 
+
     //Panels
-    public BuilderController uiBuilder;
+    public BuilderController uiBuildBar;
     public GameObject uiScore;
     public GameObject uiBanner;
     public GameObject uiTimer;
@@ -24,10 +24,7 @@ public class UIManager : MonoBehaviour {
     private TextMeshProUGUI uiTimerText;
 
     public void Awake() {
-        if (instance != null && instance != this)
-            Destroy(this);
-        else
-            instance = this;
+        instance = this;
 
         PauseScreen.SetActive(false);
         isPaused = false;
@@ -53,14 +50,12 @@ public class UIManager : MonoBehaviour {
     public void OpenPauseMenu() {
         isPaused = true; // pause
         Time.timeScale = 0;
-        AudioManager.instance.audioSource.PlayOneShot(pauseSFX);
         PauseScreen.SetActive(true);
     }
 
     public void ClosePauseMenu() {
         isPaused = false; // unpause
         Time.timeScale = runningTimeScale;
-        AudioManager.instance.audioSource.PlayOneShot(pauseSFX);
         PauseScreen.SetActive(false);
     }
 
@@ -87,4 +82,5 @@ public class UIManager : MonoBehaviour {
     public void TimerUIText(string s) {
         uiTimerText.text = s;
     }
+
 }

@@ -50,8 +50,12 @@ public class GamePhaseManager : MonoBehaviour {
     {
         if (instance != null && instance != this)
             Destroy(this);
-        else
+        else {
+
             instance = this;
+
+        }
+
     }
 
     private void Start() {
@@ -73,7 +77,7 @@ public class GamePhaseManager : MonoBehaviour {
         Physics2D.queriesStartInColliders = true;
 
 
-        UIManager.instance.uiBuilder.Initialize();
+        UIManager.instance.uiBuildBar.Initial();
 
         levelsContainer = GameObject.Find("LevelsCONTAINER");
         playersContainer = GameObject.Find("PlayersCONTAINER");
@@ -169,7 +173,7 @@ public class GamePhaseManager : MonoBehaviour {
             //Set UI to indicate current builder player
             UIManager.instance.BannerUIText(
                 string.Format("Player {0} is building Level {1}", currentBuilder + 1, currentLevel + 1));
-            UIManager.instance.uiBuilder.Activate(); // Enable builder's canvas
+            UIManager.instance.uiBuildBar.Activate(); // Enable builder's canvas
             UIManager.instance.EnableTimerUI(true);
             currentPhaseTimer = buildPhaseDuration; // Start build timer
 
@@ -177,7 +181,7 @@ public class GamePhaseManager : MonoBehaviour {
             yield return new WaitUntil(() => currentPhaseTimer <= 0.001f); // Wait until building finishes
             currentPhaseTimer = 0;
             //End current player's build phase
-            UIManager.instance.uiBuilder.Deactivate();
+            UIManager.instance.uiBuildBar.Deactivate();
 
             //Acknowledge next player to build or build phase is complete
             if (currentLevel < levels.Count - 1)

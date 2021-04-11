@@ -12,8 +12,9 @@ public class Global : MonoBehaviour
         if (instance != null && instance != this)
             Destroy(this);
         else
+        {
             instance = this;
-        DontDestroyOnLoad(this);
+        }
     }
 
     private void Update()

@@ -18,9 +18,6 @@ public class BuildableObject : MonoBehaviour
     public Material transparentRedMaterial; // Material to indicate encroachment with other block
     public Vector3 pos;
 
-    public AudioClip createBlockSFX;
-    public AudioClip destroyBlockSFX;
-
     private int inColl;
     public Level level { get; private set; }
 
@@ -31,7 +28,7 @@ public class BuildableObject : MonoBehaviour
         inBadSpace = false;
         buildReady = true;
         isPlaced = false; // additional checks
-        InitializeEffect();
+        InitiatingEffect();
     }
 
     public void Update() {
@@ -59,9 +56,8 @@ public class BuildableObject : MonoBehaviour
         }
     }
 
-    public void place(Level level) // Place the block in the Level
+    public void place(Level level)
     {
-        AudioManager.instance.audioSource.PlayOneShot(createBlockSFX);
         buildReady = false;
         isPlaced = true;
         this.level = level;
@@ -69,11 +65,18 @@ public class BuildableObject : MonoBehaviour
         EnableEffect();
     }
 
-    private void InitializeEffect()
+    private void InitiatingEffect()
     {
         // Get the GameObject with the Block's Effect
-        if (effect = transform.GetComponentInChildren<ObjectEffect>()) // Should be in the first child
-            effect.enabled = false;
+        if (transform.GetComponentInChildren<ObjectEffect>()) // Should be in the first child
+        {
+            effect = transform.GetComponentInChildren<ObjectEffect>();
+            if (effect)
+                effect.enabled = false;
+        }
+        else
+            effect = null;
+            
     }
     
     public void EnableEffect()
@@ -82,10 +85,9 @@ public class BuildableObject : MonoBehaviour
             effect.enabled = true;
     }
 
-    // Destroy the Block
+    // delete the game object
     public void delete()
     {
-        AudioManager.instance.audioSource.PlayOneShot(destroyBlockSFX);
         Destroy(gameObject);
     }
 
