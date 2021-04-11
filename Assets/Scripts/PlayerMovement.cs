@@ -24,6 +24,7 @@ public enum Characters {
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(PlayerAudio))]
+[RequireComponent(typeof(AudioSource))]
 public class PlayerMovement : MonoBehaviour {
 
 	new private Rigidbody2D rigidbody;
@@ -48,12 +49,16 @@ public class PlayerMovement : MonoBehaviour {
 	private int slipNSliding;
 	private int lastRigidbodyVelOrientation;
 
+	[Header("Particle Systems")]
 	public ParticleSystem confettiParticleSystem;
 	public ParticleSystem respawnParticleSystem;
 	public ParticleSystem dustParticleSystem;
 	public ParticleSystem impactConfettiParticleSystem;
 
-
+	[Header("SFX clips")]
+	public AudioClip fallDeathSFX;
+	public AudioClip shreddedSFX;
+	public AudioClip jumpSFX;
 
 	[Header("General")]
 	[Tooltip(
@@ -71,7 +76,7 @@ public class PlayerMovement : MonoBehaviour {
 	public string inputHorizontalAxisName = "Horizontal";
 	public string inputVerticalAxisName = "Vertical";
 	//public string inputJumpButtonName = "Jump";
-	//public string inputDashButtonName = "Dash";
+	//public string inputDashButtonName = "Dash";inputVerticalAxisName
 	public float holdToRestartDuration;
 
 	[Header("Movement Parameters")]
@@ -238,6 +243,7 @@ public class PlayerMovement : MonoBehaviour {
 		bool jump = Input.GetAxisRaw(inputVerticalAxisName) > 0.5f;
 		if (jump && rigidbody.velocity.y > 0) {
 			rigidbody.gravityScale = jumpHoldGravMulti;
+			AudioSource.PlayClipAtPoint(jumpSFX, transform.position);
 		} else {
 			rigidbody.gravityScale = jumpReleaseGravMulti;
 		}
@@ -353,6 +359,7 @@ public class PlayerMovement : MonoBehaviour {
 		if (transform.position.y < currentLevel.transform.position.y + currentLevel.killHeight)
         {
 			SpawnConfetti();
+			AudioSource.PlayClipAtPoint(fallDeathSFX, transform.position);
 			Die();			
 		}
 
@@ -546,6 +553,11 @@ public class PlayerMovement : MonoBehaviour {
 		dustParticleSystem.Play();
     }
 
+	public void PlaySFX()
+    {
+
+    }
+
 	/*
 	//Respawn behaviour no longer necessary
 	public void StartRespawn() {
@@ -606,6 +618,7 @@ public class PlayerMovement : MonoBehaviour {
 
 		//If this is a hazard, respawn the player and cancel method call
 		if (collision.gameObject.tag == "Hazard") {
+			AudioSource.PlayClipAtPoint(shreddedSFX, transform.position);
 			Die();
 			return;
 		}
