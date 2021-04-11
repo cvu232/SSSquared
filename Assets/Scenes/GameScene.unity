@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4508546, g: 0.49911588, b: 0.56575686, a: 1}
+  m_IndirectSpecularColor: {r: 0.4508543, g: 0.49911553, b: 0.5657563, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1133,6 +1133,7 @@ MonoBehaviour:
   levels: []
   players: []
   blocks: []
+  playerProfile: {fileID: 0}
   currentLevel: 0
   currentBuilder: 0
 --- !u!4 &1960736407
@@ -1239,7 +1240,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e049beed555b14dc5a87e6302ec3a000, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2a70b70315b3655418a1c3309a5d5f75, type: 3}
   m_Color: {r: 0.29799998, g: 0.29799998, b: 0.29799998, a: 1}
   m_FlipX: 0
   m_FlipY: 0
