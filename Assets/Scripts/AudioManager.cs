@@ -34,25 +34,25 @@ public class AudioManager : MonoBehaviour
         {
             if (activeAudioSources[i] && !activeAudioSources[i].isPlaying)
             {
+                Debug.Log("Reusing: " + activeAudioSources[i].name);
                 unusedAudioSources.Add(activeAudioSources[i]);
                 activeAudioSources.Remove(activeAudioSources[i]);
                 i--;
             }
         }
-
-        workingSource = null;
         
-        // If there are no available sources to use, instantiate one.
-        if (unusedAudioSources.Count < 1)
+        // If there are unused sources and it's not playing, use it
+        if (unusedAudioSources.Count > 0)
+        {
+            workingSource = unusedAudioSources[0]; // Set as working Source
+            unusedAudioSources.Remove(workingSource); // Remove it from unused
+            Debug.Log("Using: " + workingSource.name + "of " + unusedAudioSources.Count);
+        }
+        else // Instantiate a new source if nothing available
         {
             workingSource = Instantiate(AudioSourcePrefab, pos, Quaternion.identity);
-            Debug.Log("Created: " + workingSource);
+            Debug.Log("Created: " + workingSource.name);
         }
-        else // If there is an unused source, use it
-        {
-            workingSource = unusedAudioSources[0];
-        }
-        Debug.Log("Using: " + workingSource);
 
         // Add this source to active
         activeAudioSources.Add(workingSource);
