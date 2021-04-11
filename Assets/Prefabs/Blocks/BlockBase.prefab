@@ -177,5 +177,5 @@ MonoBehaviour:
   transparentRedMaterial: {fileID: 2100000, guid: 8e42f88b9b95e45428aa9f6618b79685,
     type: 2}
   pos: {x: 0, y: 0, z: 0}
-  createBlockSFX: {fileID: 0}
-  destroyBlockSFX: {fileID: 0}
+  createBlockSFX: {fileID: 8300000, guid: 448adf441391dd84d964ab4f07dd12d6, type: 3}
+  destroyBlockSFX: {fileID: 8300000, guid: 5940971d0950d2347a73f75804849ae9, type: 3}

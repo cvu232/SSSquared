@@ -53,14 +53,14 @@ public class UIManager : MonoBehaviour {
     public void OpenPauseMenu() {
         isPaused = true; // pause
         Time.timeScale = 0;
-        AudioManager.instance.audioSource.PlayOneShot(pauseSFX);
+        AudioManager.instance.PlayClipAt(pauseSFX, Vector3.zero);
         PauseScreen.SetActive(true);
     }
 
     public void ClosePauseMenu() {
         isPaused = false; // unpause
         Time.timeScale = runningTimeScale;
-        AudioManager.instance.audioSource.PlayOneShot(pauseSFX);
+        AudioManager.instance.PlayClipAt(pauseSFX, Vector3.zero);
         PauseScreen.SetActive(false);
     }
 

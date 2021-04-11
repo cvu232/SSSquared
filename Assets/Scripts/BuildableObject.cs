@@ -61,7 +61,7 @@ public class BuildableObject : MonoBehaviour
 
     public void place(Level level) // Place the block in the Level
     {
-        AudioManager.instance.audioSource.PlayOneShot(createBlockSFX);
+        AudioManager.instance.PlayClipAt(createBlockSFX, transform.position);
         buildReady = false;
         isPlaced = true;
         this.level = level;
@@ -85,7 +85,7 @@ public class BuildableObject : MonoBehaviour
     // Destroy the Block
     public void delete()
     {
-        AudioManager.instance.audioSource.PlayOneShot(destroyBlockSFX);
+        AudioManager.instance.PlayClipAt(destroyBlockSFX, transform.position);
         Destroy(gameObject);
     }
 

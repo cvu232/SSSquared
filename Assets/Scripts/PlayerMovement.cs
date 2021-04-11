@@ -236,6 +236,7 @@ public class PlayerMovement : MonoBehaviour {
 			lastJumpTime = -jumpFrameDuration;//Reset the last jump time so the player may not register a jump multiple times a frame (you can't be too careful)
 			isGrounded = false;
 			anim.SetTrigger("jump");
+			AudioManager.instance.PlayClipAt(jumpSFX, transform.position);
 			SpawnDustParticles(); //activates dust particles when jumping
 		}
 
@@ -243,7 +244,6 @@ public class PlayerMovement : MonoBehaviour {
 		bool jump = Input.GetAxisRaw(inputVerticalAxisName) > 0.5f;
 		if (jump && rigidbody.velocity.y > 0) {
 			rigidbody.gravityScale = jumpHoldGravMulti;
-			AudioSource.PlayClipAtPoint(jumpSFX, transform.position);
 		} else {
 			rigidbody.gravityScale = jumpReleaseGravMulti;
 		}
@@ -359,7 +359,7 @@ public class PlayerMovement : MonoBehaviour {
 		if (transform.position.y < currentLevel.transform.position.y + currentLevel.killHeight)
         {
 			SpawnConfetti();
-			AudioSource.PlayClipAtPoint(fallDeathSFX, transform.position);
+			AudioManager.instance.PlayClipAt(fallDeathSFX, transform.position);
 			Die();			
 		}
 
@@ -618,7 +618,7 @@ public class PlayerMovement : MonoBehaviour {
 
 		//If this is a hazard, respawn the player and cancel method call
 		if (collision.gameObject.tag == "Hazard") {
-			AudioSource.PlayClipAtPoint(shreddedSFX, transform.position);
+			AudioManager.instance.PlayClipAt(shreddedSFX, transform.position);
 			Die();
 			return;
 		}

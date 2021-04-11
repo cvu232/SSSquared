@@ -56,7 +56,7 @@ public class Demolisher : MonoBehaviour
 
                     // if clicking on an object and the object is the workingBlock then destroy it (Double-click to confirm boom basically)
                     else if (clickedObj && workingBlock && clickedObj == workingBlock.gameObject)
-                        Destroy(workingBlock.gameObject);
+                        workingBlock.delete();
                     // if the clicked obj != working block
                     else if (clickedObj && workingBlock && clickedObj != workingBlock.gameObject)
                     {

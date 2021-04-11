@@ -13,11 +13,11 @@ public class ButtonsSFX : MonoBehaviour, IPointerEnterHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        AudioManager.instance.audioSource.PlayOneShot(buttonHoverSFX);
+        AudioManager.instance.PlayClipAt(buttonHoverSFX, transform.position);
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        AudioManager.instance.audioSource.PlayOneShot(buttonClickSFX);
+        AudioManager.instance.PlayClipAt(buttonClickSFX, transform.position);
     }
 }
