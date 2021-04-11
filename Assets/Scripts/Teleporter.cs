@@ -21,6 +21,8 @@ public class Teleporter : ObjectEffect
     public ParticleSystem portalParticleSystem;
     public ParticleSystem portalInwardParticleSystem;
     public ParticleSystem portalOutwardParticleSystem;
+    public ParticleSystem portalBigCenterParticleSystem;
+    public ParticleSystem portalExtraOutwardParticleSystem;
 
     private void Start()
     {
@@ -97,18 +99,26 @@ public class Teleporter : ObjectEffect
         ParticleSystem.MainModule portalParticleSystemMain = portalParticleSystem.main;
         ParticleSystem.MainModule portalInwardParticleSystemMain = portalInwardParticleSystem.main;
         ParticleSystem.MainModule portalOutwardParticleSystemMain = portalOutwardParticleSystem.main;
+        ParticleSystem.MainModule portalBigCenterParticleSystemMain = portalBigCenterParticleSystem.main;
+        ParticleSystem.MainModule portalExtraOutwardParticleSystemMain = portalExtraOutwardParticleSystem.main;
 
         portalParticleSystemMain.startColor = colour;
         portalInwardParticleSystemMain.startColor = colour;
         portalOutwardParticleSystemMain.startColor = colour;
+        portalBigCenterParticleSystemMain.startColor = colour;
+        portalExtraOutwardParticleSystemMain.startColor = colour;
 
         ParticleSystem.MainModule portalParticleSystemMain2 = pair.portalParticleSystem.main;
         ParticleSystem.MainModule portalInwardParticleSystemMain2 = pair.portalInwardParticleSystem.main;
         ParticleSystem.MainModule portalOutwardParticleSystemMain2 = pair.portalOutwardParticleSystem.main;
+        ParticleSystem.MainModule portalBigCenterParticleSystemMain2 = pair.portalBigCenterParticleSystem.main;
+        ParticleSystem.MainModule portalExtraOutwardParticleSystemMain2 = pair.portalExtraOutwardParticleSystem.main;
 
         portalParticleSystemMain2.startColor = colour;
         portalInwardParticleSystemMain2.startColor = colour;
         portalOutwardParticleSystemMain2.startColor = colour;
+        portalBigCenterParticleSystemMain2.startColor = colour;
+        portalExtraOutwardParticleSystemMain2.startColor = colour;
     }
 
     private void TogglePortalParticleSystem()
@@ -117,15 +127,19 @@ public class Teleporter : ObjectEffect
         {
             ParticleSystem.MainModule portalParticleSystemMain = portalParticleSystem.main;
             ParticleSystem.MainModule portalInwardParticleSystemMain = portalInwardParticleSystem.main;
+            ParticleSystem.MainModule portalBigCenterParticleSystemMain = portalBigCenterParticleSystem.main;
 
             portalParticleSystemMain.loop = false;
             portalInwardParticleSystemMain.loop = false;
+            portalBigCenterParticleSystemMain.loop = false;
 
             ParticleSystem.MainModule portalParticleSystemMain2 = pair.portalParticleSystem.main;
             ParticleSystem.MainModule portalInwardParticleSystemMain2 = pair.portalInwardParticleSystem.main;
+            ParticleSystem.MainModule portalBigCenterParticleSystemMain2 = pair.portalBigCenterParticleSystem.main;
 
             portalParticleSystemMain2.loop = false;
             portalInwardParticleSystemMain2.loop = false;
+            portalBigCenterParticleSystemMain2.loop = false;
 
             portalOutwardParticleSystem.Play();
             pair.portalOutwardParticleSystem.Play();
@@ -139,20 +153,26 @@ public class Teleporter : ObjectEffect
     {
         ParticleSystem.MainModule portalParticleSystemMain = portalParticleSystem.main;
         ParticleSystem.MainModule portalInwardParticleSystemMain = portalInwardParticleSystem.main;
+        ParticleSystem.MainModule portalBigCenterParticleSystemMain = portalBigCenterParticleSystem.main;
 
         portalParticleSystemMain.loop = true;
         portalInwardParticleSystemMain.loop = true;
+        portalBigCenterParticleSystemMain.loop = true;
 
         ParticleSystem.MainModule portalParticleSystemMain2 = pair.portalParticleSystem.main;
         ParticleSystem.MainModule portalInwardParticleSystemMain2 = pair.portalInwardParticleSystem.main;
+        ParticleSystem.MainModule portalBigCenterParticleSystemMain2 = pair.portalBigCenterParticleSystem.main;
 
         portalParticleSystemMain2.loop = true;
         portalInwardParticleSystemMain2.loop = true;
+        portalBigCenterParticleSystemMain2.loop = true;
 
         portalParticleSystem.Play();
         portalInwardParticleSystem.Play();
+        portalBigCenterParticleSystem.Play();
         pair.portalParticleSystem.Play();
         pair.portalInwardParticleSystem.Play();
+        pair.portalBigCenterParticleSystem.Play();
     }
 
     public void SyncCoroutine()
