@@ -6,7 +6,7 @@ using UnityEngine;
  * Geyser. Animates and pushes players within upwards periodically.
  */
 
-public class Geyser : MonoBehaviour
+public class Geyser : ObjectEffect
 {
     
     public ParticleSystem geyserParticleSystem; // attached geyser particle system

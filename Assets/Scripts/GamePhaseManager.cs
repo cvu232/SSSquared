@@ -41,7 +41,7 @@ public class GamePhaseManager : MonoBehaviour {
     public List<Level> levels;
     public List<Player> players;
 
-    public BlockBase[] blocks;
+    public BuildableObject[] blocks;
 
     public PlayerProfile playerProfile;
     public int currentLevel;
@@ -208,7 +208,7 @@ public class GamePhaseManager : MonoBehaviour {
 
         currentGamePhase = Phases.racePhase; // Set current phase
             UIManager.instance.EnableScoreUI(true);
-        ActivateBlockEffects(); // Enable block effects
+        //ActivateBlockEffects(); // Enable block effects
         //TODO: Generate array of ready status booleans
 
         for (currentLevel = 0; currentLevel < levels.Count; currentLevel++) {
@@ -232,6 +232,7 @@ public class GamePhaseManager : MonoBehaviour {
             yield return new WaitUntil(() => currentPhaseTimer <= 0.001f); // Wait until race finishes
             currentPhaseTimer = 0;
             DeactivatePlayers();
+            StartCoroutine(DisableLevelAfter(levels[currentLevel], 2.0f));
 
             // Settle scores for this level
             ScoreManager.instance.SettleLevelScores(levels[currentLevel]);
@@ -261,12 +262,16 @@ public class GamePhaseManager : MonoBehaviour {
 
     }
 
+    IEnumerator DisableLevelAfter(Level level, float f)
+    {
+        yield return new WaitForSeconds(f);
+        level.gameObject.SetActive(false);
+    }
+
     private void ActivateBlockEffects() {
         blockEffectsEnabled = true;
-        foreach (BlockBase block in blocks) {
-            if (block.blockEffect) {
-                block.blockEffect.SetActive(true);
-            }
+        foreach (BuildableObject block in blocks) {
+            if (block.effect) block.EnableEffect();
         }
     }
 

@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Teleporter : MonoBehaviour
+public class Teleporter : ObjectEffect
 {
 
     private static int index;
 
-    public BlockBase block;
+    public BuildableObject block;
 
     public Teleporter pair;
     public bool isPaired;
@@ -25,7 +25,7 @@ public class Teleporter : MonoBehaviour
     private void Start()
     {
         // Get the Block this Teleporter is attached to
-        block = transform.parent.gameObject.GetComponent<BlockBase>();
+        block = transform.parent.gameObject.GetComponent<BuildableObject>();
 
         pair = null;
         isPaired = false;
@@ -61,7 +61,7 @@ public class Teleporter : MonoBehaviour
             foreach (Teleporter other in candidates)
             {
                 // If this candidate is not itself and not paired, pair these teleporters
-                if (other != this && !other.isPaired)
+                if (other != this && !other.isPaired && other.enabled)
                 {
                     // Set this pair to other
                     pair = other;
@@ -179,7 +179,8 @@ public class Teleporter : MonoBehaviour
         yield return new WaitUntil(()=>block.isPlaced);
         if (index > 5) // delete block if exceeding 6 pairs of teleporters
             block.delete(); // nuke this here
-        searchForTeleporterPair();
+        else
+            searchForTeleporterPair();
     }
 
     IEnumerator UnpairIfLostPair()

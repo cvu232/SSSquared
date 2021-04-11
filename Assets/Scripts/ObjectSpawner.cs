@@ -5,7 +5,7 @@ using UnityEngine;
 /** 
  * Object Spawner. Spawns objects like blocks or projectiles.
  */
-public class ObjectSpawner : MonoBehaviour
+public class ObjectSpawner : ObjectEffect
 {
     public bool spawning;
     public int spawnInterval = 5;
@@ -15,13 +15,13 @@ public class ObjectSpawner : MonoBehaviour
     public float spawnedObjAltLikelyhood;
     private GameObject workingObj;
     private Collider2D[] coll;
-    private BlockBase block;
+    private BuildableObject block;
 
     private void Start()
     {
         spawning = false;
         coll = GetComponentsInParent<Collider2D>();
-        block = GetComponentInParent<BlockBase>();
+        block = GetComponentInParent<BuildableObject>();
     }
 
     private void Update()

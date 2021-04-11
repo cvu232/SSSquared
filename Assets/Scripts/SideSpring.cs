@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class SideSpring : MonoBehaviour
+public class SideSpring : ObjectEffect
 {
     private void OnTriggerEnter2D(Collider2D other)
     {

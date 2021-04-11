@@ -12,7 +12,7 @@ public class BuilderController : MonoBehaviour
     public bool isBuilding;
     public Builder workingBuilder;
     public Demolisher demolisher;
-    public BlockBase workingBlock;
+    public BuildableObject workingBlock;
     public BlockGrid grid;
 
     private void Awake()

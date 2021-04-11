@@ -13,7 +13,7 @@ public class Builder : MonoBehaviour
     private TextMeshProUGUI buttonText;
 
     private BuilderController builder;
-    public BlockBase block;
+    public BuildableObject block;
     public Level level;
 
     private void Start()
@@ -88,11 +88,10 @@ public class Builder : MonoBehaviour
         }
     }
 
-    private void InstantiateBlock(BlockBase b)
+    private void InstantiateBlock(BuildableObject b)
     {
         level = GamePhaseManager.instance.levels[GamePhaseManager.instance.currentLevel];
         builder.workingBlock = Instantiate(b, Vector3.zero, Quaternion.identity); // instantiate new block from builder
-        builder.workingBlock.transform.parent = level.gameObject.transform;
     }
 
     public void BuildingModeOn(Builder b)

@@ -6,16 +6,16 @@ using UnityEngine;
  * Basic Block functions. Attach this script to a Block.
  */
 
-public class BlockBase : MonoBehaviour
+public class BuildableObject : MonoBehaviour
 {
-    public GameObject blockEffect;
+    public ObjectEffect effect;
     public bool buildReady; // is build state
     public bool inBadSpace; // is in invalid build space
     public bool isPlaced;
 
     public MeshRenderer meshRenderer;
-    public Material material;
-    public Material holo;
+    public Material originalMaterial; // Set in Inspector the default material of the block
+    public Material transparentRedMaterial; // Material to indicate encroachment with other block
     public Vector3 pos;
 
     private int inColl;
@@ -24,15 +24,15 @@ public class BlockBase : MonoBehaviour
     private void Start()
     {
         meshRenderer = GetComponentInChildren<MeshRenderer>();
-        material = meshRenderer.material;
+        originalMaterial = meshRenderer.material;
         inBadSpace = false;
         buildReady = true;
         isPlaced = false; // additional checks
-        InitiatingBlockEffect();
+        InitiatingEffect();
     }
 
     public void Update() {
-        transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime * 20);
+        transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime * 25);
         inBadSpace = inColl != 0;
     }
 
@@ -42,7 +42,7 @@ public class BlockBase : MonoBehaviour
         if (collision.CompareTag("Hazard") || collision.CompareTag("block") || collision.CompareTag("bounds") && !isPlaced)
         {
             inColl++;
-            meshRenderer.material = holo;
+            meshRenderer.material = transparentRedMaterial;
         }
     }
 
@@ -52,7 +52,7 @@ public class BlockBase : MonoBehaviour
         if (collision.CompareTag("Hazard") || collision.CompareTag("block") || collision.CompareTag("bounds") && !isPlaced)
         {
             inColl--;
-            meshRenderer.material = material;
+            meshRenderer.material = originalMaterial;
         }
     }
 
@@ -61,28 +61,27 @@ public class BlockBase : MonoBehaviour
         buildReady = false;
         isPlaced = true;
         this.level = level;
-        ActivateBlockEffect();
+        transform.parent = level.gameObject.transform; // Parent this object to the Level it's set in
+        EnableEffect();
     }
 
-    private void InitiatingBlockEffect()
+    private void InitiatingEffect()
     {
-        try
+        // Get the GameObject with the Block's Effect
+        if (transform.GetComponentInChildren<ObjectEffect>()) // Should be in the first child
         {
-            if (transform.GetChild(0))
-                if (transform.GetChild(0).gameObject)
-                    blockEffect = transform.GetChild(0).gameObject;
-                else
-                    blockEffect = null;
+            effect = transform.GetChild(0).gameObject.GetComponent<ObjectEffect>();
+            effect.enabled = false;
         }
-        catch { }
-        if (blockEffect)
-            blockEffect.SetActive(false);
+        else
+            effect = null;
+            
     }
     
-    public void ActivateBlockEffect()
+    public void EnableEffect()
     {
-        if (blockEffect)
-            blockEffect.SetActive(true);
+        if (effect)
+            effect.enabled = true;
     }
 
     // delete the game object

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spring : MonoBehaviour
+public class Spring : ObjectEffect
 {
     private void OnTriggerEnter2D(Collider2D other)
     {

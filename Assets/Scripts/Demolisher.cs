@@ -16,7 +16,7 @@ public class Demolisher : MonoBehaviour
     public BuilderController builder;
 
     public bool isDemolishing;
-    private BlockBase workingBlock = null;
+    private BuildableObject workingBlock = null;
     public GameObject clickedObj = null;
 
     private void Start()
@@ -46,10 +46,10 @@ public class Demolisher : MonoBehaviour
                 if (clickedObj)
                 {
                     // if clicked object is a block and no block selected yet
-                    if (clickedObj.GetComponent<BlockBase>() && !workingBlock)
+                    if (clickedObj.GetComponent<BuildableObject>() && !workingBlock)
                     {
                         // set workingBlock
-                        workingBlock = clickedObj.GetComponent<BlockBase>();
+                        workingBlock = clickedObj.GetComponent<BuildableObject>();
                         // set selection highlight
                         workingBlock.meshRenderer.material = highlightBoom;
                     }
@@ -61,9 +61,9 @@ public class Demolisher : MonoBehaviour
                     else if (clickedObj && workingBlock && clickedObj != workingBlock.gameObject)
                     {
                         // clear workingblock select
-                        workingBlock.meshRenderer.material = workingBlock.material;
+                        workingBlock.meshRenderer.material = workingBlock.originalMaterial;
                         // set workingBlock
-                        workingBlock = clickedObj.GetComponent<BlockBase>();
+                        workingBlock = clickedObj.GetComponent<BuildableObject>();
                         // set selection highlight
                         workingBlock.meshRenderer.material = highlightBoom;
                     }
@@ -73,7 +73,7 @@ public class Demolisher : MonoBehaviour
                         clickedObj = null;
                         // set back og material if changed
                         if (workingBlock)
-                            workingBlock.meshRenderer.material = workingBlock.material;
+                            workingBlock.meshRenderer.material = workingBlock.originalMaterial;
                         workingBlock = null;
                     }
                 }
@@ -106,7 +106,7 @@ public class Demolisher : MonoBehaviour
         clickedObj = null;
         // set back og material if changed
         if (workingBlock)
-            workingBlock.meshRenderer.material = workingBlock.material;
+            workingBlock.meshRenderer.material = workingBlock.originalMaterial;
         workingBlock = null;
 
 

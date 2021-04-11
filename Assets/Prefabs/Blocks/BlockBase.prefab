@@ -168,10 +168,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a890cb037c9eb484a92b97d9946b315c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockEffect: {fileID: 0}
+  effect: {fileID: 0}
   buildReady: 0
   inBadSpace: 0
   isPlaced: 0
   meshRenderer: {fileID: 0}
-  material: {fileID: 0}
-  holo: {fileID: 2100000, guid: 8e42f88b9b95e45428aa9f6618b79685, type: 2}
+  originalMaterial: {fileID: 2100000, guid: ea153230279454c029f98a356b6bf233, type: 2}
+  transparentRedMaterial: {fileID: 2100000, guid: 8e42f88b9b95e45428aa9f6618b79685,
+    type: 2}
+  pos: {x: 0, y: 0, z: 0}
