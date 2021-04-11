@@ -1,0 +1,10 @@
+1up 1 = When someone reaches end goal
+Blip 3 = Hovering over a button
+Coins 6 = Clicking a button
+Coins 9 = Activating pause menu
+Explosion 8 = Deleting a block
+Hit 5 = Death by dropper/object
+Jump 1 = Jump noise
+Laser-weapon 8 = Placing a block
+Lose 8 = Death by falling noise
+Teleport 6 = Teleporting noise
