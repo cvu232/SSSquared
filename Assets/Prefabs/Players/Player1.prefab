@@ -355,7 +355,7 @@ MonoBehaviour:
   impactConfettiParticleSystem: {fileID: 8761640897202842338, guid: fe550be0f3247d943b91a63b73e7d658,
     type: 3}
   fallDeathSFX: {fileID: 8300000, guid: 6304a080da742924cb9584a7bd8a2cc3, type: 3}
-  shreddedSFX: {fileID: 8300000, guid: 0dafac0b22f15264bb3969166a60aab2, type: 3}
+  shreddedSFX: {fileID: 8300000, guid: 6304a080da742924cb9584a7bd8a2cc3, type: 3}
   jumpSFX: {fileID: 8300000, guid: 3943dcc54d32ffc4c8a2f247b0144258, type: 3}
   charType: 0
   rigidbodyVelOrientation: -1
