@@ -169,7 +169,7 @@ public class GamePhaseManager : MonoBehaviour {
 
             //UI to indicate which button to start
             UIManager.instance.BannerUIText(
-                    string.Format("Player {0}: press {1} to start building" , (currentBuilder + 1), onReadyUpButtonName));
+                    string.Format("Player {0}: press {1} to build" , (currentBuilder + 1), onReadyUpButtonName));
             // Wait for Player to be ready to build
             yield return new WaitUntil(() => Input.GetButtonDown(onReadyUpButtonName));
             //Show end turn instruction
@@ -189,10 +189,10 @@ public class GamePhaseManager : MonoBehaviour {
             //Acknowledge next player to build or build phase is complete
             if (currentLevel < levels.Count - 1)
                 UIManager.instance.BannerUIText(
-                    string.Format("Press {0} to begin building the next level", onReadyUpButtonName));
+                    string.Format("Press {0} to continue", onReadyUpButtonName));
             else
                 UIManager.instance.BannerUIText(
-                    string.Format("Press {0} to proceed to the Racing Phase", onReadyUpButtonName));
+                    string.Format("Press {0} to begin the Race", onReadyUpButtonName));
         }
 
         //Start Next Phase

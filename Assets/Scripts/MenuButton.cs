@@ -15,7 +15,8 @@ public class MenuButton : EventTrigger {
     public bool unpauseOnClick = true;
 
     public override void OnPointerClick(PointerEventData eventData) {
-        if (unpauseOnClick)
+        if (unpauseOnClick && UIManager.instance)
+            UIManager.instance.ClosePauseMenu();
             
         switch (function) {
 
