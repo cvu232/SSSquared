@@ -36,8 +36,6 @@ public class GamePhaseManager : MonoBehaviour {
     [Header("Misc. Parameters")]
     public float currentPhaseTimer; // initial platform mode time in seconds
 
-    public bool blockEffectsEnabled; // are block effects active
-
     public List<Level> levels;
     public List<Player> players;
 
@@ -78,8 +76,6 @@ public class GamePhaseManager : MonoBehaviour {
         // Initialize some variables //
         Physics2D.queriesStartInColliders = true;
 
-        blockEffectsEnabled = false;
-
 
         UIManager.instance.uiBuildBar.Initial();
 
@@ -92,9 +88,10 @@ public class GamePhaseManager : MonoBehaviour {
         currentLevel = 0;
         currentBuilder = 0;
 
-        //Placeholder players
+        // Get profile of active player
         playerProfile = FindObjectOfType<PlayerProfile>();
 
+        // List all Players in game
         players = new List<Player>();
         foreach (Player p in FindObjectsOfType<Player>()) {
             Debug.Log("Found " + p.name);
@@ -232,7 +229,6 @@ public class GamePhaseManager : MonoBehaviour {
             yield return new WaitUntil(() => currentPhaseTimer <= 0.001f); // Wait until race finishes
             currentPhaseTimer = 0;
             DeactivatePlayers();
-            StartCoroutine(DisableLevelAfter(levels[currentLevel], 2.0f));
 
             // Settle scores for this level
             ScoreManager.instance.SettleLevelScores(levels[currentLevel]);
@@ -254,6 +250,8 @@ public class GamePhaseManager : MonoBehaviour {
                 UIManager.instance.BannerUIText(
                     string.Format("Press {0} to finish", onReadyUpButtonName));
             yield return new WaitUntil(() => Input.GetButtonDown(onReadyUpButtonName));
+            
+            StartCoroutine(DisableLevelAfter(levels[currentLevel], 2.0f)); // Disable level after player prompts
 
         }
 
@@ -266,13 +264,6 @@ public class GamePhaseManager : MonoBehaviour {
     {
         yield return new WaitForSeconds(f);
         level.gameObject.SetActive(false);
-    }
-
-    private void ActivateBlockEffects() {
-        blockEffectsEnabled = true;
-        foreach (BuildableObject block in blocks) {
-            if (block.effect) block.EnableEffect();
-        }
     }
 
     private void ActivatePlayers() {
