@@ -100,6 +100,11 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.35
       objectReference: {fileID: 0}
+    - target: {fileID: 2619548087994900301, guid: f7679e6fff53ddf45ba062d23502dbd8,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4330009762739668204, guid: f7679e6fff53ddf45ba062d23502dbd8,
         type: 3}
       propertyPath: m_Size.x

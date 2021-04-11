@@ -459,7 +459,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 4.5904e-41, y: 2.26561e-11, z: 4.5904e-41, w: 9.403955e-38}
+  m_BoundingSphereOverride: {x: 0, y: -65288.75, z: 4.5873e-41, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1010,7 +1010,6 @@ MonoBehaviour:
   racePhaseDuration: 120
   readyCheck: 
   currentPhaseTimer: 0
-  blockEffectsEnabled: 0
   levels: []
   players: []
   blocks: []
@@ -1297,27 +1296,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.y
       value: 2.564
-      objectReference: {fileID: 0}
-    - target: {fileID: 4330009762739668204, guid: f7679e6fff53ddf45ba062d23502dbd8,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 89866c4ab2a9f4ba1bdd0b0bcb74552c,
-        type: 3}
-    - target: {fileID: 4330009762739668204, guid: f7679e6fff53ddf45ba062d23502dbd8,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4330009762739668204, guid: f7679e6fff53ddf45ba062d23502dbd8,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4330009762739668204, guid: f7679e6fff53ddf45ba062d23502dbd8,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4330009762739668204, guid: f7679e6fff53ddf45ba062d23502dbd8,
         type: 3}
@@ -2438,27 +2416,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.y
       value: 3.72
-      objectReference: {fileID: 0}
-    - target: {fileID: 4965474246491100918, guid: 5000670e32b3f4da2bafdfda6c3702f1,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: a93a64cb5be514540915b5ae81cf8e94,
-        type: 3}
-    - target: {fileID: 4965474246491100918, guid: 5000670e32b3f4da2bafdfda6c3702f1,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4965474246491100918, guid: 5000670e32b3f4da2bafdfda6c3702f1,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4965474246491100918, guid: 5000670e32b3f4da2bafdfda6c3702f1,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4965474246491100918, guid: 5000670e32b3f4da2bafdfda6c3702f1,
         type: 3}

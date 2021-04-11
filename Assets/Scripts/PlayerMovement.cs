@@ -42,6 +42,7 @@ public class PlayerMovement : MonoBehaviour {
 	private float lastYVel;
 	private float charZRot;
 	private float prevVerticalAxisValue;
+	private float restartHoldTimer;
 	private bool onJump;
 	private bool _isGrounded;
 	private int slipNSliding;
@@ -71,6 +72,7 @@ public class PlayerMovement : MonoBehaviour {
 	public string inputVerticalAxisName = "Vertical";
 	//public string inputJumpButtonName = "Jump";
 	//public string inputDashButtonName = "Dash";
+	public float holdToRestartDuration;
 
 	[Header("Movement Parameters")]
 	[Range(-1, 1)]
@@ -142,6 +144,8 @@ public class PlayerMovement : MonoBehaviour {
 	public float currentSquishFactor;
 	[Range(-10, 10)]
 	public float currentXVel;
+	public UnityEngine.UI.Image holdToRestartUI;
+	public UnityEngine.UI.Image holdToRestartSymbol;
 
 	/*
 	//Respawn behaviour no longer necessary
@@ -237,6 +241,18 @@ public class PlayerMovement : MonoBehaviour {
 		} else {
 			rigidbody.gravityScale = jumpReleaseGravMulti;
 		}
+
+		if (Input.GetAxisRaw(inputVerticalAxisName) < -0.5f)
+			restartHoldTimer += Time.deltaTime;
+		else
+			restartHoldTimer = Mathf.Max(0, restartHoldTimer - (Time.deltaTime * 2.5f));
+
+		holdToRestartSymbol.enabled = Input.GetAxisRaw(inputVerticalAxisName) < -0.5f;
+
+		if (restartHoldTimer >= holdToRestartDuration)
+			Die();
+
+		holdToRestartUI.fillAmount = restartHoldTimer / holdToRestartDuration;
 
 		// ========== Water interaction behaviours ========== //
 		//Assuming water/swimming won't be used, none of this code is necessary (I think)
@@ -498,6 +514,7 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	public void Die () {
+		restartHoldTimer = 0;
 		SpawnImpactConfetti();
 		if (GamePhaseManager.instance && GamePhaseManager.instance.levels != null && GamePhaseManager.instance.levels.Count > 0 && GamePhaseManager.instance.levels[GamePhaseManager.instance.currentLevel])
 		{
