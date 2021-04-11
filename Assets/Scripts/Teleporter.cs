@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Teleporter : ObjectEffect
 {
-
-    private static int index;
-
     public BuildableObject block;
 
     public Teleporter pair;
@@ -74,7 +71,7 @@ public class Teleporter : ObjectEffect
                     StartCoroutine(DeleteIfLostPair());
                     other.SyncCoroutine();
 
-                    index++;
+                    block.level.portalPairs++;
 
                     ColourPortals(); // Give portals colour to indicate which are connected
 
@@ -88,9 +85,9 @@ public class Teleporter : ObjectEffect
     {
         // Create a new colour if n/a to distinguish paired Teleporters
         // Generate non-random colour
-        colour = Color.HSVToRGB(index * 0.2f, 1, 1);
+        colour = Color.HSVToRGB(block.level.portalPairs * 0.2f, 1, 1);
         pair.colour = colour;
-        Debug.Log(Color.HSVToRGB(index * 0.2f, 1, 1));
+        Debug.Log(Color.HSVToRGB(block.level.portalPairs * 0.2f, 1, 1));
         ColourPortalParticleSystems();
     }
 
@@ -197,7 +194,7 @@ public class Teleporter : ObjectEffect
     {
         // Wait until placed before setting the teleporter
         yield return new WaitUntil(()=>block.isPlaced);
-        if (index > 4) // delete block if exceeding 6 pairs of teleporters
+        if (block.level.portalPairs > block.level.portalPairLimit) // delete block if exceeding max pairs of teleporters in level
             block.delete(); // nuke this here
         else
             searchForTeleporterPair();
@@ -218,7 +215,7 @@ public class Teleporter : ObjectEffect
         yield return new WaitUntil(() => !pair);
         pair = null;
         isPaired = false;
-        index--;
+        block.level.portalPairs--;
         block.delete();
     }
 }
