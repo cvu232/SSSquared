@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public int HP;
     public bool isReady;
     public PlayerMovement movement { get; private set; }
+    public PlayerAudio audioSource { get; private set; }
 
     public PlayerControlSchemes controls; // Set in inspector
 
@@ -19,6 +20,7 @@ public class Player : MonoBehaviour
         isReady = false;
         movement = GetComponent<PlayerMovement>();
         controls = Resources.Load<PlayerControlSchemes>("PlayerControlSchemes");
+        audioSource = GetComponent<PlayerAudio>();
     }
 
     public void Ready()
