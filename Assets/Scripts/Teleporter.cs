@@ -177,7 +177,7 @@ public class Teleporter : ObjectEffect
     {
         // Wait until placed before setting the teleporter
         yield return new WaitUntil(()=>block.isPlaced);
-        if (index > 5) // delete block if exceeding 6 pairs of teleporters
+        if (index > 4) // delete block if exceeding 6 pairs of teleporters
             block.delete(); // nuke this here
         else
             searchForTeleporterPair();

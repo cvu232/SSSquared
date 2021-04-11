@@ -70,8 +70,9 @@ public class BuildableObject : MonoBehaviour
         // Get the GameObject with the Block's Effect
         if (transform.GetComponentInChildren<ObjectEffect>()) // Should be in the first child
         {
-            effect = transform.GetChild(0).gameObject.GetComponent<ObjectEffect>();
-            effect.enabled = false;
+            effect = transform.GetComponentInChildren<ObjectEffect>();
+            if (effect)
+                effect.enabled = false;
         }
         else
             effect = null;
