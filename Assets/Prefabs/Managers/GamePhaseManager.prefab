@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7572393573858687274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7572393573858687272}
+  - component: {fileID: 7572393573858687273}
+  m_Layer: 0
+  m_Name: GamePhaseManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7572393573858687272
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7572393573858687274}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7572393573858687273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7572393573858687274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b504eb51c2618b499ffb0e9a4c35c01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentGamePhase: 0
+  buildPhaseDuration: 240
+  onReadyUpButtonName: space
+  onEndTurnButtonName: enter
+  maxLevelCount: 0
+  useFixedLevelsPerPlayer: 1
+  fixedLevelsPerPlayer: 1
+  emptyLevelPrefab: {fileID: 6946042444330766521, guid: a018e50b588580741bace42a7b8d28ff,
+    type: 3}
+  emptyLevelSpacing: 100
+  racePhaseDuration: 120
+  readyCheck: 
+  currentPhaseTimer: 0
+  levels: []
+  players: []
+  blocks: []
+  playerProfile: {fileID: 0}
+  currentLevel: 0
+  currentBuilder: 0

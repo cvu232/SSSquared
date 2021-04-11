@@ -39,7 +39,7 @@ public class BuilderController : MonoBehaviour
         transform.GetChild(0).gameObject.SetActive(false); // disable itself
     }
 
-    public void Initial()
+    public void Initialize()
     {
         transform.GetChild(0).gameObject.SetActive(false);
     }

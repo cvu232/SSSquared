@@ -14,7 +14,6 @@ public class Builder : MonoBehaviour
 
     private BuilderController builder;
     public BuildableObject block;
-    public Level level;
 
     private void Start()
     {
@@ -22,10 +21,11 @@ public class Builder : MonoBehaviour
         if (!Application.isPlaying)
             return;
 
-        builder = transform.root.GetComponent<BuilderController>();
-
         BuildButton = GetComponent<Button>();
         buttonText = GetComponentInChildren<TextMeshProUGUI>();
+
+        builder = transform.root.GetComponent<BuilderController>();
+
         buttonText.text = gameObject.name;
         BuildButton.onClick.AddListener(Build);
     }
@@ -54,8 +54,7 @@ public class Builder : MonoBehaviour
                     )
             {
                 builder.workingBlock.place(GamePhaseManager.instance.levels[GamePhaseManager.instance.currentLevel]);
-                //builder.workingBlock = null; // insurance
-                InstantiateBlock(builder.workingBuilder.block); // instantiate new block from builder
+                InstantiateObject(builder.workingBuilder.block); // instantiate new block from builder
                 builder.workingBlock.transform.position = Vector3.down * 100; //builder.grid.GetNearestPointOnGrid(Global.getScreenToWorldMouse());
             }
             // right-click cancel
@@ -78,19 +77,18 @@ public class Builder : MonoBehaviour
         {
             BuildingModeOn(this);
             // create a new block at mouse pos //
-            InstantiateBlock(builder.workingBuilder.block);
+            InstantiateObject(builder.workingBuilder.block);
         }
         else
         {
             BuildingModeOff();
             BuildingModeOn(this);
-            InstantiateBlock(builder.workingBuilder.block);
+            InstantiateObject(builder.workingBuilder.block);
         }
     }
 
-    private void InstantiateBlock(BuildableObject b)
+    private void InstantiateObject(BuildableObject b)
     {
-        level = GamePhaseManager.instance.levels[GamePhaseManager.instance.currentLevel];
         builder.workingBlock = Instantiate(b, Vector3.zero, Quaternion.identity); // instantiate new block from builder
     }
 
