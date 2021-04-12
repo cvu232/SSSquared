@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1658,6 +1658,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 746904452, guid: 92a932987825548f78346cc6d208c70d, type: 3}
+      propertyPath: tooltipInfo
+      value: 'Teleporter: place at least two of these, and players that enter one
+        will come out the other!'
+      objectReference: {fileID: 0}
     - target: {fileID: 851815607, guid: 92a932987825548f78346cc6d208c70d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1681,6 +1686,11 @@ PrefabInstance:
     - target: {fileID: 851815607, guid: 92a932987825548f78346cc6d208c70d, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 851815608, guid: 92a932987825548f78346cc6d208c70d, type: 3}
+      propertyPath: tooltipInfo
+      value: 'Side Springs: These horizontal springs will cause players that hit
+        them from the side to be pushed away with great force!'
       objectReference: {fileID: 0}
     - target: {fileID: 1021359114, guid: 92a932987825548f78346cc6d208c70d, type: 3}
       propertyPath: m_SizeDelta.x
