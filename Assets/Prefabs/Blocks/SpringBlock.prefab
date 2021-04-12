@@ -105,10 +105,10 @@ GameObject:
   - component: {fileID: 4976615210228918457}
   - component: {fileID: 5414620601427788077}
   - component: {fileID: 225828251375466660}
+  - component: {fileID: 3443520514240722667}
   - component: {fileID: 9078015889759969269}
-  - component: {fileID: 9123129445444265887}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Spring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,8 +122,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4448828449436319553}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.362, z: 0}
-  m_LocalScale: {x: 0.72928, y: 0.72928, z: 0.72928}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1474232484733762838}
   m_RootOrder: 0
@@ -175,6 +175,32 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!61 &3443520514240722667
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4448828449436319553}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.36701405}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.47049296}
+  m_EdgeRadius: 0
 --- !u!114 &9078015889759969269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,22 +213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e7f203eb9c5b4b49b8141079447e3b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!58 &9123129445444265887
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4448828449436319553}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!1001 &5939253886055864279
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -210,6 +220,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 168726296515822653, guid: 3da9283d2f9837e4b9937885b4c575b6,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.6334152
+      objectReference: {fileID: 0}
+    - target: {fileID: 168726296515822653, guid: 3da9283d2f9837e4b9937885b4c575b6,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.18328619
+      objectReference: {fileID: 0}
     - target: {fileID: 3203149508416817776, guid: 3da9283d2f9837e4b9937885b4c575b6,
         type: 3}
       propertyPath: m_Enabled
@@ -284,16 +304,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9205415657635086933, guid: 3da9283d2f9837e4b9937885b4c575b6,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.201
-      objectReference: {fileID: 0}
-    - target: {fileID: 9205415657635086933, guid: 3da9283d2f9837e4b9937885b4c575b6,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3da9283d2f9837e4b9937885b4c575b6, type: 3}
