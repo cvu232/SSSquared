@@ -17,6 +17,8 @@ public class Demolisher : MonoBehaviour
     private BuildableObject workingBlock = null;
     public GameObject clickedObj = null;
 
+    public AudioClip destroyBlockSFX; // Set in Inspector
+
     private void Start()
     {
         isDemolishing = false;
@@ -54,7 +56,10 @@ public class Demolisher : MonoBehaviour
 
                     // if clicking on an object and the object is the workingBlock then destroy it (Double-click to confirm boom basically)
                     else if (clickedObj && workingBlock && clickedObj == workingBlock.gameObject)
+                    {
+                        AudioManager.instance.PlayClipAt(destroyBlockSFX, transform.position); // Play destroy clip
                         workingBlock.delete();
+                    }
                     // if the clicked obj != working block
                     else if (clickedObj && workingBlock && clickedObj != workingBlock.gameObject)
                     {

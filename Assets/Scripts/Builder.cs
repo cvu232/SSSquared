@@ -48,7 +48,7 @@ public class Builder : MonoBehaviour
 
             // left-click build in valid space and not on UI //
             if (Input.GetMouseButton(0) &&
-                !builder.workingBlock.inBadSpace &&
+                !builder.workingBlock.isEncroaching &&
                 !EventSystem.current.IsPointerOverGameObject() &&
                 Vector3.Distance(builder.workingBlock.transform.position, builder.grid.GetNearestPointOnGrid(Global.getScreenToWorldMouse())) < 0.5f
                     )
