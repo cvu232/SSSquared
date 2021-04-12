@@ -14,7 +14,7 @@ public class AddButtonSFX : MonoBehaviour
 
     private void Awake()
     {
-        runInEditMode = true;
+        //runInEditMode = true;
     }
 
     private void Start()
