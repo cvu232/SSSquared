@@ -525,6 +525,7 @@ public class PlayerMovement : MonoBehaviour {
 	public void Die () {
 		restartHoldTimer = 0;
 		AudioManager.instance.PlayClipAt(shreddedSFX, transform.position);
+		rigidbody.velocity = new Vector2(0, 0);
 		SpawnImpactConfetti();
 		if (GamePhaseManager.instance && GamePhaseManager.instance.levels != null && GamePhaseManager.instance.levels.Count > 0 && GamePhaseManager.instance.levels[GamePhaseManager.instance.currentLevel])
 		{
