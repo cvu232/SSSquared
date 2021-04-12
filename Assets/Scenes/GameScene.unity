@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4508546, g: 0.49911588, b: 0.56575686, a: 1}
+  m_IndirectSpecularColor: {r: 0.45085448, g: 0.49911594, b: 0.56575674, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1549,7 +1549,7 @@ PrefabInstance:
     - target: {fileID: 8890768669852318975, guid: 3eb5dc522e3bd46bfaee6eb013c48ffa,
         type: 3}
       propertyPath: m_Name
-      value: Player4
+      value: Char.Budbud
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3eb5dc522e3bd46bfaee6eb013c48ffa, type: 3}
@@ -1569,7 +1569,7 @@ PrefabInstance:
     - target: {fileID: 1729149644015942235, guid: f7679e6fff53ddf45ba062d23502dbd8,
         type: 3}
       propertyPath: m_Name
-      value: Player1
+      value: Char.Robin
       objectReference: {fileID: 0}
     - target: {fileID: 1729149644015942237, guid: f7679e6fff53ddf45ba062d23502dbd8,
         type: 3}
@@ -1708,7 +1708,7 @@ PrefabInstance:
     - target: {fileID: 9198249758691884911, guid: 66c9e7ace2e2541269459617d5e325c9,
         type: 3}
       propertyPath: m_Name
-      value: Player3
+      value: Char.Rob
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66c9e7ace2e2541269459617d5e325c9, type: 3}
@@ -2859,7 +2859,7 @@ PrefabInstance:
     - target: {fileID: 7998546888535156801, guid: 5000670e32b3f4da2bafdfda6c3702f1,
         type: 3}
       propertyPath: m_Name
-      value: Player2
+      value: Char.Olimar
       objectReference: {fileID: 0}
     - target: {fileID: 7998546888535156805, guid: 5000670e32b3f4da2bafdfda6c3702f1,
         type: 3}

@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour {
 	new private Rigidbody2D rigidbody;
 	[HideInInspector]
 	public PhysicsMaterial2D steppingOn;
+	private Player player;
 	new private PlayerAudio audio;
 	public Animator anim;
 	private List<Undoable> undosUntilLastCheckpoint = new List<Undoable>();
@@ -165,6 +166,8 @@ public class PlayerMovement : MonoBehaviour {
 	// Start is called before the first frame update
 	void Start() {
 
+		player = GetComponent<Player>();
+
 		rigidbody = GetComponent<Rigidbody2D>();
 		//anim = PlayerMesh.GetComponent<Animator>();
 		audio = GetComponent<PlayerAudio>();
@@ -255,6 +258,7 @@ public class PlayerMovement : MonoBehaviour {
 			restartHoldTimer = Mathf.Max(0, restartHoldTimer - (Time.deltaTime * 2.5f));
 
 		holdToRestartSymbol.enabled = Input.GetAxisRaw(inputVerticalAxisName) < -0.5f;
+		player.playerIndicator.enabled = Input.GetAxisRaw(inputVerticalAxisName) > -0.5f;
 
 		if (restartHoldTimer >= holdToRestartDuration)
 			Die();

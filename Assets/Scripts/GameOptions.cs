@@ -18,6 +18,8 @@ public class GameOptions : MonoBehaviour {
     public static GameOptions instance;
 
     public Color[] playerColours;
+    public Material[] characterSpriteOutlineMaterials;
+    public Sprite[] playerIndexIndicatorSprites;
 
     [Header("UI Elements")]
     public Slider uiPlayerCount;
@@ -65,6 +67,11 @@ public class GameOptions : MonoBehaviour {
         deathScorePenalty = defaultDeathScorePenalty;
         SFX = defaultSFX;
         music = defaultMusic;
+
+        if (charactersPerPlayer.Count == 0) {
+            charactersPerPlayer.Add(Characters.Robin);
+            charactersPerPlayer.Add(Characters.Olimar);
+        }
 
         //Whenevever the scene changes, try to find UI elements again, in case player goes back to main menu
         SceneManager.sceneLoaded += FindUIElements;

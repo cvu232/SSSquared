@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: charName
       value: Bud Bud
       objectReference: {fileID: 0}
+    - target: {fileID: -7874288892736512678, guid: f7679e6fff53ddf45ba062d23502dbd8,
+        type: 3}
+      propertyPath: character
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1550669327, guid: f7679e6fff53ddf45ba062d23502dbd8, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.64
@@ -141,6 +146,11 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4330009762739668204, guid: f7679e6fff53ddf45ba062d23502dbd8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0897c61ea975f48b1847371359645fa1, type: 2}
     - target: {fileID: 8574950104332799846, guid: f7679e6fff53ddf45ba062d23502dbd8,
         type: 3}
       propertyPath: m_Controller

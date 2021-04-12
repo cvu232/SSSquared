@@ -89,19 +89,23 @@ public class GamePhaseManager : MonoBehaviour {
 
         // List all Players in game
         players = new List<Player>();
-        foreach (Player p in FindObjectsOfType<Player>()) {
+        Player[] allPlayers = GameObject.FindObjectsOfType<Player>();
+        for (int i = 0; i < allPlayers.Length; i++) {
+
+            Player p = allPlayers[i];
+
             Debug.Log("Found " + p.name);
-            if (players.Count < GameOptions.instance.playerCount)
-            {
-                p.assignControls(players.Count);
-                Debug.Log("Assigned controller " + players.Count + " to " + p.name);
+
+            if (GameOptions.instance.charactersPerPlayer.Contains (p.character)) {
+                //If this character has been picked by a player, check which player chose them and assign their controls accordingly
+                p.AssignPlayer((int)GameOptions.instance.charactersPerPlayer.IndexOf(p.character));
                 players.Add(p);
-            }
-            else
-            {
+            } else {
+                //If this character wasn't chosen by anyone, delete them
                 Debug.Log("Destroying " + p.name + " as it is over the player cap");
                 Destroy(p.gameObject);
             }
+
         }
 
         DeactivatePlayers();
@@ -140,8 +144,12 @@ public class GamePhaseManager : MonoBehaviour {
             currentPhaseTimer = 0;
 
         // Active Score UI output
+        string score = "SCORE - ";
+        for (int i = 0; i < players.Count; i++) {
+            score += "P" + (i + 1) + ":" + players[i].score;
+        }
         if (UIManager.instance.uiScore.activeSelf && currentGamePhase == Phases.racePhase)
-            UIManager.instance.ScoreUIText(string.Format("Score: {0}:{1}", players[0].score, players[1].score));
+            UIManager.instance.ScoreUIText(score);
 
     }
 
