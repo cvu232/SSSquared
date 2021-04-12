@@ -7,7 +7,8 @@ public enum Menus {
     main,
     options,
     rules,
-    charSelect
+    charSelect,
+    credits
 }
 
 public class MainMenu : MonoBehaviour {
@@ -18,6 +19,7 @@ public class MainMenu : MonoBehaviour {
     public UIPanel optionsPanel;
     public UIPanel rulesPanel;
     public UIPanel charSelectPanel;
+    public UIPanel creditsPanel;
 
     private void Start() {
 
@@ -35,6 +37,10 @@ public class MainMenu : MonoBehaviour {
         currentMenu = Menus.charSelect;
     }
 
+    public void Credits() {
+        currentMenu = Menus.credits;
+    }
+
     public void ReturnToMenu() {
         currentMenu = Menus.main;
     }
@@ -49,6 +55,10 @@ public class MainMenu : MonoBehaviour {
             rulesPanel.show = currentMenu == Menus.rules;
         if (charSelectPanel)
             charSelectPanel.show = currentMenu == Menus.charSelect;
+        if (creditsPanel)
+            creditsPanel.show = currentMenu == Menus.credits;
+
+        SwayingSpacemen.showCredits = currentMenu == Menus.credits;
 
     }
 

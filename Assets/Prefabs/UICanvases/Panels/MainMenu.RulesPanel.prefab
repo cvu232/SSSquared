@@ -2243,6 +2243,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7606873816597850809}
   - component: {fileID: 777037316888427800}
+  - component: {fileID: 597689660}
   m_Layer: 5
   m_Name: MainMenu.RulesPanel
   m_TagString: Untagged
@@ -2284,6 +2285,20 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &597689660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7606873816597850806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdad2d57df0cc4eae8027fd3e48bb834, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  show: 0
+  lerpSpeed: 5
 --- !u!1 &7688138401984027361
 GameObject:
   m_ObjectHideFlags: 0
@@ -2553,10 +2568,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7606873816432379323}
     m_Modifications:
+    - target: {fileID: 6055232419080898980, guid: 95ed9d7ee960d45e2a1ed83cb9555495,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReturnToMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 6055232419080898980, guid: 95ed9d7ee960d45e2a1ed83cb9555495,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6055232419080898982, guid: 95ed9d7ee960d45e2a1ed83cb9555495,
         type: 3}
       propertyPath: m_Name
-      value: Quit
+      value: Back
       objectReference: {fileID: 0}
     - target: {fileID: 6055232419080898983, guid: 95ed9d7ee960d45e2a1ed83cb9555495,
         type: 3}
@@ -2700,6 +2725,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95ed9d7ee960d45e2a1ed83cb9555495, type: 3}
+--- !u!1 &4438731340541766930 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6055232419080898982, guid: 95ed9d7ee960d45e2a1ed83cb9555495,
+    type: 3}
+  m_PrefabInstance: {fileID: 7606873815328335028}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &4438731340541766931 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6055232419080898983, guid: 95ed9d7ee960d45e2a1ed83cb9555495,
@@ -2713,10 +2744,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7606873816432379323}
     m_Modifications:
+    - target: {fileID: 6055232419080898980, guid: 95ed9d7ee960d45e2a1ed83cb9555495,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GameOptions
+      objectReference: {fileID: 0}
+    - target: {fileID: 6055232419080898980, guid: 95ed9d7ee960d45e2a1ed83cb9555495,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6055232419080898982, guid: 95ed9d7ee960d45e2a1ed83cb9555495,
         type: 3}
       propertyPath: m_Name
-      value: Start
+      value: Next
       objectReference: {fileID: 0}
     - target: {fileID: 6055232419080898983, guid: 95ed9d7ee960d45e2a1ed83cb9555495,
         type: 3}
@@ -2840,6 +2881,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95ed9d7ee960d45e2a1ed83cb9555495, type: 3}
+--- !u!1 &4438731342513070557 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6055232419080898982, guid: 95ed9d7ee960d45e2a1ed83cb9555495,
+    type: 3}
+  m_PrefabInstance: {fileID: 7606873816444004475}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &4438731342513070556 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6055232419080898983, guid: 95ed9d7ee960d45e2a1ed83cb9555495,
