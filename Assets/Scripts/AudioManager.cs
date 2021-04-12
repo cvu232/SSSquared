@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -20,8 +21,6 @@ public class AudioManager : MonoBehaviour
             Destroy(this);
         else
             instance = this;
-
-        DontDestroyOnLoad(this);
 
         unusedAudioSources = new List<AudioSource>();
         activeAudioSources = new List<AudioSource>();

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class ButtonsSFX : MonoBehaviour, IPointerEnterHandler
+public class ButtonsSFX : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 {
     // Set these in Inspector
     public AudioClip buttonHoverSFX;
