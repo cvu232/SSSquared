@@ -25,7 +25,7 @@ public class PlayerProfile : MonoBehaviour {
 
         for (int i = 0; i < profiles.Length; i++) {
 
-            profiles[i].SetActive(i == activePlayer);
+            profiles[i].SetActive(i == (int)GameOptions.instance.charactersPerPlayer[activePlayer]);
 
         }
 
