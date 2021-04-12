@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5911043523592743229}
   - component: {fileID: 3983662507531740511}
   m_Layer: 12
-  m_Name: Projectile 1
+  m_Name: ProjectileEasterEgg
   m_TagString: Hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -121,6 +121,7 @@ MonoBehaviour:
   portalOutwardParticleSystem: {fileID: 938540954118758282}
   portalBigCenterParticleSystem: {fileID: 1670821526159904501}
   portalExtraOutwardParticleSystem: {fileID: 5669610843652529226}
+  portalParticleSystems: []
 --- !u!82 &2375696912004506632
 AudioSource:
   m_ObjectHideFlags: 0
@@ -247,7 +248,7 @@ Transform:
   m_LocalScale: {x: 47, y: 71, z: 47}
   m_Children: []
   m_Father: {fileID: 3068653075351977319}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &938540954118758282
 ParticleSystem:
@@ -5729,6 +5730,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2594807007972931340, guid: 3da9283d2f9837e4b9937885b4c575b6,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 5051333797162937025, guid: 3da9283d2f9837e4b9937885b4c575b6,
         type: 3}
       propertyPath: m_RootOrder
@@ -5814,6 +5820,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 5051333797162937053, guid: 3da9283d2f9837e4b9937885b4c575b6,
+        type: 3}
+      propertyPath: m_TagString
+      value: portal
+      objectReference: {fileID: 0}
     - target: {fileID: 8183647714311941267, guid: 3da9283d2f9837e4b9937885b4c575b6,
         type: 3}
       propertyPath: m_Size.x
@@ -5828,6 +5839,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205415657635086933, guid: 3da9283d2f9837e4b9937885b4c575b6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205415657635086933, guid: 3da9283d2f9837e4b9937885b4c575b6,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.501
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205415657635086933, guid: 3da9283d2f9837e4b9937885b4c575b6,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.351
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3da9283d2f9837e4b9937885b4c575b6, type: 3}

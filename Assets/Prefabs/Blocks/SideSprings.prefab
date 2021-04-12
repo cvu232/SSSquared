@@ -317,6 +317,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: SideSprings
       objectReference: {fileID: 0}
+    - target: {fileID: 9205415657635086933, guid: 3da9283d2f9837e4b9937885b4c575b6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205415657635086933, guid: 3da9283d2f9837e4b9937885b4c575b6,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.51
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3da9283d2f9837e4b9937885b4c575b6, type: 3}
 --- !u!4 &8873553534615771441 stripped

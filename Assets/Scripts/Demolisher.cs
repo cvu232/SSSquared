@@ -11,8 +11,6 @@ public class Demolisher : MonoBehaviour
     private string defaultTxt = "Eraser";
     private string cancelTxt = "Done";
 
-    public Material highlightBoom;
-
     public BuilderController builder;
 
     public bool isDemolishing;
@@ -51,7 +49,7 @@ public class Demolisher : MonoBehaviour
                         // set workingBlock
                         workingBlock = clickedObj.GetComponent<BuildableObject>();
                         // set selection highlight
-                        workingBlock.meshRenderer.material = highlightBoom;
+                        workingBlock.HighlightTarget();
                     }
 
                     // if clicking on an object and the object is the workingBlock then destroy it (Double-click to confirm boom basically)
@@ -61,11 +59,11 @@ public class Demolisher : MonoBehaviour
                     else if (clickedObj && workingBlock && clickedObj != workingBlock.gameObject)
                     {
                         // clear workingblock select
-                        workingBlock.meshRenderer.material = workingBlock.originalMaterial;
+                        workingBlock.HighlightOff();
                         // set workingBlock
                         workingBlock = clickedObj.GetComponent<BuildableObject>();
                         // set selection highlight
-                        workingBlock.meshRenderer.material = highlightBoom;
+                        workingBlock.HighlightTarget();
                     }
                     else
                     {
@@ -73,7 +71,7 @@ public class Demolisher : MonoBehaviour
                         clickedObj = null;
                         // set back og material if changed
                         if (workingBlock)
-                            workingBlock.meshRenderer.material = workingBlock.originalMaterial;
+                            workingBlock.HighlightOff();
                         workingBlock = null;
                     }
                 }
@@ -106,7 +104,7 @@ public class Demolisher : MonoBehaviour
         clickedObj = null;
         // set back og material if changed
         if (workingBlock)
-            workingBlock.meshRenderer.material = workingBlock.originalMaterial;
+            workingBlock.HighlightOff();
         workingBlock = null;
 
 

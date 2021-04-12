@@ -47,7 +47,7 @@ public class Teleporter : ObjectEffect
     {
         // If player enters the trigger and the Teleporter has a pair
         // Teleport the player to the paired Teleporter
-        if (other.GetComponent<Player>() && pair && isPaired && portReady)
+        if ((other.GetComponent<Player>() || other.GetComponent<Projectile>()) && pair && isPaired && portReady)
         {
             other.transform.position = new Vector2(pair.transform.position.x, pair.transform.position.y); // Move player to connected Portal
             StartCoroutine(DisablePairFor(1.0f)); // Disable portal pair for x time

@@ -5,10 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - block
-  - bounds
-  - doom
   - projectile
   - Hazard
+  - bounds
+  - portal
+  - doom
   layers:
   - Default
   - TransparentFX

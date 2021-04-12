@@ -55,7 +55,7 @@ public class Builder : MonoBehaviour
             {
                 builder.workingBlock.place(GamePhaseManager.instance.levels[GamePhaseManager.instance.currentLevel]);
                 InstantiateObject(builder.workingBuilder.block); // instantiate new block from builder
-                builder.workingBlock.transform.position = Vector3.down * 100; //builder.grid.GetNearestPointOnGrid(Global.getScreenToWorldMouse());
+                builder.workingBlock.transform.position = Vector3.down * 100; // starts the placed block lower so it flies to clicked location
             }
             // right-click cancel
             else if (Input.GetMouseButtonDown(1))

@@ -13,9 +13,11 @@ public class BuildableObject : MonoBehaviour
     public bool inBadSpace; // is in invalid build space
     public bool isPlaced;
 
-    public MeshRenderer meshRenderer;
-    public Material originalMaterial; // Set in Inspector the default material of the block
-    public Material transparentRedMaterial; // Material to indicate encroachment with other block
+    private GameObject highlightMesh;
+    private MeshRenderer hlMeshRenderer;
+    public Material clearMaterial; // Set in Inspector the default material of the block
+    public Material transparentRedMaterial; // Set in Inspector. Material to indicate encroachment with other block
+    public Material doomedMaterial; // Set in Inspector. Material to indicate selected block to destroy
     public Vector3 pos;
 
     public AudioClip createBlockSFX;
@@ -24,13 +26,18 @@ public class BuildableObject : MonoBehaviour
     private int inColl;
     public Level level { get; private set; }
 
+    private void Awake()
+    {
+        highlightMesh = transform.Find("HighlightMesh").gameObject;
+        hlMeshRenderer = highlightMesh.GetComponentInChildren<MeshRenderer>();
+        clearMaterial = hlMeshRenderer.material;
+        isPlaced = false; // additional checks
+    }
+
     private void Start()
     {
-        meshRenderer = GetComponentInChildren<MeshRenderer>();
-        originalMaterial = meshRenderer.material;
         inBadSpace = false;
         buildReady = true;
-        isPlaced = false; // additional checks
         InitializeEffect();
     }
 
@@ -42,26 +49,27 @@ public class BuildableObject : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // check if too close to ground/other blocks
-        if (collision.CompareTag("Hazard") || collision.CompareTag("block") || collision.CompareTag("bounds") && !isPlaced)
+        if ((collision.CompareTag("Hazard") || collision.CompareTag("block") || collision.CompareTag("bounds") || collision.CompareTag("portal")) && !isPlaced)
         {
             inColl++;
-            meshRenderer.material = transparentRedMaterial;
+            HighlightEncroachment();
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         // check if not intruding ground/other blocks
-        if (collision.CompareTag("Hazard") || collision.CompareTag("block") || collision.CompareTag("bounds") && !isPlaced)
+        if ((collision.CompareTag("Hazard") || collision.CompareTag("block") || collision.CompareTag("bounds") || collision.CompareTag("portal")) && !isPlaced)
         {
             inColl--;
-            meshRenderer.material = originalMaterial;
+            HighlightOff();
         }
     }
 
     public void place(Level level) // Place the block in the Level
     {
         AudioManager.instance.PlayClipAt(createBlockSFX, transform.position);
+        HighlightOff();
         buildReady = false;
         isPlaced = true;
         this.level = level;
@@ -89,5 +97,18 @@ public class BuildableObject : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void HighlightOff()
+    {
+        hlMeshRenderer.material = clearMaterial;
+    }
+    public void HighlightEncroachment()
+    {
+        hlMeshRenderer.material = transparentRedMaterial;
+    }
+
+    public void HighlightTarget()
+    {
+        hlMeshRenderer.material = doomedMaterial;
+    }
 
 }
