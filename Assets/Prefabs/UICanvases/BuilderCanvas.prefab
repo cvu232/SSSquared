@@ -711,7 +711,6 @@ GameObject:
   - component: {fileID: 746904453}
   - component: {fileID: 746904452}
   - component: {fileID: 1044691287}
-  - component: {fileID: 6650704061349745995}
   m_Layer: 5
   m_Name: Teleporter
   m_TagString: Untagged
@@ -860,20 +859,6 @@ MonoBehaviour:
   tooltipInfo: 'Saw Blade: Touching one of these lethal sawblades will send you back
     to the start!'
 --- !u!114 &1044691287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 746904450}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd01ae30dd3332d4193e419c0d59aa9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonHoverSFX: {fileID: 8300000, guid: 8622432916021d942b7cf4b3f35c06e4, type: 3}
-  buttonClickSFX: {fileID: 8300000, guid: ad7b830879ce25e4ebe6695220b67e44, type: 3}
---- !u!114 &6650704061349745995
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1334,7 +1319,6 @@ GameObject:
   - component: {fileID: 851815609}
   - component: {fileID: 851815608}
   - component: {fileID: 539193111}
-  - component: {fileID: 2133641996184563894}
   m_Layer: 5
   m_Name: SideSprings
   m_TagString: Untagged
@@ -1483,20 +1467,6 @@ MonoBehaviour:
   tooltipInfo: 'Saw Blade: Touching one of these lethal sawblades will send you back
     to the start!'
 --- !u!114 &539193111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 851815606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd01ae30dd3332d4193e419c0d59aa9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonHoverSFX: {fileID: 8300000, guid: 8622432916021d942b7cf4b3f35c06e4, type: 3}
-  buttonClickSFX: {fileID: 8300000, guid: ad7b830879ce25e4ebe6695220b67e44, type: 3}
---- !u!114 &2133641996184563894
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3125,7 +3095,6 @@ GameObject:
   - component: {fileID: 1791451713}
   - component: {fileID: 6297955479294977706}
   - component: {fileID: 668938284}
-  - component: {fileID: 8500062992664093099}
   m_Layer: 5
   m_Name: Saw Blade
   m_TagString: Untagged
@@ -3274,20 +3243,6 @@ MonoBehaviour:
   tooltipInfo: 'Saw Blade: Touching one of these lethal sawblades will send you back
     to the start!'
 --- !u!114 &668938284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1791451711}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd01ae30dd3332d4193e419c0d59aa9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonHoverSFX: {fileID: 8300000, guid: 8622432916021d942b7cf4b3f35c06e4, type: 3}
-  buttonClickSFX: {fileID: 8300000, guid: ad7b830879ce25e4ebe6695220b67e44, type: 3}
---- !u!114 &8500062992664093099
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5166,7 +5121,6 @@ GameObject:
   - component: {fileID: 1991824593152376612}
   - component: {fileID: 6297955479294977709}
   - component: {fileID: 478513853}
-  - component: {fileID: 6775996120787927027}
   m_Layer: 5
   m_Name: Dropper
   m_TagString: Untagged
@@ -5328,20 +5282,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonHoverSFX: {fileID: 8300000, guid: 8622432916021d942b7cf4b3f35c06e4, type: 3}
   buttonClickSFX: {fileID: 8300000, guid: ad7b830879ce25e4ebe6695220b67e44, type: 3}
---- !u!114 &6775996120787927027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1991824593152376617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd01ae30dd3332d4193e419c0d59aa9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonHoverSFX: {fileID: 8300000, guid: 8622432916021d942b7cf4b3f35c06e4, type: 3}
-  buttonClickSFX: {fileID: 8300000, guid: ad7b830879ce25e4ebe6695220b67e44, type: 3}
 --- !u!1 &1991824593155224897
 GameObject:
   m_ObjectHideFlags: 0
@@ -5357,7 +5297,6 @@ GameObject:
   - component: {fileID: 1991824593155224908}
   - component: {fileID: 6297955479294977710}
   - component: {fileID: 423790726}
-  - component: {fileID: 7766589533806386253}
   m_Layer: 5
   m_Name: Geyser
   m_TagString: Untagged
@@ -5519,20 +5458,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonHoverSFX: {fileID: 8300000, guid: 8622432916021d942b7cf4b3f35c06e4, type: 3}
   buttonClickSFX: {fileID: 8300000, guid: ad7b830879ce25e4ebe6695220b67e44, type: 3}
---- !u!114 &7766589533806386253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1991824593155224897}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd01ae30dd3332d4193e419c0d59aa9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonHoverSFX: {fileID: 8300000, guid: 8622432916021d942b7cf4b3f35c06e4, type: 3}
-  buttonClickSFX: {fileID: 8300000, guid: ad7b830879ce25e4ebe6695220b67e44, type: 3}
 --- !u!1 &1991824593633439959
 GameObject:
   m_ObjectHideFlags: 0
@@ -5548,7 +5473,6 @@ GameObject:
   - component: {fileID: 1991824593633439962}
   - component: {fileID: 6297955479294977711}
   - component: {fileID: 1601838455}
-  - component: {fileID: 2039161720946921648}
   m_Layer: 5
   m_Name: Ice Block
   m_TagString: Untagged
@@ -5710,20 +5634,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonHoverSFX: {fileID: 8300000, guid: 8622432916021d942b7cf4b3f35c06e4, type: 3}
   buttonClickSFX: {fileID: 8300000, guid: ad7b830879ce25e4ebe6695220b67e44, type: 3}
---- !u!114 &2039161720946921648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1991824593633439959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd01ae30dd3332d4193e419c0d59aa9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonHoverSFX: {fileID: 8300000, guid: 8622432916021d942b7cf4b3f35c06e4, type: 3}
-  buttonClickSFX: {fileID: 8300000, guid: ad7b830879ce25e4ebe6695220b67e44, type: 3}
 --- !u!1 &1991824593701603503
 GameObject:
   m_ObjectHideFlags: 0
@@ -5739,7 +5649,6 @@ GameObject:
   - component: {fileID: 1991824593701603490}
   - component: {fileID: 6297955479294977707}
   - component: {fileID: 789486495}
-  - component: {fileID: 1899685187232237358}
   m_Layer: 5
   m_Name: Spring
   m_TagString: Untagged
@@ -5888,20 +5797,6 @@ MonoBehaviour:
   tooltipInfo: 'Spring: Falling on one of these will shoot you back up with immense
     force!'
 --- !u!114 &789486495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1991824593701603503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd01ae30dd3332d4193e419c0d59aa9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonHoverSFX: {fileID: 8300000, guid: 8622432916021d942b7cf4b3f35c06e4, type: 3}
-  buttonClickSFX: {fileID: 8300000, guid: ad7b830879ce25e4ebe6695220b67e44, type: 3}
---- !u!114 &1899685187232237358
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6466,7 +6361,6 @@ GameObject:
   - component: {fileID: 1991824594845572327}
   - component: {fileID: 6297955479294977712}
   - component: {fileID: 1260169819}
-  - component: {fileID: 2758946242400890699}
   m_Layer: 5
   m_Name: Platform
   m_TagString: Untagged
@@ -6615,20 +6509,6 @@ MonoBehaviour:
   tooltipInfo: 'Platform: One-directional blocks that players can pass through from
     the bottom, but are solid from the top'
 --- !u!114 &1260169819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1991824594845572330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd01ae30dd3332d4193e419c0d59aa9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonHoverSFX: {fileID: 8300000, guid: 8622432916021d942b7cf4b3f35c06e4, type: 3}
-  buttonClickSFX: {fileID: 8300000, guid: ad7b830879ce25e4ebe6695220b67e44, type: 3}
---- !u!114 &2758946242400890699
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8749,7 +8629,6 @@ GameObject:
   - component: {fileID: 305417693950044451}
   - component: {fileID: 1955814545}
   - component: {fileID: 1912810166}
-  - component: {fileID: 2895340924726263432}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -8885,20 +8764,6 @@ MonoBehaviour:
   function: 0
   unpauseOnClick: 1
 --- !u!114 &1912810166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5142930638003453867}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd01ae30dd3332d4193e419c0d59aa9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonHoverSFX: {fileID: 8300000, guid: 8622432916021d942b7cf4b3f35c06e4, type: 3}
-  buttonClickSFX: {fileID: 8300000, guid: ad7b830879ce25e4ebe6695220b67e44, type: 3}
---- !u!114 &2895340924726263432
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9254,7 +9119,6 @@ GameObject:
   - component: {fileID: 6297955477588640765}
   - component: {fileID: 6297955479294977714}
   - component: {fileID: 512192164}
-  - component: {fileID: 144036425973750477}
   m_Layer: 5
   m_Name: Demolish Button
   m_TagString: Untagged
@@ -9378,6 +9242,7 @@ MonoBehaviour:
   builder: {fileID: 0}
   isDemolishing: 0
   clickedObj: {fileID: 0}
+  destroyBlockSFX: {fileID: 8300000, guid: 5940971d0950d2347a73f75804849ae9, type: 3}
 --- !u!114 &6297955479294977714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9394,20 +9259,6 @@ MonoBehaviour:
   tooltipInfo: 'Eraser: Click this button to toggle erase mode. In erase mode, click
     blocks twice to delete them.'
 --- !u!114 &512192164
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6297955477588640760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd01ae30dd3332d4193e419c0d59aa9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonHoverSFX: {fileID: 8300000, guid: 8622432916021d942b7cf4b3f35c06e4, type: 3}
-  buttonClickSFX: {fileID: 8300000, guid: ad7b830879ce25e4ebe6695220b67e44, type: 3}
---- !u!114 &144036425973750477
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9691,7 +9542,6 @@ GameObject:
   - component: {fileID: 6297955479501943033}
   - component: {fileID: 6297955479294977713}
   - component: {fileID: 837300035}
-  - component: {fileID: 1832169765788502193}
   m_Layer: 5
   m_Name: Block
   m_TagString: Untagged
@@ -9839,20 +9689,6 @@ MonoBehaviour:
   m_Delegates: []
   tooltipInfo: 'Block: Regular solid blocks that characters can safely step on.'
 --- !u!114 &837300035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6297955479501943028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd01ae30dd3332d4193e419c0d59aa9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonHoverSFX: {fileID: 8300000, guid: 8622432916021d942b7cf4b3f35c06e4, type: 3}
-  buttonClickSFX: {fileID: 8300000, guid: ad7b830879ce25e4ebe6695220b67e44, type: 3}
---- !u!114 &1832169765788502193
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11319,7 +11155,6 @@ GameObject:
   - component: {fileID: 71612322660281898}
   - component: {fileID: 1036224180}
   - component: {fileID: 1914301689}
-  - component: {fileID: 8142299168947210029}
   m_Layer: 5
   m_Name: Restart
   m_TagString: Untagged
@@ -11455,20 +11290,6 @@ MonoBehaviour:
   function: 1
   unpauseOnClick: 1
 --- !u!114 &1914301689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8223097548993849916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd01ae30dd3332d4193e419c0d59aa9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonHoverSFX: {fileID: 8300000, guid: 8622432916021d942b7cf4b3f35c06e4, type: 3}
-  buttonClickSFX: {fileID: 8300000, guid: ad7b830879ce25e4ebe6695220b67e44, type: 3}
---- !u!114 &8142299168947210029
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

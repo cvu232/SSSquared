@@ -10,7 +10,7 @@ public class BuildableObject : MonoBehaviour
 {
     public ObjectEffect effect;
     public bool buildReady; // is build state
-    public bool inBadSpace; // is in invalid build space
+    public bool isEncroaching; // is in invalid build space
     public bool isPlaced;
 
     private GameObject highlightMesh;
@@ -20,8 +20,7 @@ public class BuildableObject : MonoBehaviour
     public Material doomedMaterial; // Set in Inspector. Material to indicate selected block to destroy
     public Vector3 pos;
 
-    public AudioClip createBlockSFX;
-    public AudioClip destroyBlockSFX;
+    public AudioClip createBlockSFX; // Set in Inspector
 
     private int inColl;
     public Level level { get; private set; }
@@ -36,14 +35,14 @@ public class BuildableObject : MonoBehaviour
 
     private void Start()
     {
-        inBadSpace = false;
+        isEncroaching = false;
         buildReady = true;
         InitializeEffect();
     }
 
     public void Update() {
         transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime * 25);
-        inBadSpace = inColl != 0;
+        isEncroaching = inColl != 0;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -93,7 +92,6 @@ public class BuildableObject : MonoBehaviour
     // Destroy the Block
     public void delete()
     {
-        AudioManager.instance.PlayClipAt(destroyBlockSFX, transform.position);
         Destroy(gameObject);
     }
 

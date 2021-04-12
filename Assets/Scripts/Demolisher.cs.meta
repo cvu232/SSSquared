@@ -4,9 +4,9 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - highlightBoom: {fileID: 2100000, guid: 2a1043b4c5523924ca0b63e5dfa35837, type: 2}
   - builder: {instanceID: 0}
   - clickedObj: {instanceID: 0}
+  - destroyBlockSFX: {fileID: 8300000, guid: 5940971d0950d2347a73f75804849ae9, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
