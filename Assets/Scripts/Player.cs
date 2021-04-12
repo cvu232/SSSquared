@@ -7,8 +7,6 @@ public class Player : MonoBehaviour {
     public int playerID;
     public Characters character;
     public int score;
-    public int HP;
-    public bool isReady;
     public PlayerMovement movement { get; private set; }
     public PlayerAudio audioSource { get; private set; }
     public SpriteRenderer renderer;
@@ -18,22 +16,9 @@ public class Player : MonoBehaviour {
 
     private void Awake() {
         score = 0;
-        isReady = false;
         movement = GetComponent<PlayerMovement>();
         controls = Resources.Load<PlayerControlSchemes>("PlayerControlSchemes");
         audioSource = GetComponent<PlayerAudio>();
-    }
-
-    public void Ready() {
-        isReady = true;
-    }
-
-    public void unReady() {
-        isReady = false;
-    }
-
-    public void resetHP() {
-
     }
 
     public override string ToString() {

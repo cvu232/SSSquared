@@ -141,8 +141,9 @@ public class GamePhaseManager : MonoBehaviour {
 
         // Active Score UI output
         string score = "SCORE - ";
-        for (int i = 0; i < players.Count; i++) {
-            score += "P" + (i + 1) + ":" + players[i].score;
+        for (int i = players.Count - 1; i >= 0; i--) {
+            score += string.Format("P{0}:{1}  ", players[i].playerID + 1, players[i].score);
+            //Debug.Log(string.Format("P{0}: {1}", players[i].playerID, players[i].score));
         }
         if (UIManager.instance.uiScore.activeSelf && currentGamePhase == Phases.racePhase)
             UIManager.instance.ScoreUIText(score);
@@ -159,8 +160,8 @@ public class GamePhaseManager : MonoBehaviour {
             //loop to start if index gets out of bounds
             if (currentBuilder >= players.Count)
                 currentBuilder = 0;
-            levels[currentBuilder].builderIndex = currentBuilder;
-            playerProfile.activePlayer = levels[currentBuilder].builderIndex = currentBuilder;
+            levels[currentLevel].builder = players[currentBuilder];
+            playerProfile.activePlayer = levels[currentLevel].builder.playerID;
 
             //Initialize current player's build phase
 
@@ -213,7 +214,7 @@ public class GamePhaseManager : MonoBehaviour {
             //Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, currentLevel * emptyLevelSpacing, Camera.main.transform.position.z);
 
             MovePlayersTo(levels[currentLevel].spawnPoint);
-            playerProfile.activePlayer = levels[currentLevel].builderIndex;
+            playerProfile.activePlayer = levels[currentLevel].builder.playerID;
 
             //Wait for all players to be ready
             UIManager.instance.BannerUIText(
@@ -221,7 +222,7 @@ public class GamePhaseManager : MonoBehaviour {
             yield return new WaitUntil(() => Input.GetButtonDown(onReadyUpButtonName)); // Wait until next player presses 'ready' button
             //Set UI to indicate current level and its builder
             UIManager.instance.BannerUIText(
-                string.Format("Level: {0}. Built by Player {1} ", (currentLevel + 1), levels[currentLevel].builderIndex + 1));
+                string.Format("Level: {0}. Built by Player {1} ", (currentLevel + 1), levels[currentLevel].builder.playerID + 1));
             ActivatePlayers();
             currentPhaseTimer = racePhaseDuration; // Set build timer
 
@@ -236,14 +237,15 @@ public class GamePhaseManager : MonoBehaviour {
 
             // Settle scores for this level
             ScoreManager.instance.SettleLevelScores(levels[currentLevel]);
+            /*
             if (!levels[currentLevel].winner) {
                 UIManager.instance.BannerUIText(
-                    string.Format("There was no winner for this level... Player {0} suffers a score penalty.", levels[currentLevel].builderIndex + 1));
+                    string.Format("There was no winner for this level... Player {0} suffers a score penalty.", levels[currentLevel].builder.playerID + 1));
             } else if (levels[currentLevel].winner) {
                 UIManager.instance.BannerUIText(
                     string.Format("Player {0} is the winner of this level!", players.IndexOf(levels[currentLevel].winner) + 1));
-
             }
+            */
 
             //End current level
             //Display "Level done, ready up for next" UI dialog

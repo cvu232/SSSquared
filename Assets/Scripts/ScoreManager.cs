@@ -17,7 +17,6 @@ public class ScoreManager : MonoBehaviour {
             Destroy(gameObject);
         } else {
             instance = this;
-            DontDestroyOnLoad(this);
         }
     }
 
@@ -37,18 +36,19 @@ public class ScoreManager : MonoBehaviour {
         gpm = GamePhaseManager.instance;
 
         for (int i = 0; i < gpm.players.Count; i++) {
-            // if this player built a bad level (no winner)
-            if ((!gameOptions || gameOptions.deathScorePenalty) && gpm.players[level.builderIndex] == gpm.players[i] && !level.winner) {
+            // if this player built a bad level (is builder && no winner)
+            if (gameOptions && gameOptions.deathScorePenalty && level.builder == gpm.players[i] && !level.winner) {
                 gpm.players[i].score -= scoreConfig.badLevelScorePenaltyBonus * scoreConfig.scoreBaseMulti;
             }
-            // if this player built the level and there is a winner (builder = this && winner != null)
-            if (gpm.players[level.builderIndex] != gpm.players[i] && level.winner) {
+            // if this player built the level and there is a winner (is builder && any winner)
+            if (level.builder == gpm.players[i] && level.winner) {
                 gpm.players[i].score += scoreConfig.builderLevelCompletedBonus * scoreConfig.scoreBaseMulti;
             }
-            // if this player won (!builder = winner)
+            // if this player won (is winner)
             if (level.winner == gpm.players[i]) {
                 gpm.players[i].score += scoreConfig.winnerBonus * scoreConfig.scoreBaseMulti;
             }
+            //Debug.Log(string.Format("Player {0},{1} with {2}", gpm.players[i].playerID, gpm.players[i].character, gpm.players[i].score));
         }
     }
 
@@ -61,22 +61,25 @@ public class ScoreManager : MonoBehaviour {
         float bestScore = gpm.players[0].score;
 
         for (int i = 0; i < gpm.players.Count; i++) {
-            // if this player has the highest score
-            if (gpm.players[i].score >= bestScore) {
-                //If this player's score surpassed all other scores, clear tie list
-                if (gpm.players[i].score > bestScore)
-                    winners.Clear(); // clear all winners
-                // set this as new highest score
-                bestScore = gpm.players[i].score;
-                winners.Add(gpm.players[i]); // add new winner
+            //If this player's score surpassed all other scores, clear tie list
+            if (gpm.players[i].score > bestScore)
+            {
+                winners.Clear(); // Clear all winners
+                bestScore = gpm.players[i].score; // Set new best
+                winners.Add(gpm.players[i]); // Add player as winner
+            }
+            else if (gpm.players[i].score == bestScore) // If equal best
+            {
+                winners.Add(gpm.players[i]); // Add new winner
             }
         }
 
         if (winners.Count != 1) {
-            UIManager.instance.BannerUIText(
-                    string.Format("{0}-way tie!", winners.Count));
+            UIManager.instance.BannerUIText(string.Format
+                ("{0}-way tie!", winners.Count));
         } else if (winners.Count == 1)
-            UIManager.instance.BannerUIText(string.Format("{0} wins!", winners[0].character));
+            UIManager.instance.BannerUIText(string.Format
+                ("{0} wins!", winners[0].character));
 
     }
 

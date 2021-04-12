@@ -7,7 +7,7 @@ public class Level : MonoBehaviour {
 
     public Transform spawnPoint;
     public Transform endPoint;
-    public int builderIndex;
+    public Player builder;
     public float killHeight;
     public Player winner;
     public int portalPairLimit = 4; // + 1 for real number

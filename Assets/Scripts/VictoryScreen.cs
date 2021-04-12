@@ -86,7 +86,7 @@ public class VictoryScreen : MonoBehaviour {
 
         noWinner.alpha = Mathf.Lerp(noWinner.alpha, winner < 0 ? 1 : 0, Time.deltaTime * lerpSpeed);
         noWinnerSubtitle.alpha = noWinner.alpha;
-        noWinnerSubtitle.text = "Points deducted from this level's creator: P" + (GamePhaseManager.instance.levels[GamePhaseManager.instance.currentLevel].builderIndex + 1) + " (" + GameOptions.instance.charactersPerPlayer[GamePhaseManager.instance.levels[GamePhaseManager.instance.currentLevel].builderIndex] + ")";
+        noWinnerSubtitle.text = "Points deducted from this level's creator: P" + (GamePhaseManager.instance.levels[GamePhaseManager.instance.currentLevel].builder.playerID + 1) + " (" + GameOptions.instance.charactersPerPlayer[GamePhaseManager.instance.levels[GamePhaseManager.instance.currentLevel].builder.playerID] + ")";
 
         group.alpha = Mathf.Lerp(group.alpha, panel.show ? 1 : 0, Time.deltaTime * lerpSpeed);
 
