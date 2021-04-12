@@ -6,13 +6,15 @@ using UnityEngine.UI;
 public class PlayerProfile : MonoBehaviour {
 
     public int activePlayer;
-
     public Image bg;
-    public Color[] BGColors;
     public GameObject[] profiles;
+
+    private Color[] BGColors;
 
     // Start is called before the first frame update
     void Start() {
+
+        BGColors = GameOptions.instance.playerColours;
 
     }
 

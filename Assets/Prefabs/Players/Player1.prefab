@@ -650,6 +650,7 @@ GameObject:
   - component: {fileID: 6201255432508248232}
   - component: {fileID: 3630320322243418506}
   - component: {fileID: 6942290138432257131}
+  - component: {fileID: 4794264653641519411}
   m_Layer: 5
   m_Name: RecycleSymbol
   m_TagString: Untagged
@@ -673,8 +674,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.21}
+  m_SizeDelta: {x: -2.4291148, y: -2.4291148}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3630320322243418506
 CanvasRenderer:
@@ -703,7 +704,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d8f6617659faf114bb4fbf8b9cb99203, type: 3}
+  m_Sprite: {fileID: 5417975059101596454, guid: 854d160c2970c4209b7107ffa6a3c78b,
+    type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -713,6 +715,25 @@ MonoBehaviour:
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &4794264653641519411
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4869571364175910465}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8a224b8828ee6425c960a93fd2471895, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8777360032620493131
 GameObject:
   m_ObjectHideFlags: 0

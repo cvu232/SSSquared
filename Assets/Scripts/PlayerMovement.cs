@@ -13,7 +13,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Characters {
+public enum DespinaTypeCharacters {
 	[Tooltip("Has all abilities enabled")]
 	Debug,
 	[Tooltip("Can dash vertically, and hang onto walls")]
@@ -67,7 +67,7 @@ public class PlayerMovement : MonoBehaviour {
 		"Scout:\tCan dash vertically, and hang onto walls.\n" +
 		"Sailor:\tCan dash horizontally, and swim in water."
 	)]
-	public Characters charType = Characters.Debug;
+	public DespinaTypeCharacters charType = DespinaTypeCharacters.Debug;
 	[Range(-1, 1)]
 	public int rigidbodyVelOrientation = 1;
 	public LayerMask groundLayers;
@@ -171,9 +171,9 @@ public class PlayerMovement : MonoBehaviour {
 
 		/*
 		//Set placeholder char color depending on charType
-		if (charType == Characters.Sailor)
+		if (charType == DespinaTypeCharacters.Sailor)
 			bodyMat.SetColor("_BaseColor", SailorCol);
-		else if (charType == Characters.Scout)
+		else if (charType == DespinaTypeCharacters.Scout)
 			bodyMat.SetColor("_BaseColor", ScoutCol);
 		else
 			bodyMat.SetColor("_BaseColor", Color.white);
@@ -200,7 +200,7 @@ public class PlayerMovement : MonoBehaviour {
 
 		
 		//Only update player orientation (here) if the player is not submerged
-		if (charType == Characters.Scout || !isDashing)
+		if (charType == DespinaTypeCharacters.Scout || !isDashing)
 			PlayerSprite.transform.localRotation = Quaternion.Lerp(
 				PlayerSprite.transform.localRotation, //LerpFrom (currentRot)
 				Quaternion.Euler(                   //LerpTo
@@ -266,7 +266,7 @@ public class PlayerMovement : MonoBehaviour {
 		/*
 		if (swimDetector.inWater) {
 
-			if (charType == Characters.Scout)
+			if (charType == DespinaTypeCharacters.Scout)
 
 				rigidbody.gravityScale = scoutWaterGrav;
 
@@ -385,9 +385,9 @@ public class PlayerMovement : MonoBehaviour {
 			if (Mathf.Abs(inputs.y) < dashInputDeadzone)
 				inputs.y = 1;
 
-			if (charType == Characters.Sailor || charType == Characters.Debug)
+			if (charType == DespinaTypeCharacters.Sailor || charType == DespinaTypeCharacters.Debug)
 				dir += Vector2Int.right * (inputs.x >= 0 ? 1 : -1);
-			if (charType == Characters.Scout || charType == Characters.Debug)
+			if (charType == DespinaTypeCharacters.Scout || charType == DespinaTypeCharacters.Debug)
 				dir += Vector2Int.up * (inputs.y >= 0 ? 1 : -1);
 
 			BeginDash(dir);
@@ -453,20 +453,20 @@ public class PlayerMovement : MonoBehaviour {
 	private void CheatCharChange() {
 
 		//Set charType var.
-		if (charType == Characters.Debug)
-			charType = Characters.Sailor;
-		else if (charType == Characters.Sailor)
-			charType = Characters.Scout;
-		else if (charType == Characters.Scout)
-			charType = Characters.Debug;
+		if (charType == DespinaTypeCharacters.Debug)
+			charType = DespinaTypeCharacters.Sailor;
+		else if (charType == DespinaTypeCharacters.Sailor)
+			charType = DespinaTypeCharacters.Scout;
+		else if (charType == DespinaTypeCharacters.Scout)
+			charType = DespinaTypeCharacters.Debug;
 
 		Debug.Log("Cheatcode set charType to " + charType);
 
 		/*
 		//Update placeholder colour
-		if (charType == Characters.Sailor)
+		if (charType == DespinaTypeCharacters.Sailor)
 			bodyMat.SetColor("_BaseColor", SailorCol);
-		else if (charType == Characters.Scout)
+		else if (charType == DespinaTypeCharacters.Scout)
 			bodyMat.SetColor("_BaseColor", ScoutCol);
 		else
 			bodyMat.SetColor("_BaseColor", Color.white);
@@ -628,7 +628,7 @@ public class PlayerMovement : MonoBehaviour {
 		}
 
 		//Completely ignore all walljump/wallgrab behaviours if the player is a sailor
-		if (charType == Characters.Sailor)
+		if (charType == DespinaTypeCharacters.Sailor)
 			return;
 
 		//Make sure the array size is valid
@@ -699,7 +699,7 @@ public class PlayerMovement : MonoBehaviour {
 			yield return new WaitForEndOfFrame();
 
 			//While bracing, orient the sailor towards the dash direction
-			if (charType != Characters.Scout)
+			if (charType != DespinaTypeCharacters.Scout)
 				PlayerSprite.transform.localRotation = Quaternion.Lerp(
 					PlayerSprite.transform.localRotation, //LerpFrom (currentRot)
 					Quaternion.Euler(                   //LerpTo
@@ -730,7 +730,7 @@ public class PlayerMovement : MonoBehaviour {
 			yield return new WaitForEndOfFrame();
 
 			// ========== Character rotation while dashing (facing forwards, rotate on Z axis) ========== //
-			if (charType != Characters.Scout)
+			if (charType != DespinaTypeCharacters.Scout)
 				PlayerSprite.transform.localRotation = Quaternion.Lerp(
 					PlayerSprite.transform.localRotation, //LerpFrom (currentRot)
 					Quaternion.Euler(                   //LerpTo

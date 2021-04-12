@@ -4,9 +4,20 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+public enum Characters {
+
+    Robin,
+    Olimar,
+    Rob,
+    Budbud
+
+}
+
 public class GameOptions : MonoBehaviour {
 
     public static GameOptions instance;
+
+    public Color[] playerColours;
 
     [Header("UI Elements")]
     public Slider uiPlayerCount;
@@ -37,6 +48,8 @@ public class GameOptions : MonoBehaviour {
     [Range(0, 10)]
     public int music;
 
+    [HideInInspector]
+    public List<Characters> charactersPerPlayer = new List<Characters>();
 
     public GameOptions Awake() {
         if (instance && instance != this) {
@@ -72,6 +85,13 @@ public class GameOptions : MonoBehaviour {
             SFX = Mathf.RoundToInt(uiSFX.value);
         if (uiMusic)
             music = Mathf.RoundToInt(uiMusic.value);
+
+        if (charactersPerPlayer.Count != playerCount) {
+            charactersPerPlayer = new List<Characters>();
+            for (int i = 0; i < playerCount; i++)
+                charactersPerPlayer.Add((Characters)i);
+        }
+
     }
 
     private void FindUIElements(Scene scene, LoadSceneMode mode) {

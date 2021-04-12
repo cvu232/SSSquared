@@ -43,13 +43,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2a7895eb0949a6439d39cd3f826c152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerColours:
+  - {r: 0, g: 0.8512273, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0.4321413, a: 1}
+  - {r: 1, g: 0.7731253, b: 0, a: 1}
+  - {r: 0.02800417, g: 1, b: 0, a: 1}
+  uiPlayerCount: {fileID: 0}
   uiLevelCount: {fileID: 0}
   uiDeathScorePenalty: {fileID: 0}
   uiSFX: {fileID: 0}
   uiMusic: {fileID: 0}
-  scoreBase: 0
-  scoreMult: 0
+  defaultPlayerCount: 2
+  defaultLevelCount: 4
+  defaultDeathScorePenalty: 0
+  defaultSFX: 10
+  defaultMusic: 10
+  playerCount: 0
+  levelCount: 0
   deathScorePenalty: 0
-  timeScoreMult: 0
-  builderScoreMult: 0
-  badLevelScorePenalty: 0
+  SFX: 0
+  music: 0
+  charactersPerPlayer: 
