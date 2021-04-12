@@ -110,11 +110,7 @@ public class GamePhaseManager : MonoBehaviour {
 
         DeactivatePlayers();
 
-        // If players should have a fixed number of levels to build, override the maxLevelCount variable here
-        if (useFixedLevelsPerPlayer)
-            maxLevelCount = players.Count * fixedLevelsPerPlayer;
-        else
-            fixedLevelsPerPlayer = -1;
+        maxLevelCount = GameOptions.instance.levelCount;
 
         //Generate levels and add them to 'levels' array
         levels = new List<Level>();
@@ -234,6 +230,10 @@ public class GamePhaseManager : MonoBehaviour {
             currentPhaseTimer = 0;
             DeactivatePlayers();
 
+            //Show the victory screen on level timeout
+            if (!levels[currentLevel].winner)
+                GameObject.Find("PANEL.EndScreen").GetComponent<VictoryScreen>().Show(-1);
+
             // Settle scores for this level
             ScoreManager.instance.SettleLevelScores(levels[currentLevel]);
             if (!levels[currentLevel].winner) {
@@ -254,7 +254,8 @@ public class GamePhaseManager : MonoBehaviour {
                 UIManager.instance.BannerUIText(
                     string.Format("Press {0} to finish", onReadyUpButtonName));
             yield return new WaitUntil(() => Input.GetButtonDown(onReadyUpButtonName));
-            
+            GameObject.Find("PANEL.EndScreen").GetComponent<VictoryScreen>().Hide();
+
             StartCoroutine(DisableLevelAfter(levels[currentLevel], 2.0f)); // Disable level after player prompts
 
         }

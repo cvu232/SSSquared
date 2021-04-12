@@ -44,6 +44,7 @@ public class Player : MonoBehaviour {
         Debug.Log(controls);
         //movement.inputHorizontalAxisName = "Horizontal" + (playerID == 0 ? "" : (playerID + 1).ToString());
         //movement.inputVerticalAxisName = "Vertical" + (playerID == 0 ? "" : (playerID + 1).ToString());
+        playerID = i;
         movement.inputHorizontalAxisName = controls.playerControlAxes[i, 0];
         movement.inputVerticalAxisName = controls.playerControlAxes[i, 1];
         renderer.material = GameOptions.instance.characterSpriteOutlineMaterials[i];

@@ -27,7 +27,14 @@ public enum DespinaTypeCharacters {
 [RequireComponent(typeof(AudioSource))]
 public class PlayerMovement : MonoBehaviour {
 
-	new private Rigidbody2D rigidbody;
+	new private Rigidbody2D rigidbody {
+		get {
+			if (!_rigidbody)
+				_rigidbody = GetComponent<Rigidbody2D>();
+			return _rigidbody;
+        }
+    }
+	private Rigidbody2D _rigidbody;
 	[HideInInspector]
 	public PhysicsMaterial2D steppingOn;
 	private Player player;
@@ -168,7 +175,6 @@ public class PlayerMovement : MonoBehaviour {
 
 		player = GetComponent<Player>();
 
-		rigidbody = GetComponent<Rigidbody2D>();
 		//anim = PlayerMesh.GetComponent<Animator>();
 		audio = GetComponent<PlayerAudio>();
 

@@ -5,7 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager instance;
+    public static AudioManager instance {
+        get {
+            if (!_instance) {
+                try {
+                    _instance = FindObjectOfType<AudioManager>();
+                } catch {
+                    _instance = Instantiate((GameObject)Resources.Load("Managers/AudioManager")).GetComponent<AudioManager>();
+                }
+            }
+            return (_instance);
+        }
+    }
+    private static AudioManager _instance;
 
     public AudioSource AudioSourcePrefab;
 
@@ -17,10 +29,12 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
+        /*
         if (instance != null && instance != this)
             Destroy(this);
         else
-            instance = this;
+            _instance = this
+        */
 
         unusedAudioSources = new List<AudioSource>();
         activeAudioSources = new List<AudioSource>();

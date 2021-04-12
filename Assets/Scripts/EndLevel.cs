@@ -20,6 +20,7 @@ public class EndLevel : MonoBehaviour
         {
             thislevel.winner = collision.gameObject.GetComponent<Player>();
             GamePhaseManager.instance.currentPhaseTimer = 0;
+            GameObject.Find("PANEL.EndScreen").GetComponent<VictoryScreen>().Show(thislevel.winner.playerID);
             audioSource.Play();
         }
     }
